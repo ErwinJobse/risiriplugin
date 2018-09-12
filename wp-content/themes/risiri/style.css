@@ -1,0 +1,76 @@
+/*
+Theme Name: RiSiRi Theme
+Theme URI: N.V.T.
+Author: Max den Ouden
+Author URI: http://mextro.nl/
+Description: The Theme used for the RiSiRi Magazijn Applicatie.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mextro
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer');
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Lobster|Pacifico|Roboto');
+/*font-family: 'Roboto', sans-serif;*/
+/*font-family: 'Lobster', cursive;*/
+/*font-family: 'Abel', sans-serif;*/
+/*font-family: 'Pacifico', cursive;*/
+/*font-family: 'Abril Fatface', cursive;*/
+
+body{
+    background-color: #EDF7F9;
+}
+
+.navbar-logo img{
+    width: 170px;
+    height: 170px;
+    display: inline;
+    float: left;
+}
+
+#table-name{
+    font-size: 45px;
+    color: #67B0E3;
+    font-family: "Roboto Light";
+    margin: auto;
+    line-height: 170px;
+    padding-right: 100px;
+    text-align: center;
+    display: block;
+}
+
+
+.artikel-table{
+    border: 2px solid #B6B6B6;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    margin: 60px auto;
+}
+
+tr{
+    border: 2px solid #B6B6B6;
+}
+
+th{
+    border: 2px solid #B6B6B6;
+}
+
+td{
+    border: 2px solid #B6B6B6;
+}
+
+th:first-child { -webkit-border-radius:15px 0 0 0; border-left:none}
+th:last-child{ -webkit-border-radius:0 15px 0 0;border-right:none }
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
