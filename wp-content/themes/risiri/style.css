@@ -15,6 +15,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 @import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer');
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Lobster|Pacifico|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 /*font-family: 'Roboto', sans-serif;*/
 /*font-family: 'Lobster', cursive;*/
 /*font-family: 'Abel', sans-serif;*/
@@ -32,6 +33,10 @@ body{
     float: left;
 }
 
+.table-container{
+
+}
+
 #table-name{
     font-size: 45px;
     color: #67B0E3;
@@ -41,36 +46,75 @@ body{
     padding-right: 100px;
     text-align: center;
     display: block;
+
 }
 
 
 .artikel-table{
-    border: 2px solid #B6B6B6;
+    margin: 60px auto;
+    text-align: center;
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
-    margin: 60px auto;
 }
 
 tr{
-    border: 2px solid #B6B6B6;
 }
 
 th{
+    font-family: 'Roboto Black';
+    color: #707070;
     border: 2px solid #B6B6B6;
+
 }
 
 td{
     border: 2px solid #B6B6B6;
+    font-family: 'Roboto';
 }
 
-th:first-child { -webkit-border-radius:15px 0 0 0; border-left:none}
-th:last-child{ -webkit-border-radius:0 15px 0 0;border-right:none }
-
-table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
+input[type="text"]
+{
+    background: transparent;
+    border: none;
+    text-align: center;
+    font-family: 'Roboto';
+    color: #707070;
 }
 
-table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
+tr:nth-child(even) {
+    background-color: rgb(255,255,255,0.24);
 }
+
+tr:nth-child(odd) {
+    background-color: #CBEBF6;
+}
+
+.table-container input{
+    background-color: ;
+}
+
+/*Actie*/
+
+.action-buttons{
+    padding: 0 10px 0 10px;
+}
+
+.trash{
+    color: #F14444;
+    padding-left: 30px;
+}
+
+.pen{
+    color: #67B0E3;
+}
+
+.plus{
+    color: #78E374;
+}
+
+
+table tr:first-child {
+    border-top: 8px solid black;
+}
+
