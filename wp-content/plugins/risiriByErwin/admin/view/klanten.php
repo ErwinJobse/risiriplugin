@@ -37,6 +37,16 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
 }
 
 ?>
+<h2>Klanten toevoegen</h2>
+<form>
+    voornaam: <br><input type="text" name="voornaam"><br>
+    tussenvoegsel: <br><input type="text" name="tussenvoegsel"><br>
+    achternaam: <br><input type="text" name="achternaam"><br>
+    email: <br><input type="text" name="email"><br>
+    <input type="submit" value="toevoegen">
+</form>
+
+<h2>Klanten</h2>
 <table border="1">
 <tr>
     <th>Klantnummer</th>
@@ -44,6 +54,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
     <th>TussenVoegsel</th>
     <th>Achternaam</th>
     <th>Email</th>
+    <th></th>
     <th></th>
 
 
@@ -54,10 +65,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
      <tr>
          <td><?php echo $row->klantnummer;?></td>
          <td><?php echo $row->voorNaam;?></td>
-         <td><?php echo $row->Tussenvoegsel;?></td>
+         <td><?php echo $row->TussenVoegsel;?></td>
          <td><?php echo $row->Achternaam;?></td>
          <td><?php echo $row->email;?></td>
          <td><button class="deletedata" data-id="<?php echo $row->klantnummer;?>">Verwijder</button></td>
+         <td><button class="editdata" data-id="<?php echo $row->klantnummer;?>">update</button></td>
 
      </tr>
 
@@ -65,6 +77,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
 <?php }
 
 ?>
+
+
 
 
 
