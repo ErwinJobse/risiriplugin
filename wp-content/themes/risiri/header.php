@@ -37,7 +37,7 @@
             </div>
     <!--Logo End-->
 <!--    Page title start-->
-    <h1 id="table-name">Artikelen</h1>
+    <h1 id="table-name">RiSiRi Magazijn Applicatie</h1>
 <!--    Page title end-->
     </div>
 <!--Header end-->
