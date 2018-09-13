@@ -24,7 +24,21 @@ $user = $wpdb->get_results( "SELECT * FROM $table" );
 // Delete logic
 if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-    var_dump($id);
+
+
+    if ($id > 0) {
+        $wpdb->delete( $tabel, array( 'klantnummer' => $id ) );
+
+        echo 'ok';
+    } else {
+        echo 'err';
+    }
+    exit; // finish execution since we only need the "ok" or "err" answers from the server.
+}
+
+// update logic TODO: fixme
+if (isset($_POST['action']) && $_POST['action'] == 'UpdateEntry') {
+    $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
 
     if ($id > 0) {
         $wpdb->delete( $tabel, array( 'klantnummer' => $id ) );

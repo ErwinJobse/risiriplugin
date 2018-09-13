@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf555506-2fdc-46c3-ae27-84d74844a53e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/klanten.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/klanten.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/twentyfifteen/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/twentyfifteen/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +25,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="2" />
+          <entry key="js" value="3" />
           <entry key="md" value="2" />
           <entry key="php" value="7" />
         </counts>
@@ -31,7 +33,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JavaScript" value="2" />
+          <entry key="JavaScript" value="3" />
           <entry key="Markdown" value="2" />
           <entry key="PHP" value="7" />
         </counts>
@@ -39,17 +41,17 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="99" />
-          <entry key="js" value="195" />
+          <entry key="js" value="213" />
           <entry key="md" value="1" />
-          <entry key="php" value="1698" />
+          <entry key="php" value="1882" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="99" />
-          <entry key="JavaScript" value="195" />
+          <entry key="JavaScript" value="213" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="1698" />
+          <entry key="PHP" value="1882" />
         </counts>
       </usages-collector>
     </session>
@@ -59,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="78" column="6" lean-forward="true" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+            <state relative-caret-position="799">
+              <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
               <folding>
                 <element signature="e#6#89#0#PHP" expanded="true" />
               </folding>
@@ -71,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
                 <element signature="e#6#94#0#PHP" expanded="true" />
               </folding>
@@ -80,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/klanten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+            <state relative-caret-position="833">
+              <caret line="49" column="89" selection-start-line="49" selection-start-column="89" selection-end-line="49" selection-end-column="89" />
               <folding>
                 <element signature="e#6#94#0#PHP" expanded="true" />
               </folding>
@@ -102,10 +104,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/update.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+            <state relative-caret-position="119">
+              <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -130,11 +141,12 @@
         <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/my-event-organiser.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/include/html/index.html" />
         <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/include/html/index.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/delete.js" />
         <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/klanten.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/update.js" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php" />
       </list>
     </option>
   </component>
@@ -251,18 +263,18 @@
       <option name="presentableId" value="Default" />
       <updated>1536741888151</updated>
       <workItem from="1536741889731" duration="513000" />
-      <workItem from="1536743225061" duration="24953000" />
+      <workItem from="1536743225061" duration="26379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25466000" />
+    <option name="totallyTimeSpent" value="26892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24945295" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2489339" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -338,16 +350,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="78" column="6" lean-forward="true" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/delete.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -355,30 +357,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/risiri.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="799">
+          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
           <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
+            <element signature="e#6#89#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/klanten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+        <state relative-caret-position="833">
+          <caret line="49" column="89" selection-start-line="49" selection-start-column="89" selection-end-line="49" selection-end-column="89" />
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/artikelen.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding>
+            <element signature="e#6#94#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/risiriByErwin/admin/view/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
         </state>
       </provider>
     </entry>
