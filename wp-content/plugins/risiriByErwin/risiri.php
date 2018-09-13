@@ -64,7 +64,7 @@ function risiri_render_options_page()
 
 }
 
-//remove button admin panel
+//remove/update button admin panel
 function my_enqueue($hook) {
     // Only add to the edit.php admin page.
     // See WP docs.
@@ -72,6 +72,7 @@ function my_enqueue($hook) {
         return;
     }
     wp_enqueue_script('delete', plugin_dir_url(__FILE__) . 'admin/view/delete.js');
+    wp_enqueue_script('update', plugin_dir_url(__FILE__) . 'admin/view/update.js');
 }
 
 add_action('admin_enqueue_scripts', 'my_enqueue');

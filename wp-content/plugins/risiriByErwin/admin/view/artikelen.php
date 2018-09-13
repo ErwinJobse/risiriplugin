@@ -8,3 +8,4 @@
 ?>
 <html>
 <h1>artikelen</h1>
+<P>Copy code from klanten.php when ready</P>
