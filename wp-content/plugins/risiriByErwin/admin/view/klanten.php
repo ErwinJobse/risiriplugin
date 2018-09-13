@@ -13,15 +13,21 @@
 
 global $wpdb;
 
-$table_name = $wpdb->prefix . 'risiri_klanten';
 
-$user = $wpdb->get_results( "SELECT * FROM risiri_klanten" );
+
+
+
+$table = 'risiri_klanten';
+
+$user = $wpdb->get_results( "SELECT * FROM $table" );
 
 // Delete logic
 if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
-    $id = isset($_POST['klantnummer']) ? intval($_POST['klantnummer']) : 0;
+    $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+    var_dump($id);
+
     if ($id > 0) {
-        $wpdb->delete( risiri_klanten, array( 'klantnummer' => $id ) );
+        $wpdb->delete( $tabel, array( 'klantnummer' => $id ) );
 
         echo 'ok';
     } else {
@@ -38,7 +44,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'deleteEntry') {
     <th>TussenVoegsel</th>
     <th>Achternaam</th>
     <th>Email</th>
-    <th>Verwijder</th>
+    <th></th>
 
 
 </tr>
