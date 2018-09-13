@@ -37,6 +37,45 @@ body{
 
 }
 
+
+#tabs{
+    background-color: rgba(255,255,255,0);
+    border: none;
+    margin: auto;
+    width: 90%;
+}
+
+#table-nav{
+    background-color: rgba(255,255,255,0);
+    border: none;
+    margin-left: 50px;
+    text-align: center;
+}
+
+#table-nav li{
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    border: 4px solid #B6B6B6;
+    border-bottom: none;
+    width: 150px;
+    text-align: center;
+    display: grid;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{
+    color: #39A0E2;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active{
+    background-color: #41b2f2;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
+    color: #fff !important;
+}
+
+
+
 #table-name{
     font-size: 45px;
     color: #67B0E3;
@@ -49,27 +88,39 @@ body{
 
 }
 
+#tab-artikelen{
+    padding: 0;
+}
+#tab-klanten{
+    padding: 0;
+}
 
-.artikel-table{
-    margin: 60px auto;
+
+#data-table{
     text-align: center;
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
 }
 
+tbody{
+    border: 6px solid #B6B6B6;
+    background-color: #CBEBF6;
+}
+
 tr{
+    height: 45px;
 }
 
 th{
     font-family: 'Roboto Black';
     color: #707070;
-    border: 2px solid #B6B6B6;
+    border: 1px solid #B6B6B6;
 
 }
 
 td{
-    border: 2px solid #B6B6B6;
+    border: 1px solid #B6B6B6;
     font-family: 'Roboto';
 }
 
@@ -83,16 +134,13 @@ input[type="text"]
 }
 
 tr:nth-child(even) {
-    background-color: rgb(255,255,255,0.24);
+    background-color: rgba(255,255,255,0.5);
 }
 
 tr:nth-child(odd) {
     background-color: #CBEBF6;
 }
 
-.table-container input{
-    background-color: ;
-}
 
 /*Actie*/
 
@@ -103,18 +151,31 @@ tr:nth-child(odd) {
 .trash{
     color: #F14444;
     padding-left: 30px;
+    font-size: 20px;
 }
 
 .pen{
     color: #67B0E3;
+    font-size: 20px;
 }
 
 .plus{
     color: #78E374;
+    font-size: 25px;
 }
 
 
-table tr:first-child {
-    border-top: 8px solid black;
-}
+
+/*table tr:first-child {*/
+    /*border-top: 8px solid #B6B6B6;*/
+    /*border-top-left-radius: 21px;*/
+    /*border-left: 8px solid #B6B6B6;*/
+/*}*/
+
+/*table tr:last-child {*/
+    /*border-bottom: 8px solid #B6B6B6;*/
+    /*border-top-left-radius: 21px;*/
+    /*border-right: 8px solid #B6B6B6;*/
+    /*border-bottom-right-radius: 21px;*/
+/*}*/
 
