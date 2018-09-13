@@ -1,35 +1,30 @@
 <?php
-include MY_EVENT_ORGANISER_PLUGIN_MODEL_DIR . "/EventCategory.php";
+include MY_EVENT_ORGANISER_PLUGIN_MODEL_DIR . "/EventType.php";
 // Declare class variable:
 
-
-$event_category = new EventCategory();
+$event_type = new EventType();
 
 // Set base url to current file and add page specific vars
-
 $base_url = get_admin_url() . 'admin.php';
-
 $params = array('page' => basename(__FILE__, ".php"));
 // Add params to base url
-
 $base_url = add_query_arg($params, $base_url);
 
 // Get the GET data in filtered array
-
-$get_array = $event_category->getGetValues();
+$get_array = $event_type->getGetValues();
 
 // Keep track of current action.
 $action = FALSE;
-
 if (!empty($get_array)) {
+
     // Check actions
     if (isset($get_array['action'])) {
-        $action = $event_category->handleGetAction($get_array);
+        $action = $event_type->handleGetAction($get_array);
     }
 }
 
 // Get the POST data in filtered array
-$post_array = $event_category->getPostValues();
+$post_array = $event_type->getPostValues();
 // Check the POST data
 if (!empty($post_array)) {
 
@@ -37,7 +32,7 @@ if (!empty($post_array)) {
     $add = FALSE;
     if (isset($post_array['add'])) {
         // Save event categorie
-        $event_category->save($post_array);
+        $event_type->save($post_array);
         if ($result) {
             // Save was succesfull
             $add = TRUE;
@@ -49,81 +44,80 @@ if (!empty($post_array)) {
     // Check the update form:
     if (isset($post_array['update'])) {
         // Save event category
-        $event_category->update($post_array);
+        $event_type->update($post_array);
     }
 }
-?>
-<div class="wrap">
-   KLanten CRUD.<br/>
 
+?>
+
+<div class="wrap">
+   types
 
     <?php
-    echo($add ? "<p>Klant toegevoegd</p>" : "");
+    echo($add ? "<p>Added a new event</p>" : "");
     // Check if action == update : then start update form
     echo(($action == 'update') ? '<form action="' . $base_url . '"method="post">' : '');
     ?>
     <table>
-        <caption>Klanten</caption>
+        <caption>Event types</caption>
         <thead>
         <tr>
             <th width="10">Id</th>
-            <th width="150">Naam</th>
-            <th width="200">Achternaam</th>
+            <th width="150">Name</th>
+            <th width="200">Description</th>
         </tr>
 
         </thead>
         <?php
-        if ($event_category->getNrOfEventCategories() < 1) {
+        if ($event_type->getNrOfEventTypes() < 1) {
             ?>
             <tr>
-                <td colspan="3">Begin klanten toe te voegen
+                <td colspan="3">Start adding Event Categories
             </tr>
         <?php } else {
-            $cat_list = $event_category->getEventCategoryList();
+            $type_list = $event_type->getEventTypeList();
 
             //** Show all event categories in the tabel
-
-            foreach ($cat_list as $event_cat_obj) {
+            foreach ($type_list as $event_type_obj) {
                 // Create update link
-                $params = array('action' => 'update', 'id' => $event_cat_obj->getId());
+                $params = array('action' => 'update', 'id' => $event_type_obj->getId());
                 // Add params to base url update link
                 $upd_link = add_query_arg($params, $base_url);
                 // Create delete link
-                $params = array('action' => 'delete', 'id' => $event_cat_obj->getId());
+                $params = array('action' => 'delete', 'id' => $event_type_obj->getId());
                 // Add params to base url delete link
                 $del_link = add_query_arg($params, $base_url);
                 ?>
                 <tr>
-                    <td width="10"><?php echo $event_cat_obj->getId(); ?></td>
+                    <td width="10"><?php echo $event_type_obj->getId(); ?></td>
                     <?php
                     // If update and id match show update form
                     // Add hidden field id for id transfer
-                    if (($action == 'update') && ($event_cat_obj->getId() == $get_array['id'])) {
+                    if (($action == 'update') && ($event_type_obj->getId() == $get_array['id'])) {
                         ?>
                         <td width="180"><input type="hidden" name="id" value="<?php
-                            echo $event_cat_obj->getId(); ?>">
+                            echo $event_type_obj->getId(); ?>">
                             <input type="text" name="name" value="<?php
-                            echo $event_cat_obj->getName(); ?>"></td>
+                            echo $event_type_obj->getName(); ?>"></td>
                         <td width="200"><input type="text" name="description" value="<?php
-                            echo $event_cat_obj->getDescription(); ?>"></td>
+                            echo $event_type_obj->getDescription(); ?>"></td>
                         <td colspan="2"><input type="submit" name="update" value="Updaten"/></td>
                     <?php } else { ?>
 
-                        <td width="180"><?php echo $event_cat_obj->getName(); ?></td>
-                        <td width="200"><?php echo $event_cat_obj->getDescription(); ?></td>
-
+                        <td width="180"><?php echo $event_type_obj->getName(); ?></td>
+                        <td width="200"><?php echo $event_type_obj->getDescription(); ?></td>
 
 
                         <?php if ($action !== 'update') {
                             // If action is update don’t show the action button
-                            ?>
-                            <td><a href="<?php echo $upd_link; ?>">bewerken</a></td>
-                            <td><a href="<?php echo $del_link; ?>" style="color: red">verwijderen</a></td>
+                             ?>
+                            <td><a href="<?php echo $upd_link; ?>">Update</a></td>
+                            <td><a href="<?php echo $del_link; ?>">Delete</a></td>
                             <?php
-                        }
+                        } // if action !== update
                         ?>
 
-                    <?php }
+                    <?php } // if acton !== update
                     ?>
                 </tr>
             <?php }

@@ -80,17 +80,27 @@ echo '<span style="color:blue">Test main view</span>';
 <?php
 if (current_user_can( 'ivs_meo_event_read' ) ){
     if (current_user_can('ivs_meo_event_create')){
-
-        // Create klant link
-$params = array( 'link' => 'klant');
+// Create add link
+$params = array( 'link' => 'event_add');
 // Add params to base url update link
 $link = add_query_arg( $params, $base_url );
 ?>
-<a href="<?php echo $link;?>">klanten </a><p />
+<a href="<?php echo $link;?>">Evenementen toevoegen </a><p />
 <?php
     }
-
+// Create event_list link
+$params = array( 'link' => 'event_list');
+// Add params to base url link
+$link = add_query_arg( $params, $base_url );
 ?>
+<a href="<?php echo $link;?>">Evenementen lijst </a><p />
+<?php
+// Create sign on link
+$params = array( 'link' => 'event_apply');
+// Add params to base url update link
+$link = add_query_arg( $params, $base_url );
+?>
+<a href="<?php echo $link;?>">Inschrijven op evenement </a><p />
     <?php
 } // current_user_can()
 }

@@ -5,67 +5,65 @@
  * @author gthoogendoorn
  */
 
-class EventCategory
-{
+class EventCategory{
     /**
      * getPostValues :
      * Filter input and retrieve POST input params
      *
      * @return array containing known POST input fields
      */
-    public function getPostValues()
-    {
+    public function getPostValues(){
 
         // Define the check for params
-        $post_check_array = array(
+        $post_check_array = array (
             // submit action
-            'add' => array('filter' => FILTER_SANITIZE_STRING),
+            'add' => array('filter' => FILTER_SANITIZE_STRING ),
 
-            'update' => array('filter' => FILTER_SANITIZE_STRING),
+            'update' => array('filter' => FILTER_SANITIZE_STRING ),
 
             // List all update form fields !!!
             //
-            // Voornaam .
-            'name' => array('filter' => FILTER_SANITIZE_STRING),
-            // Achternaam
-            'description' => array('filter' => FILTER_SANITIZE_STRING),
-            'tussenvoegsel' => array('filter' => FILTER_SANITIZE_STRING),
-            'e-mail' => array('filter' => FILTER_SANITIZE_STRING),
+            // event type name.
+            'name' => array('filter' => FILTER_SANITIZE_STRING ),
+            // Help text
+            'description' => array('filter' => FILTER_SANITIZE_STRING ),
 
             // Id of current row
-            'id' => array('filter' => FILTER_VALIDATE_INT)
+            'id' => array( 'filter' => FILTER_VALIDATE_INT )
         );
         // Get filtered input:
-        $inputs = filter_input_array(INPUT_POST, $post_check_array);
+        $inputs = filter_input_array( INPUT_POST, $post_check_array );
         // RTS
         return $inputs;
     }
-
     /**
      *
      * @global type $wpdb The Wordpress database class
      * @param type $input_array containing insert data
      * @return boolean TRUE on succes OR FALSE
      */
-    public function save($input_array)
-    {
+    public function save($input_array){
         try {
-            if (!isset($input_array['name']) OR !isset($input_array['description']) OR !isset($input_array['tussenvoegsel']) OR !isset($input_array['e-mail'])) {
+            if ( !isset($input_array['name']) OR
+                !isset($input_array['description'])){
                 // Mandatory fields are missing
                 throw new Exception(__("Missing mandatory fields"));
             }
-            if ((strlen($input_array['name']) < 1) OR (strlen($input_array['description']) < 1) OR (strlen($input_array['tussenvoegsel']) < 1)  OR (strlen($input_array['e-mail']) < 1)) {
+            if ( (strlen($input_array['name']) < 1) OR
+                (strlen($input_array['description']) < 1) ){
                 // Mandatory fields are empty
-                throw new Exception(__("Empty mandatory fields"));
+                throw new Exception( __("Empty mandatory fields") );
             }
 
             global $wpdb;
 
             // Insert query
-            $wpdb->query($wpdb->prepare("INSERT INTO `" . $wpdb->prefix . "meo_event_category` ( `name`, `description`, `tussenvoegsel`, `e-mail`)" .
-                " VALUES ( '%s', '%s', '%s', '%s');", $input_array['name'], $input_array['description'], $input_array['tussenvoegsel'], $input_array['e-mail']));
+            $wpdb->query($wpdb->prepare("INSERT INTO `". $wpdb->prefix
+                ."meo_event_category` ( `name`, `description`)".
+                " VALUES ( '%s', '%s');",$input_array['name'],
+                $input_array['description']) );
             // Error ? It's in there:
-            if (!empty($wpdb->last_error)) {
+            if ( !empty($wpdb->last_error) ){
                 $this->last_error = $wpdb->last_error;
                 return FALSE;
             }
@@ -77,77 +75,73 @@ class EventCategory
             //*/
             //echo 'Insert name and description for this Category:"'.$input_array['name'].
             // '"-"'. $input_array['description'].'"<br />';
-        } catch (Exception $exc) {
-            // @todo: Add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
-        }
+ } catch (Exception $exc) {
+ // @todo: Add error handling
+ echo '<pre>'. $exc->getTraceAsString() .'</pre>';
+ }
 
 
-        return TRUE;
-    }
-
+ return TRUE;
+ }
     /**
      *
      * @return int number of Event categories stored in db
      */
-    public function getNrOfEventCategories()
-    {
+    public function getNrOfEventCategories(){
         global $wpdb;
 
-        $query = "SELECT COUNT(*) AS nr FROM `" . $wpdb->prefix
-            . "meo_event_category`";
-        $result = $wpdb->get_results($query, ARRAY_A);
+        $query = "SELECT COUNT(*) AS nr FROM `". $wpdb->prefix
+            ."meo_event_category`";
+        $result = $wpdb->get_results( $query, ARRAY_A );
         return $result[0]['nr'];
     }
-
     /**
      *
      * @return type
      */
-    public function getEventCategoryList()
-    {
+    public function getEventCategoryList(){
 
         global $wpdb;
         $return_array = array();
 
-        $result_array = $wpdb->get_results("SELECT * FROM `" . $wpdb->prefix . "meo_event_category` ORDER BY `id_event_category`", ARRAY_A);
+        $result_array = $wpdb->get_results( "SELECT * FROM `". $wpdb->prefix . "meo_event_category` ORDER BY `id_event_category`", ARRAY_A);
 
+ /*
+ echo '<pre>';echo __FILE__.__LINE__.'<br />';
+ var_dump($result_array);
+ echo '</pre>';
+ //*/
 
-        // For all database results:
-        foreach ($result_array as $idx => $array) {
+ // For all database results:
+ foreach ( $result_array as $idx => $array){
 // New object
-            $cat = new EventCategory();
-            // Set all info
-            $cat->setName($array['name']);
-            $cat->setId($array['id_event_category']);
-            $cat->setDescription($array['description']);
-            $cat->setTussenvoegsel($array['tussenvoegsel']);
-            $cat->setemail($array['e-mail']);
+     $cat = new EventCategory();
+     // Set all info
+     $cat->setName($array['name']);
+     $cat->setId($array['id_event_category']);
+     $cat->setDescription($array['description']);
 
-            // Add new object toe return array.
-            $return_array[] = $cat;
-        }
-        return $return_array;
-    }
-
+     // Add new object toe return array.
+     $return_array[] = $cat;
+ }
+ return $return_array;
+ }
     /**
      *
      * @param type $id Id of the event category
      */
-    public function setId($id)
-    {
-        if (is_int(intval($id))) {
+    public function setId( $id ){
+        if ( is_int(intval($id) ) ){
             $this->id = $id;
         }
     }
 
     /**
-     *
-     * @param type $name name of the event category
-     */
-    public function setName($name)
-    {
-        if (is_string($name)) {
+ *
+ * @param type $name name of the event category
+ */
+    public function setName( $name ){
+        if ( is_string( $name )){
             $this->name = trim($name);
         }
     }
@@ -156,19 +150,16 @@ class EventCategory
      *
      * @param type $desc The help text of the event category
      */
-    public function setDescription($desc)
-    {
-        if (is_string($desc)) {
+    public function setDescription ($desc){
+        if ( is_string($desc)){
             $this->decription = trim($desc);
         }
     }
-
     /**
      *
      * @return int The db id of this event
      */
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
@@ -176,8 +167,7 @@ class EventCategory
      *
      * @return string The name of the Event Category
      */
-    public function getName()
-    {
+    public function getName(){
         return $this->name;
     }
 
@@ -185,61 +175,29 @@ class EventCategory
      *
      * @return string The help text of the description
      */
-    public function getDescription()
-    {
+    public function getDescription(){
         return $this->decription;
     }
-
-    /**
-     *
-     * @return string The help text of the description
-     */
-    public function getTussenvoegsel()
-    {
-        return $this->tussenvoegsel;
-    }
-
-    public function setTussenvoegsel($tuss)
-    {
-        if (is_string($tuss)) {
-            $this->tussenvoegsel = trim($tuss);
-        }
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($mail)
-    {
-        if (is_string($mail)) {
-            $this->email = trim($mail);
-        }
-    }
-
     /**
      * getGetValues :
      * Filter input and retrieve GET input params
      *
      * @return array containing known GET input fields
      */
-    public function getGetValues()
-    {
+    public function getGetValues(){
         // Define the check for params
-        $get_check_array = array(
+        $get_check_array = array (
             // Action
-            'action' => array('filter' => FILTER_SANITIZE_STRING),
+            'action' => array('filter' => FILTER_SANITIZE_STRING ),
 
             // Id of current row
-            'id' => array('filter' => FILTER_VALIDATE_INT)
+            'id' => array( 'filter' => FILTER_VALIDATE_INT )
         );
         // Get filtered input:
-        $inputs = filter_input_array(INPUT_GET, $get_check_array);
+        $inputs = filter_input_array( INPUT_GET, $get_check_array );
         // RTS
         return $inputs;
     }
-
     /**
      * Check the action and perform action on :
      * - delete
@@ -247,21 +205,20 @@ class EventCategory
      * @param type $get_array all get vars en values
      * @return string the action provided by the $_GET array.
      */
-    public function handleGetAction($get_array)
-    {
+    public function handleGetAction( $get_array ){
         $action = '';
 
-        switch ($get_array['action']) {
+        switch($get_array['action']){
             case 'update':
                 // Indicate current action is update if id provided
-                if (!is_null($get_array['id'])) {
+                if ( !is_null($get_array['id']) ){
                     $action = $get_array['action'];
                 }
                 break;
 
             case 'delete':
                 // Delete current id if provided
-                if (!is_null($get_array['id'])) {
+                if ( !is_null($get_array['id']) ){
                     $this->delete($get_array);
                 }
                 $action = 'delete';
@@ -273,19 +230,16 @@ class EventCategory
         }
         return $action;
     }
-
     /**
      *
      * @global type $wpdb
      * @return type string table name with wordpress (and app prefix)
      */
-    private function getTableName()
-    {
+    private function getTableName(){
 
         global $wpdb;
         return $table = $wpdb->prefix . "meo_event_category";
     }
-
     /**
      *
      * @global type $wpdb Wordpress database
@@ -293,19 +247,18 @@ class EventCategory
      * @return boolean TRUE on Succes else FALSE
      * @throws Exception
      */
-    public function update($input_array)
-    {
+    public function update($input_array){
 
         try {
-            $array_fields = array('id', 'name', 'description', 'tussenvoegsel', 'e-mail');
-            $table_fields = array('id_event_category', 'name', 'description', 'tussenvoegsel', 'e-mail');
+            $array_fields = array('id', 'name', 'description');
+            $table_fields = array( 'id_event_category', 'name' , 'description');
             $data_array = array();
 
             // Check fields
-            foreach ($array_fields as $field) {
+            foreach( $array_fields as $field){
 
                 // Check fields
-                if (!isset($input_array[$field])) {
+                if (!isset($input_array[$field])){
                     throw new Exception(__("$field is mandatory for update."));
                 }
                 // Add data_array (without hash idx)
@@ -316,8 +269,11 @@ class EventCategory
 
             // Update query
             //*
-            $wpdb->query($wpdb->prepare("UPDATE " . $this->getTableName() . " SET `name` = '%s', `description` = '%s', `tussenvoegsel` = '%s', `e-mail` = '%s' " . "WHERE`wp_meo_event_category`.`id_event_category` =%d;", $input_array['name'],
-                $input_array['description'], $input_array['tussenvoegsel'],$input_array['e-mail'], $input_array['id']));
+            $wpdb->query($wpdb->prepare("UPDATE ".$this->getTableName().
+                " SET `name` = '%s', `description` = '%s' ".
+                "WHERE
+`wp_meo_event_category`.`id_event_category` =%d;",$input_array['name'],
+                $input_array['description'], $input_array['id']) );
             /*/
 
             // Replace form field id index by table field id name
@@ -338,7 +294,6 @@ class EventCategory
         }
         return TRUE;
     }
-
     /**
      * The function takes the input data array and changes the
      * indexes to the column names
@@ -348,8 +303,7 @@ class EventCategory
      * @param type $action update | insert
      * @return type array with collumn index and values OR FALSE
      */
-    private function getTableDataArray($input_data_array, $action = '')
-    {
+    private function getTableDataArray($input_data_array, $action=''){
 
         // Get the Table Column Names.
         $keys = $this->getTableColumnNames($this->getTableName());
@@ -360,12 +314,12 @@ class EventCategory
         // Note: The order of the fields shall be the same for both!
         $table_data = array_combine($keys, $input_data_array);
 
-        switch ($action) {
+        switch ( $action ){
             case 'update': // Intended fall-through
             case 'insert':
                 // Remove the index -> is primary key and can
 // therefore not be changed!
-                if (!empty($table_data)) {
+                if (!empty($table_data)){
                     unset($table_data['id_event_category']);
                 }
                 break;
@@ -373,23 +327,21 @@ class EventCategory
         }
         return $table_data;
     }
-
     /**
      * Get the column names of the specified table
      * @global type $wpdb
      * @param type $table
      * @return type
      */
-    private function getTableColumnNames($table)
-    {
+    private function getTableColumnNames($table){
         global $wpdb;
         try {
-            $result_array = $wpdb->get_results("SELECT `COLUMN_NAME` " .
-                " FROM INFORMATION_SCHEMA.COLUMNS" .
-                " WHERE `TABLE_SCHEMA`='" . DB_NAME .
-                "' AND TABLE_NAME = '" . $this->getTableName() . "'", ARRAY_A);
+            $result_array = $wpdb->get_results("SELECT `COLUMN_NAME` ".
+                " FROM INFORMATION_SCHEMA.COLUMNS".
+                " WHERE `TABLE_SCHEMA`='".DB_NAME.
+                "' AND TABLE_NAME = '".$this->getTableName() ."'", ARRAY_A);
             $keys = array();
-            foreach ($result_array as $idx => $row) {
+            foreach ( $result_array as $idx => $row ){
                 $keys[$idx] = $row['COLUMN_NAME'];
             }
             return $keys;
@@ -401,20 +353,18 @@ class EventCategory
             return FALSE;
         }
     }
-
     /**
      *
      * @global type $wpdb The Wordpress database class
      * @param type $input_array containing delete id
      * @return boolean TRUE on succes OR FALSE
      */
-    public function delete($input_array)
-    {
+    public function delete($input_array){
 
         try {
             // Check input id
-            if (!isset($input_array['id']))
-                throw new Exception(__("Missing mandatory fields"));
+            if (!isset($input_array['id']) )
+                throw new Exception(__("Missing mandatory fields") );
             global $wpdb;
             // Delete query
             /*
@@ -424,15 +374,15 @@ class EventCategory
             $wpdb->query( $query );
             /*/
             // Delete row by provided id (Wordpress style)
-            $wpdb->delete($this->getTableName(),
-                array('id_event_category' => $input_array['id']),
-                array('%d')); // Where format
+            $wpdb->delete( $this->getTableName(),
+                array( 'id_event_category' => $input_array['id'] ),
+                array( '%d' ) ); // Where format
             //*/
 
             // Error ? It's in there:
-            if (!empty($wpdb->last_error)) {
+            if ( !empty($wpdb->last_error) ){
 
-                throw new Exception($wpdb->last_error);
+                throw new Exception( $wpdb->last_error);
             }
 
 

@@ -1,9 +1,9 @@
 <?php
 defined( 'ABSPATH' ) OR exit;
 /**
- * Plugin Name: RiSiri Plugin
+ * Plugin Name: My event organisator plugin
  * Plugin URI: < your plugin url >
- * Description: This plugin is for risiri
+ * Description: This plugin will help organising an event with your website
  * Author: < Owen Vermeulen >
  * Author URI: < Owen >
  * Version: 0.0.1
@@ -74,7 +74,7 @@ class MyEventOrganiser {
             $this->createAdmin();
         } else {
             // Load the calendar javascript
-            wp_enqueue_script('calendar-script', '/wp-content/plugins/risiri/includes'. '/calendar/calendar.js');
+            wp_enqueue_script('calendar-script', '/wp-content/plugins/my-event-organiser/includes'. '/calendar/calendar.js');
         }
 
         // Load the view shortcodes
@@ -89,13 +89,13 @@ class MyEventOrganiser {
     public function requireAdmin() {
 // Admin controller file
         require_once MY_EVENT_ORGANISER_PLUGIN_ADMIN_DIR.
-            '/RiSiRi_AdminController.php';
+            '/MyEventOrganiser_AdminController.php';
     }
     /**
      * Admin controller functionality
      */
     public function createAdmin(){
-        RiSiRi_AdminController::prepare();
+        MyEventOrganiser_AdminController::prepare();
     }
     /**
      * Load the view shortcodes:
