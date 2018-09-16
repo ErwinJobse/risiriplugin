@@ -14,12 +14,9 @@
       <file leaf-file-name="my_event_organiser_main_view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/views/my_event_organiser_main_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-941">
-              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-              <folding>
-                <marker date="1536822783106" expanded="true" signature="2228:2237" ph="..." />
-                <marker date="1536822783106" expanded="true" signature="2344:2354" ph="..." />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -27,9 +24,41 @@
       <file leaf-file-name="klant.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/views/klant.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="254">
+              <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+              <folding>
+                <marker date="1536833009538" expanded="true" signature="1262:1403" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="1489:2244" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="1554:1803" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="1567:1785" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="1910:1975" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="1943:1970" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="2677:2941" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="3070:3318" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="3359:3486" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="3527:3658" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="3699:3815" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5140:5736" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5157:5729" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5181:5720" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5206:5522" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5547:5695" ph="..." />
+                <marker date="1536833009538" expanded="true" signature="5588:5669" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventCategory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/model/EventCategory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1298">
+              <caret line="64" column="93" lean-forward="false" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="93" />
+              <folding>
+                <marker date="1536752783637" expanded="true" signature="2116:2275" ph="INSERT INTO `${$wpdb-&gt;prefix}meo_event_category`... " />
+                <marker date="1536752783637" expanded="true" signature="3234:3314" ph="SELECT COUNT... ${$wpdb-&gt;prefix}meo_event_category" />
+                <marker date="1536752783637" expanded="true" signature="3605:3689" ph="SELECT * FRO... ${$wpdb-&gt;prefix}meo_event_category" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,7 +68,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1491807793063" expanded="true" signature="2677:3116" ph="INSERT INTO `${$wpdb-&gt;prefix}meo_event`... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +78,8 @@
       <file leaf-file-name="EventView.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/views/EventView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="759">
+              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,6 +118,7 @@
       <find>upd</find>
       <find>&lt; t</find>
       <find>calendar</find>
+      <find>base</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\risiri\wp-content\plugins\RiSiRi Magazijn</dir>
@@ -102,10 +134,10 @@
         <option value="$PROJECT_DIR$/includes/views/event_add.php" />
         <option value="$PROJECT_DIR$/includes/defs.php" />
         <option value="$PROJECT_DIR$/my-event-organiser.php" />
-        <option value="$PROJECT_DIR$/admin/views/meo_admin_event_category.php" />
         <option value="$PROJECT_DIR$/includes/model/EventCategory.php" />
         <option value="$PROJECT_DIR$/includes/views/my_event_organiser_main_view.php" />
         <option value="$PROJECT_DIR$/../my-event-organiser/includes/views/event_add.php" />
+        <option value="$PROJECT_DIR$/admin/views/meo_admin_event_category.php" />
         <option value="$PROJECT_DIR$/includes/views/klant.php" />
       </list>
     </option>
@@ -117,7 +149,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="814" />
     <option name="height" value="877" />
@@ -214,14 +246,15 @@
       <workItem from="1536737373228" duration="2382000" />
       <workItem from="1536742261624" duration="8250000" />
       <workItem from="1536821027669" duration="2916000" />
+      <workItem from="1536831784216" duration="2544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13548000" />
+    <option name="totallyTimeSpent" value="16092000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -255,13 +288,63 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/includes/views/my_event_organiser_main_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/views/klant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <marker date="1536833009538" expanded="true" signature="1262:1403" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1489:2244" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1554:1803" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1567:1785" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1910:1975" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1943:1970" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="2677:2941" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3070:3318" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3359:3486" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3527:3658" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3699:3815" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5140:5736" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5157:5729" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5181:5720" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5206:5522" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5547:5695" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5588:5669" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/views/EventView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/model/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1491807793063" expanded="true" signature="2677:3116" ph="INSERT INTO `${$wpdb-&gt;prefix}meo_event`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/views/meo_admin_event_category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1825">
           <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="33" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -269,7 +352,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1536833009538" expanded="true" signature="1262:1403" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1489:2244" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1554:1803" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1567:1785" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1910:1975" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1943:1970" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="2677:2941" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3070:3318" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3359:3486" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3527:3658" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3699:3815" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5140:5736" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5157:5729" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5181:5720" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5206:5522" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5547:5695" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5588:5669" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -345,10 +446,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/views/admin_main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../my-event-organiser/includes/views/event_add.php" />
+    <entry file="file://$PROJECT_DIR$/includes/views/my_event_organiser_main_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/views/meo_admin_event_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/views/klant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <marker date="1536833009538" expanded="true" signature="1262:1403" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1489:2244" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1554:1803" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1567:1785" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1910:1975" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="1943:1970" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="2677:2941" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3070:3318" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3359:3486" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3527:3658" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="3699:3815" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5140:5736" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5157:5729" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5181:5720" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5206:5522" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5547:5695" ph="..." />
+            <marker date="1536833009538" expanded="true" signature="5588:5669" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/model/EventCategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2750">
-          <caret line="306" column="31" lean-forward="true" selection-start-line="306" selection-start-column="31" selection-end-line="306" selection-end-column="31" />
+        <state relative-caret-position="1298">
+          <caret line="64" column="93" lean-forward="false" selection-start-line="64" selection-start-column="75" selection-end-line="64" selection-end-column="93" />
           <folding>
             <marker date="1536752783637" expanded="true" signature="2116:2275" ph="INSERT INTO `${$wpdb-&gt;prefix}meo_event_category`... " />
             <marker date="1536752783637" expanded="true" signature="3234:3314" ph="SELECT COUNT... ${$wpdb-&gt;prefix}meo_event_category" />
@@ -357,57 +508,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/views/admin_main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/views/EventView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/views/meo_admin_event_category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../my-event-organiser/includes/views/event_add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#3211#3217#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/views/my_event_organiser_main_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-941">
-          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <marker date="1536822783106" expanded="true" signature="2228:2237" ph="..." />
-            <marker date="1536822783106" expanded="true" signature="2344:2354" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/views/klant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="759">
+          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -416,7 +520,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1491807793063" expanded="true" signature="2677:3116" ph="INSERT INTO `${$wpdb-&gt;prefix}meo_event`... " />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,7 +6,8 @@ $event_category = new EventCategory();
 
 $base_url = get_site_url() . '?page_id=2&link=klant';
 
-$params = array('page' => basename(_FILE_, ".php"));
+
+$params = array('page' => basename('_FILE_', ".php"));
 
 
 // Get the GET data in filtered array
@@ -156,6 +157,7 @@ if (!empty($post_array)) {
                 </table>
         </form>
         <?php
+
     } // if action !== update
     ?>
 </div>
