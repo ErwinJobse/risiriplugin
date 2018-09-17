@@ -15,22 +15,6 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
 <?php get_header(); ?>
 
-    <script language="JavaScript">
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-
-        var yyyy = today.getFullYear();
-        if(dd<10){
-            dd='0'+dd;
-        }
-        if(mm<10){
-            mm='0'+mm;
-        }
-        var today = dd+'-'+mm+'-'+yyyy;
-        document.getElementById("date").innerHTML = today;
-
-    </script>
     <script>
         $( function() {
             $( "#tabs" ).tabs();
@@ -58,7 +42,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             <tr>
                 <td><input type="text" placeholder="Artikelnummer"></td>
                 <td><input type="text" placeholder="Artikelnaam"></td>
-                <td>Currentdate</td>
+                <td id="date">.</td>
                 <td><input type="text" placeholder="Omschrijving"></td>
 
                 <td><i class="fa fa-plus plus"></i></td>
@@ -90,11 +74,11 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <th width="5%">Actie</th>
             </tr>
             <tr>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
+                <td><input type="text" placeholder="Klantnummer"></td>
+                <td><input type="text" placeholder="Voornaam"></td>
+                <td><input type="text" placeholder="Tussenvoegsel"></td>
+                <td><input type="text" placeholder="Achternaam"></td>
+                <td><input type="text" placeholder="Email"></td>
                 <td><i class="fa fa-plus plus"></i></td>
             </tr>
             <?php
@@ -148,6 +132,7 @@ if ( isset( $_POST['submit'] ) ){
 }
 
     ?>
+
 
 
 

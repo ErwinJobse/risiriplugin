@@ -141,6 +141,10 @@ td{
 #tabs input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 #tabs input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
+#tabs input::placeholder{
+    font-style: italic;
+    opacity: 0.7;
+}
 
 tr:nth-child(even) {
     background-color: rgba(255,255,255,0.5);
