@@ -69,13 +69,15 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             </tr>
             <?php
             foreach ($getArtikel as $row){ ?>
-                <tr>
-                    <td><?php echo $row->Artikelnummer;?></td>
-                    <td onclick="listenForDoubleClick(this);"><?php echo $row->Artikelnaam;?></td>
-                    <td><?php echo $row->Aanmaakdatum;?></td>
-                    <td onclick="listenForDoubleClick(this);"><?php echo $row->omschrijving;?></td>
-                    <td><div class="action-buttons"><a class="fas fa-pen pen" name="insert" value="insert"></a><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
 
+                <tr>
+                    <form method="post">
+                    <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
+                    <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
+                    <td><?php echo $row->Aanmaakdatum;?></td>
+                    <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
+                    <td><div class="action-buttons"><input type="submit" class="fas fa-pen pen" name="editArtikel" value="edit"></input><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                    </form>
                 </tr>
             <?php }
 
@@ -107,13 +109,14 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             <?php
             foreach ($getKlant as $row){ ?>
             <tr>
-                <td><?php echo $row->klantnummer;?></td>
-                <td onclick="listenForDoubleClick(this);"><?php echo $row->voorNaam;?></td>
-                <td onclick="listenForDoubleClick(this);"><?php echo $row->TussenVoegsel;?></td>
-                <td onclick="listenForDoubleClick(this);"><?php echo $row->Achternaam;?></td>
-                <td onclick="listenForDoubleClick(this);"><?php echo $row->email;?></td>
-                <td><div class="action-buttons"><a class="fas fa-pen pen" name="insert" value="insert"></a><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->klantnummer;?>" name="delete" ></a></div></td>
-
+                <form method="post">
+                    <td><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></td>
+                    <td><input type="text" name="voorNaam" value="<?php echo $row->voorNaam;?>""></td>
+                    <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
+                    <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
+                    <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
+                    <td><div class="action-buttons"><input type="submit" class="fas fa-pen pen" name="editKlant" value="edit"></input><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                </form>
             </tr>
             <?php }
 
@@ -125,6 +128,8 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
         </table>
     </div>
 </div>
+
+<!--
     <script>
         function listenForDoubleClick(element) {
             element.contentEditable = true;
@@ -135,6 +140,8 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             }, 300);
         }
     </script>
+
+    -->
 
 
 
@@ -164,7 +171,7 @@ if ( isset( $_POST['submitArtikel'] ) ) {
 }
 
 //add klant
-else if ( isset( $_POST['submitKlant'] ) ) {
+if ( isset( $_POST['submitKlant'] ) ) {
 
 
 
@@ -211,6 +218,60 @@ if (isset($_GET['editArtikel'])) {
     $wpdb->delete( $tableArtikel, array( 'Artikelnummer' => $del ) );
 
 }
+
+//edit artikel
+if ( isset( $_POST['editArtikel'] ) ) {
+
+
+
+    if (!empty($_POST['Artikelnaam'])) {
+
+        $wpdb->update($tableArtikel, array(
+
+            'Artikelnummer' => $_POST['Artikelnummer'],
+            'Artikelnaam' => $_POST['Artikelnaam'],
+            'omschrijving' => $_POST['omschrijving']
+
+        ),
+            array('Artikelnummer' => $_POST['Artikelnummer'])
+        );
+        echo "<meta http-equiv='refresh' content='0'>";
+
+
+
+
+
+    }
+
+}
+
+//edit klant
+if ( isset( $_POST['editKlant'] ) ) {
+
+    if (!empty($_POST['voorNaam'])) {
+
+        $wpdb->update($tableKlant, array(
+
+            'voorNaam' => $_POST['voorNaam'],
+            'Tussenvoegsel' => $_POST['TussenVoegsel'],
+            'Achternaam' => $_POST['Achternaam'],
+            'email' => $_POST['email']
+
+        ),
+            array('klantnummer' => $_POST['klantnummer'])
+        );
+        echo "<meta http-equiv='refresh' content='0'>";
+
+
+
+
+
+
+    }
+
+}
+
+
 
 
 
