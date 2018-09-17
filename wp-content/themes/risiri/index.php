@@ -44,8 +44,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <td><input type="text" placeholder="Artikelnaam"></td>
                 <td id="date">.</td>
                 <td><input type="text" placeholder="Omschrijving"></td>
-
-                <td><i class="fa fa-plus plus"></i></td>
+                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>
             </tr>
             <?php
             foreach ($getArtikel as $row){ ?>
@@ -79,7 +78,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <td><input type="text" placeholder="Tussenvoegsel"></td>
                 <td><input type="text" placeholder="Achternaam"></td>
                 <td><input type="text" placeholder="Email"></td>
-                <td><i class="fa fa-plus plus"></i></td>
+                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>
             </tr>
             <?php
             foreach ($getKlant as $row){ ?>
