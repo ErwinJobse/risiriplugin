@@ -56,12 +56,14 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             </tr>
 
             <tr>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
+                <form method="post">
 
-                <td><i class="fa fa-plus plus"></i></td>
+                <td><input type="text" name="Artikelnummer"></td>
+                <td><input type="text" name="Artikelnaam"></td>
+                <td><input type="text" name="Aanmaakdatum"></td>
+                <td><input type="text" name="omschrijving"></td>
+                <td><input class="fa fa-plus plus" type="submit" name="submit" value="Submit"></input></td>
+                </form>
             </tr>
             <?php
             foreach ($getArtikel as $row){ ?>
@@ -95,7 +97,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <td><input type="text"></td>
                 <td><input type="text"></td>
                 <td><input type="text"></td>
-                <td><i class="fa fa-plus plus"></i></td>
+                <td><i class="fa fa-plus plus" ></i></td>
             </tr>
             <?php
             foreach ($getKlant as $row){ ?>
@@ -121,30 +123,24 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
 <?php
 
-if ( isset( $_POST['submit'] ) ){
+if ( isset( $_POST['submit'] ) ) {
 
-    global $wpdb;
-    $tablename = $wpdb->prefix.'post_job';
 
-    $wpdb->insert( $tablename, array(
-        'organizationname' => $_POST['organizationname'],
-        'post' => $_POST['post'],
-        'publishfrom' => $_POST['publishfrom'],
-        'publishupto' => $_POST['publishupto'],
-        'qualification1' => $_POST['qualification1'],
-        'qualification2' => $_POST['qualification2'],
-        'qualification3' => $_POST['qualification3'],
-        'qualification4' => $_POST['qualification4'],
-        'experience1' => $_POST['experience1'],
-        'experience2' => $_POST['experience2'],
-        'experience3' => $_POST['experience3'],
-        'training1' => $_POST['training1'],
-        'training2' => $_POST['training2'],
-        'training3' => $_POST['training3'],
-        'training4' => $_POST['training4'],
-        'training5' => $_POST['training5'] ),
-        array( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
-    );
+
+    if (!empty($_POST['Artikelnaam'])) {
+        $wpdb->insert($tableArtikel, array(
+
+            'Artikelnaam' => $_POST['Artikelnaam'],
+            'omschrijving' => $_POST['omschrijving'],
+
+        ),
+            array('%s', '%s')
+        );
+
+
+    }
+
+
 }
 
     ?>
