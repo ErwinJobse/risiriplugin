@@ -56,10 +56,10 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             </tr>
 
             <tr>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
+                <td><input type="text" placeholder="Artikelnummer"></td>
+                <td><input type="text" placeholder="Artikelnaam"></td>
+                <td>Currentdate</td>
+                <td><input type="text" placeholder="Omschrijving"></td>
 
                 <td><i class="fa fa-plus plus"></i></td>
             </tr>
