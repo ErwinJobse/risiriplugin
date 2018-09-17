@@ -4,6 +4,13 @@
  *
  * @package WordPress
  */
+global $wpdb;
+
+$tableKlant = 'risiri_klanten';
+$tableArtikel = 'risiri_artikelen';
+
+$getKlant = $wpdb->get_results( "SELECT * FROM $tableKlant" );
+$getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 ?>
 
 <?php get_header(); ?>
@@ -47,34 +54,29 @@
                 <th width="44%">Omschrijving</th>
                 <th width="5%">Actie</th>
             </tr>
+
             <tr>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><span id="date">.</span></td>
-                <td><input type="text"></td>
+                <td><input type="text" placeholder="Artikelnummer"></td>
+                <td><input type="text" placeholder="Artikelnaam"></td>
+                <td>Currentdate</td>
+                <td><input type="text" placeholder="Omschrijving"></td>
+
                 <td><i class="fa fa-plus plus"></i></td>
             </tr>
-            <tr>
-                <td>001</td>
-                <td>Monitor</td>
-                <td>11-09-2018</td>
-                <td style="text-align: left; padding-left: 15px;">Monitor van het merk Dell, 22"</td>
-                <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
-            </tr>
-            <tr>
-                <td>001</td>
-                <td>Monitor</td>
-                <td>11-09-2018</td>
-                <td style="text-align: left; padding-left: 15px;">Monitor van het merk Dell, 22"</td>
-                <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
-            </tr>
-            <tr>
-                <td>001</td>
-                <td>Monitor</td>
-                <td>11-09-2018</td>
-                <td style="text-align: left; padding-left: 15px;">Monitor van het merk Dell, 22"</td>
-                <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
-            </tr>
+            <?php
+            foreach ($getArtikel as $row){ ?>
+                <tr>
+                    <td><?php echo $row->Artikelnummer;?></td>
+                    <td><?php echo $row->Artikelnaam;?></td>
+                    <td><?php echo $row->Aanmaakdatum;?></td>
+                    <td><?php echo $row->omschrijving;?></td>
+                    <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
+
+                </tr>
+            <?php }
+
+            ?>
+
         </table>
     </div>
     <div id="tab-klanten">
@@ -95,33 +97,57 @@
                 <td><input type="text"></td>
                 <td><i class="fa fa-plus plus"></i></td>
             </tr>
+            <?php
+            foreach ($getKlant as $row){ ?>
             <tr>
-                <td>001</td>
-                <td>Max</td>
-                <td>den</td>
-                <td>Ouden</td>
-                <td style="text-align: left; padding-left: 15px;">mdenouden@student.scalda.nl</td>
+                <td><?php echo $row->klantnummer;?></td>
+                <td><?php echo $row->voorNaam;?></td>
+                <td><?php echo $row->TussenVoegsel;?></td>
+                <td><?php echo $row->Achternaam;?></td>
+                <td><?php echo $row->email;?></td>
                 <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
+
             </tr>
-            <tr>
-                <td>001</td>
-                <td>Max</td>
-                <td>den</td>
-                <td>Ouden</td>
-                <td style="text-align: left; padding-left: 15px;">mdenouden@student.scalda.nl</td>
-                <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
-            </tr>
-            <tr>
-                <td>001</td>
-                <td>Max</td>
-                <td>den</td>
-                <td>Ouden</td>
-                <td style="text-align: left; padding-left: 15px;">mdenouden@student.scalda.nl</td>
-                <td><div class="action-buttons"><i class="fas fa-pen pen"><i class="fas fa-trash-alt trash"></div></td>
+            <?php }
+
+            ?>
+
+
+
             </tr>
         </table>
     </div>
 </div>
+
+<?php
+
+if ( isset( $_POST['submit'] ) ){
+
+    global $wpdb;
+    $tablename = $wpdb->prefix.'post_job';
+
+    $wpdb->insert( $tablename, array(
+        'organizationname' => $_POST['organizationname'],
+        'post' => $_POST['post'],
+        'publishfrom' => $_POST['publishfrom'],
+        'publishupto' => $_POST['publishupto'],
+        'qualification1' => $_POST['qualification1'],
+        'qualification2' => $_POST['qualification2'],
+        'qualification3' => $_POST['qualification3'],
+        'qualification4' => $_POST['qualification4'],
+        'experience1' => $_POST['experience1'],
+        'experience2' => $_POST['experience2'],
+        'experience3' => $_POST['experience3'],
+        'training1' => $_POST['training1'],
+        'training2' => $_POST['training2'],
+        'training3' => $_POST['training3'],
+        'training4' => $_POST['training4'],
+        'training5' => $_POST['training5'] ),
+        array( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
+    );
+}
+
+    ?>
 
 
 
