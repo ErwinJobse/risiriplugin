@@ -51,7 +51,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
             <tr>
                 <form method="post">
-                <td><p><?php echo $row->Artikelnummer;?></p></td>
+                <td>Laatste row ++</td>
                 <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
 <!--                <td><input type="text" name="Aanmaakdatum"></td>-->
                     <td id="date">.</td>
