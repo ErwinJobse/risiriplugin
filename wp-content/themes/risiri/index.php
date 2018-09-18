@@ -8,6 +8,8 @@ global $wpdb;
 
 
 
+
+
 $tableKlant = 'risiri_klanten';
 $tableArtikel = 'risiri_artikelen';
 
@@ -54,8 +56,14 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <th width="15%">Artikelnaam</th>
                 <th width="15%">Aanmaakdatum</th>
                 <th width="44%">Omschrijving</th>
+                <?php
+                if ( is_user_logged_in() ) { ?>
                 <th width="7%">Actie</th>
+                <?php } ?>
             </tr>
+
+            <?php
+            if ( is_user_logged_in() ) { ?>
 
             <tr>
                 <form method="post">
@@ -67,6 +75,9 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                 <td><input class="fa fa-plus plus" type="submit" name="submitArtikel" value="Submit"></input></td>
                 </form>
             </tr>
+
+            <?php } ?>
+
             <?php
             foreach ($getArtikel as $row){ ?>
 
@@ -76,7 +87,10 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                     <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                     <td><?php echo $row->Aanmaakdatum;?></td>
                     <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
+                        <?php
+                        if ( is_user_logged_in() ) { ?>
                     <td><div class="action-buttons"><input type="submit" class="fas fa-pen pen" name="editArtikel" value="edit"></input><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                        <?php } ?>
                     </form>
                 </tr>
             <?php }
@@ -129,19 +143,7 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
     </div>
 </div>
 
-<!--
-    <script>
-        function listenForDoubleClick(element) {
-            element.contentEditable = true;
-            setTimeout(function() {
-                if (document.activeElement !== element) {
-                    element.contentEditable = false;
-                }
-            }, 300);
-        }
-    </script>
 
-    -->
 
 
 
