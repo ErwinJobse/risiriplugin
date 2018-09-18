@@ -51,18 +51,20 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
             <tr>
                 <form method="post">
+                <td><p><?php echo $row->Artikelnummer;?></p></td>
+                <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
+<!--                <td><input type="text" name="Aanmaakdatum"></td>-->
+                    <td id="date">.</td>
+                <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
+                <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
 
-                <td><input type="text" name="omschrijving"></td>
-                <td><input class="fa fa-plus plus" type="submit" name="submitArtikel" value="Submit"></input></td>
                 </form>
-                <td><input type="text" name="Artikelnaam"></td>
-                <td><input type="text" name="Artikelnummer"></td>
-                <td><input type="text" name="Aanmaakdatum"></td>
-                <td><input type="text" placeholder="Artikelnummer"></td>
-                <td><input type="text" placeholder="Artikelnaam"></td>
-                <td id="date">.</td>
-                <td><input type="text" placeholder="Omschrijving"></td>
-                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>
+
+<!--                <td><input type="text" placeholder="Artikelnummer"></td>-->
+<!--                <td><input type="text" placeholder="Artikelnaam"></td>-->
+<!--                <td id="date">.</td>-->
+<!--                <td><input type="text" placeholder="Omschrijving"></td>-->
+<!--                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>-->
             </tr>
 
             <?php } ?>
@@ -74,11 +76,11 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
                     <form method="post">
                     <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
                     <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
-                    <td><?php echo $row->Aanmaakdatum;?></td>
+                        <td><?php echo $row->Aanmaakdatum;?></td>
                     <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
                         <?php
                         if ( is_user_logged_in() ) { ?>
-                    <td><div class="action-buttons"><input type="submit" class="fas fa-pen pen" name="editArtikel" value="edit"></input><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                    <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
                         <?php } ?>
                     </form>
                 </tr>

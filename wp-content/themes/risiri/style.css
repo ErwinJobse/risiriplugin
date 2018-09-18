@@ -154,7 +154,7 @@ td{
     opacity: 0.7;
 }
 
-.submit-button{
+.actionbutton{
     cursor: pointer;
     border: none;
     background-color: rgba(0,0,0,0);
@@ -176,7 +176,7 @@ tr:nth-child(odd) {
 }
 
 .trash{
-    color: #F14444;
+    color: #F14444 !important;
     padding-left: 30px;
     font-size: 20px;
 }
