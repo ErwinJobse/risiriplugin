@@ -19,22 +19,6 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
 <?php get_header(); ?>
 
-    <script language="JavaScript">
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-
-        var yyyy = today.getFullYear();
-        if(dd<10){
-            dd='0'+dd;
-        }
-        if(mm<10){
-            mm='0'+mm;
-        }
-        var today = dd+'-'+mm+'-'+yyyy;
-        document.getElementById("date").innerHTML = today;
-
-    </script>
     <script>
         $( function() {
             $( "#tabs" ).tabs();
@@ -68,12 +52,17 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
             <tr>
                 <form method="post">
 
-                <td><input type="text" name="Artikelnummer"></td>
-                <td><input type="text" name="Artikelnaam"></td>
-                <td><input type="text" name="Aanmaakdatum"></td>
                 <td><input type="text" name="omschrijving"></td>
                 <td><input class="fa fa-plus plus" type="submit" name="submitArtikel" value="Submit"></input></td>
                 </form>
+                <td><input type="text" name="Artikelnaam"></td>
+                <td><input type="text" name="Artikelnummer"></td>
+                <td><input type="text" name="Aanmaakdatum"></td>
+                <td><input type="text" placeholder="Artikelnummer"></td>
+                <td><input type="text" placeholder="Artikelnaam"></td>
+                <td id="date">.</td>
+                <td><input type="text" placeholder="Omschrijving"></td>
+                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>
             </tr>
 
             <?php } ?>
@@ -279,6 +268,7 @@ if ( isset( $_POST['editKlant'] ) ) {
 
 
     ?>
+
 
 
 
