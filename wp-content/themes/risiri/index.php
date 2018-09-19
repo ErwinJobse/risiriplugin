@@ -6,8 +6,6 @@
  */
 global $wpdb;
 
-$user = wp_get_current_user();
-
 $tableKlant = 'risiri_klanten';
 $tableArtikel = 'risiri_artikelen';
 
@@ -16,25 +14,31 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
 
 
-
 //check functions based on role
-if ( in_array( 'admin', (array) $user->roles ) ) { //admin role
+if( current_user_can('manage_options')) { //admin role
     $view = true;
     $edit = true;
     $delete = true;
     $add = true;
+
 }
-if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
+else if( current_user_can('author')) { //beheerder role todo: change author to proper name like: beheerder
     $view = true;
     $edit = true;
+    $delete = false;
     $add = true;
 
-} else { //everybody else
+
+} else{ //everybody else
     $view = true;
+    $edit = false;
+    $delete = false;
+    $add = false;
 }
+
 ?>
 
-
+  <?php if ( $view === TRUE ) { //show content  ?>
 
 <?php get_header(); ?>
 
@@ -60,17 +64,18 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
                     <th width="15%">Aanmaakdatum</th>
                     <th width="44%">Omschrijving</th>
                     <?php
-                    if ( is_user_logged_in() ) { ?>
+                    if ( $edit === true || $add === true  ) { ?>
                         <th width="7%">Actie</th>
                     <?php } ?>
                 </tr>
 
                 <?php
-                if ( is_user_logged_in() ) { // add artikel row ?>
+                if ( $add === TRUE ) { // add artikel row ?>
+
 
                     <tr>
                         <form method="post">
-                            <td>laaste row++</td>
+                            <td>Laatste row ++</td>
                             <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
                             <td id="date">.</td>
                             <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
@@ -83,18 +88,18 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
 
                 <?php foreach ($getArtikel as $row){  ?>
 
-                  <?php  if ( is_user_logged_in() ) { ?>
+                  <?php  if ( $add === true ) {  //add artikel?>
                     <tr>
                         <form method="post">
                             <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
                             <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                             <td><?php echo $row->Aanmaakdatum;?></td>
                             <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                            <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                            <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
 
                         </form>
                     </tr>
-                    <?php } else{?>
+                    <?php } else{ ?>
                       <tr>
                               <td><?php echo $row->Artikelnummer;?></td>
                               <td><?php echo $row->Artikelnaam;?></td>
@@ -103,7 +108,7 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
                       </tr>
                       <?php } ?>
 
-                <?php }  //close artikelen loop?>
+                <?php }  //close artikelen loop ?>
 
             </table>
         </div>
@@ -115,11 +120,11 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
                     <th width="10%">Tussenvoegsel</th>
                     <th width="10%">Achternaam</th>
                     <th width="50%">Email</th>
-                    <?php  if ( is_user_logged_in() ) { ?>
+                   <?php if ( $edit === true || $add === true  ) { ?>
                     <th width="7%">Actie</th>
                     <?php } ?>
                 </tr>
-                <?php  if ( is_user_logged_in() ) {  //add klant row?>
+                <?php  if ( $add === true ) {  //add klant row ?>
                 <tr>
                     <form method="post">
                         <td>Laatste row ++</td>
@@ -134,7 +139,7 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
                 <?php } ?>
                 <?php foreach ($getKlant as $row){ ?>
 
-                    <?php  if ( is_user_logged_in() ) { ?>
+                    <?php  if ( $edit === true ) { ?>
                         <tr>
                             <form method="post">
                                 <td><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></td>
@@ -142,7 +147,7 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -166,6 +171,12 @@ if ( in_array( 'beheerder', (array) $user->roles ) ) { //beheerder role
 
 
 
+
+
+
+<?php get_footer(); ?>
+
+  <?php }  //end view?>
 
 <?php
 
@@ -241,26 +252,26 @@ if (isset($_GET['editArtikel'])) {
 }
 
 //edit artikel
-if ( isset( $_POST['editArtikel'] ) ) {
+
+if ($delete === true) {
+    if (isset($_POST['editArtikel'])) {
 
 
+        if (!empty($_POST['Artikelnaam'])) {
 
-    if (!empty($_POST['Artikelnaam'])) {
+            $wpdb->update($tableArtikel, array(
 
-        $wpdb->update($tableArtikel, array(
+                'Artikelnummer' => $_POST['Artikelnummer'],
+                'Artikelnaam' => $_POST['Artikelnaam'],
+                'omschrijving' => $_POST['omschrijving']
 
-            'Artikelnummer' => $_POST['Artikelnummer'],
-            'Artikelnaam' => $_POST['Artikelnaam'],
-            'omschrijving' => $_POST['omschrijving']
-
-        ),
-            array('Artikelnummer' => $_POST['Artikelnummer'])
-        );
-        echo "<meta http-equiv='refresh' content='0'>";
-
+            ),
+                array('Artikelnummer' => $_POST['Artikelnummer'])
+            );
+            echo "<meta http-equiv='refresh' content='0'>";
 
 
-
+        }
 
     }
 
@@ -291,4 +302,3 @@ if ( isset( $_POST['editKlant'] ) ) {
 
 ?>
 
-<?php get_footer(); ?>
