@@ -12,7 +12,8 @@ $tableArtikel = 'risiri_artikelen';
 $getKlant = $wpdb->get_results( "SELECT * FROM $tableKlant" );
 $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 
-
+//add role beheerder
+add_role( 'beheerder', 'beheerder' );
 
 //check functions based on role
 if( current_user_can('manage_options')) { //admin role
@@ -22,7 +23,7 @@ if( current_user_can('manage_options')) { //admin role
     $add = true;
 
 }
-else if( current_user_can('author')) { //beheerder role todo: change author to proper name like: beheerder
+else if( current_user_can('beheerder')) { //beheerder role
     $view = true;
     $edit = true;
     $delete = false;
