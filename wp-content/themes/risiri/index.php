@@ -73,6 +73,7 @@ else if( current_user_can('beheerder')) { //beheerder role
                 <?php
                 if ( $add === TRUE ) { // add artikel row ?>
 
+<<<<<<< HEAD
 
                     <tr>
                         <form method="post">
@@ -81,6 +82,25 @@ else if( current_user_can('beheerder')) { //beheerder role
                             <td id="date">.</td>
                             <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
                             <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
+=======
+            <tr>
+                <form method="post">
+                <td>Laatste row ++</td>
+                <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
+<!--                <td><input type="text" name="Aanmaakdatum"></td>-->
+                    <td id="date">.</td>
+                <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
+                <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
+
+                </form>
+
+<!--                <td><input type="text" placeholder="Artikelnummer"></td>-->
+<!--                <td><input type="text" placeholder="Artikelnaam"></td>-->
+<!--                <td id="date">.</td>-->
+<!--                <td><input type="text" placeholder="Omschrijving"></td>-->
+<!--                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>-->
+            </tr>
+>>>>>>> Beta2
 
                         </form>
                     </tr>
@@ -128,6 +148,7 @@ else if( current_user_can('beheerder')) { //beheerder role
                 <?php  if ( $add === true ) {  //add klant row ?>
                 <tr>
                     <form method="post">
+<<<<<<< HEAD
                         <td>Laatste row ++</td>
                         <td><input type="text" name="voorNaam"></td>
                         <td><input type="text" name="TussenVoegsel"></td>
@@ -135,6 +156,16 @@ else if( current_user_can('beheerder')) { //beheerder role
                         <td><input type="text" name="email"></td>
                         <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
 
+=======
+                    <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
+                    <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
+                        <td><?php echo $row->Aanmaakdatum;?></td>
+                    <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
+                        <?php
+                        if ( is_user_logged_in() ) { ?>
+                    <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
+                        <?php } ?>
+>>>>>>> Beta2
                     </form>
                 </tr>
                 <?php } ?>
