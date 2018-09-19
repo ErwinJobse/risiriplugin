@@ -154,7 +154,7 @@ td{
     opacity: 0.7;
 }
 
-.submit-button{
+.actionbutton{
     cursor: pointer;
     border: none;
     background-color: rgba(0,0,0,0);
@@ -176,7 +176,7 @@ tr:nth-child(odd) {
 }
 
 .trash{
-    color: #F14444;
+    color: #F14444 !important;
     padding-left: 30px;
     font-size: 20px;
 }
@@ -194,15 +194,15 @@ tr:nth-child(odd) {
 
 
 /*table tr:first-child {*/
-    /*border-top: 8px solid #B6B6B6;*/
-    /*border-top-left-radius: 21px;*/
-    /*border-left: 8px solid #B6B6B6;*/
+/*border-top: 8px solid #B6B6B6;*/
+/*border-top-left-radius: 21px;*/
+/*border-left: 8px solid #B6B6B6;*/
 /*}*/
 
 /*table tr:last-child {*/
-    /*border-bottom: 8px solid #B6B6B6;*/
-    /*border-top-left-radius: 21px;*/
-    /*border-right: 8px solid #B6B6B6;*/
-    /*border-bottom-right-radius: 21px;*/
+/*border-bottom: 8px solid #B6B6B6;*/
+/*border-top-left-radius: 21px;*/
+/*border-right: 8px solid #B6B6B6;*/
+/*border-bottom-right-radius: 21px;*/
 /*}*/
 
