@@ -6,138 +6,179 @@
  */
 global $wpdb;
 
-
-
-
-
 $tableKlant = 'risiri_klanten';
 $tableArtikel = 'risiri_artikelen';
 
 $getKlant = $wpdb->get_results( "SELECT * FROM $tableKlant" );
 $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
+
+//add role beheerder
+add_role( 'beheerder', 'beheerder' );
+
+//check functions based on role
+if( current_user_can('manage_options')) { //admin role
+    $view = true;
+    $edit = true;
+    $delete = true;
+    $add = true;
+
+}
+else if( current_user_can('beheerder')) { //beheerder role
+    $view = true;
+    $edit = true;
+    $delete = false;
+    $add = true;
+
+
+} else{ //everybody else
+    $view = true;
+    $edit = false;
+    $delete = false;
+    $add = false;
+}
+
 ?>
 
-<?php get_header(); ?>
+<?php if ( $view === TRUE ) { //show content  ?>
+
+    <?php get_header(); ?>
 
     <script>
         $( function() {
             $( "#tabs" ).tabs();
+            $( "#tabs" ).show();
         } );
     </script>
 
 
-<div id="tabs">
+    <div id="tabs">
 
-    <ul id="table-nav">
-        <li><a href="#tab-artikelen">Artikelen</a></li>
-        <li><a href="#tab-klanten">Klanten</a></li>
-    </ul>
+        <ul id="table-nav">
+            <li><a href="#tab-artikelen">Artikelen</a></li>
+            <li><a href="#tab-klanten">Klanten</a></li>
+        </ul>
 
-    <div id="tab-artikelen">
-        <table id="data-table" cellspacing="0">
-            <tr>
-                <th width="12%">Artikelnummer</th>
-                <th width="15%">Artikelnaam</th>
-                <th width="15%">Aanmaakdatum</th>
-                <th width="44%">Omschrijving</th>
-                <?php
-                if ( is_user_logged_in() ) { ?>
-                <th width="7%">Actie</th>
-                <?php } ?>
-            </tr>
-
-            <?php
-            if ( is_user_logged_in() ) { ?>
-
-            <tr>
-                <form method="post">
-                <td>Laatste row ++</td>
-                <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
-<!--                <td><input type="text" name="Aanmaakdatum"></td>-->
-                    <td id="date">.</td>
-                <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
-                <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
-
-                </form>
-
-<!--                <td><input type="text" placeholder="Artikelnummer"></td>-->
-<!--                <td><input type="text" placeholder="Artikelnaam"></td>-->
-<!--                <td id="date">.</td>-->
-<!--                <td><input type="text" placeholder="Omschrijving"></td>-->
-<!--                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>-->
-            </tr>
-
-            <?php } ?>
-
-            <?php
-            foreach ($getArtikel as $row){ ?>
-
+        <div id="tab-artikelen">
+            <table id="data-table" cellspacing="0">
                 <tr>
-                    <form method="post">
-                    <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
-                    <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
-                        <td><?php echo $row->Aanmaakdatum;?></td>
-                    <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                        <?php
-                        if ( is_user_logged_in() ) { ?>
-                    <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
-                        <?php } ?>
-                    </form>
+                    <th width="12%">Artikelnummer</th>
+                    <th width="15%">Artikelnaam</th>
+                    <th width="15%">Aanmaakdatum</th>
+                    <th width="44%">Omschrijving</th>
+                    <?php
+                    if ( $edit === true || $add === true  ) { ?>
+                        <th width="7%">Actie</th>
+                    <?php } ?>
                 </tr>
-            <?php }
 
-            ?>
+                <?php
+                if ( $add === TRUE ) { // add artikel row ?>
 
-        </table>
+
+                    <tr>
+                        <form method="post">
+                            <td>Laatste row ++</td>
+                            <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
+                            <td id="date">.</td>
+                            <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
+                            <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
+
+                        </form>
+                    </tr>
+
+                <?php } ?>
+
+                <?php foreach ($getArtikel as $row){  ?>
+
+                    <?php  if ( $add === true ) {  ?>
+                        <tr>
+                            <form method="post">
+                                <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
+                                <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
+                                <td><?php echo $row->Aanmaakdatum;?></td>
+                                <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
+
+                            </form>
+                        </tr>
+                    <?php } else{ ?>
+                        <tr>
+                            <td><?php echo $row->Artikelnummer;?></td>
+                            <td><?php echo $row->Artikelnaam;?></td>
+                            <td><?php echo $row->Aanmaakdatum;?></td>
+                            <td><?php echo $row->omschrijving;?></td>
+                        </tr>
+                    <?php } ?>
+
+                <?php }  //close artikelen loop ?>
+
+            </table>
+        </div>
+        <div id="tab-klanten">
+            <table id="data-table" cellspacing="0">
+                <tr>
+                    <th width="8%">Klantnummer</th>
+                    <th width="10%">Voornaam</th>
+                    <th width="10%">Tussenvoegsel</th>
+                    <th width="10%">Achternaam</th>
+                    <th width="50%">Email</th>
+                    <?php if ( $edit === true || $add === true  ) { ?>
+                        <th width="7%">Actie</th>
+                    <?php } ?>
+                </tr>
+                <?php  if ( $add === true ) {  //add klant row ?>
+                    <tr>
+                        <form method="post">
+                            <td>Laatste row ++</td>
+                            <td><input type="text" name="voorNaam"></td>
+                            <td><input type="text" name="TussenVoegsel"></td>
+                            <td><input type="text" name="Achternaam"></td>
+                            <td><input type="text" name="email"></td>
+                            <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
+
+                        </form>
+                    </tr>
+                <?php } ?>
+                <?php foreach ($getKlant as $row){ ?>
+
+                    <?php  if ( $edit === true ) { ?>
+                        <tr>
+                            <form method="post">
+                                <td><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></td>
+                                <td><input type="text" name="voorNaam" value="<?php echo $row->voorNaam;?>""></td>
+                                <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
+                                <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
+                                <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
+
+                            </form>
+                        </tr>
+                    <?php } else{?>
+                        <tr>
+
+                            <td><?php echo $row->klantnummer;?></td>
+                            <td><?php echo $row->voorNaam;?></td>
+                            <td><?php echo $row->TussenVoegsel;?></td>
+                            <td><?php echo $row->Achternaam;?></td>
+                            <td><?php echo $row->email;?></td>
+                        </tr>
+                    <?php } ?>
+
+                <?php } //close klanten loop ?>
+
+                </tr>
+            </table>
+        </div>
     </div>
-    <div id="tab-klanten">
-        <table id="data-table" cellspacing="0">
-            <tr>
-                <th width="8%">Klantnummer</th>
-                <th width="10%">Voornaam</th>
-                <th width="10%">Tussenvoegsel</th>
-                <th width="10%">Achternaam</th>
-                <th width="50%">Email</th>
-                <th width="7%">Actie</th>
-            </tr>
-            <tr>
-                <form method="post">
-
-                    <td><input type="text" name="klantnummer"></td>
-                    <td><input type="text" name="voorNaam"></td>
-                    <td><input type="text" name="TussenVoegsel"></td>
-                    <td><input type="text" name="Achternaam"></td>
-                    <td><input type="text" name="email"></td>
-                    <td><input class="fa fa-plus plus" type="submit" name="submitKlant" value="Submit"></input></td>
-                </form>
-            </tr>
-            <?php
-            foreach ($getKlant as $row){ ?>
-            <tr>
-                <form method="post">
-                    <td><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></td>
-                    <td><input type="text" name="voorNaam" value="<?php echo $row->voorNaam;?>""></td>
-                    <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
-                    <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
-                    <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                    <td><div class="action-buttons"><input type="submit" class="fas fa-pen pen" name="editKlant" value="edit"></input><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
-                </form>
-            </tr>
-            <?php }
-
-            ?>
-
-
-
-            </tr>
-        </table>
-    </div>
-</div>
 
 
 
 
 
+
+    <?php get_footer(); ?>
+
+<?php }  //end view?>
 
 <?php
 
@@ -145,12 +186,12 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 if ( isset( $_POST['submitArtikel'] ) ) {
 
 
-
     if (!empty($_POST['Artikelnaam'])) {
         $wpdb->insert($tableArtikel, array(
 
             'Artikelnaam' => $_POST['Artikelnaam'],
-            'omschrijving' => $_POST['omschrijving']
+            'omschrijving' => $_POST['omschrijving'],
+            'Aanmaakdatum' => date('Y-m-d'),
 
         ),
             array('%s', '%s')
@@ -177,7 +218,7 @@ if ( isset( $_POST['submitKlant'] ) ) {
             'email' => $_POST['email']
 
         ),
-                array('%s', '%s', '%s', '%s')
+            array('%s', '%s', '%s', '%s')
 
 
         );
@@ -213,30 +254,28 @@ if (isset($_GET['editArtikel'])) {
 }
 
 //edit artikel
-if ( isset( $_POST['editArtikel'] ) ) {
+    if (isset($_POST['editArtikel'])) {
 
 
+        if (!empty($_POST['Artikelnaam'])) {
 
-    if (!empty($_POST['Artikelnaam'])) {
+            $wpdb->update($tableArtikel, array(
 
-        $wpdb->update($tableArtikel, array(
+                'Artikelnummer' => $_POST['Artikelnummer'],
+                'Artikelnaam' => $_POST['Artikelnaam'],
+                'omschrijving' => $_POST['omschrijving']
 
-            'Artikelnummer' => $_POST['Artikelnummer'],
-            'Artikelnaam' => $_POST['Artikelnaam'],
-            'omschrijving' => $_POST['omschrijving']
-
-        ),
-            array('Artikelnummer' => $_POST['Artikelnummer'])
-        );
-        echo "<meta http-equiv='refresh' content='0'>";
-
+            ),
+                array('Artikelnummer' => $_POST['Artikelnummer'])
+            );
+            echo "<meta http-equiv='refresh' content='0'>";
 
 
-
+        }
 
     }
 
-}
+
 
 //edit klant
 if ( isset( $_POST['editKlant'] ) ) {
@@ -255,23 +294,11 @@ if ( isset( $_POST['editKlant'] ) ) {
         );
         echo "<meta http-equiv='refresh' content='0'>";
 
-
-
-
-
-
     }
 
 }
 
 
 
+?>
 
-
-
-    ?>
-
-
-
-
-<?php get_footer(); ?>
