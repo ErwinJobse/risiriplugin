@@ -39,13 +39,14 @@ else if( current_user_can('beheerder')) { //beheerder role
 
 ?>
 
-  <?php if ( $view === TRUE ) { //show content  ?>
+<?php if ( $view === TRUE ) { //show content  ?>
 
-<?php get_header(); ?>
+    <?php get_header(); ?>
 
     <script>
         $( function() {
             $( "#tabs" ).tabs();
+            $( "#tabs" ).show();
         } );
     </script>
 
@@ -73,7 +74,6 @@ else if( current_user_can('beheerder')) { //beheerder role
                 <?php
                 if ( $add === TRUE ) { // add artikel row ?>
 
-<<<<<<< HEAD
 
                     <tr>
                         <form method="post">
@@ -82,25 +82,6 @@ else if( current_user_can('beheerder')) { //beheerder role
                             <td id="date">.</td>
                             <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
                             <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
-=======
-            <tr>
-                <form method="post">
-                <td>Laatste row ++</td>
-                <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
-<!--                <td><input type="text" name="Aanmaakdatum"></td>-->
-                    <td id="date">.</td>
-                <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
-                <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
-
-                </form>
-
-<!--                <td><input type="text" placeholder="Artikelnummer"></td>-->
-<!--                <td><input type="text" placeholder="Artikelnaam"></td>-->
-<!--                <td id="date">.</td>-->
-<!--                <td><input type="text" placeholder="Omschrijving"></td>-->
-<!--                <td><button type="submit" class="submit-button"><i class="fa fa-plus plus"></i></button></td>-->
-            </tr>
->>>>>>> Beta2
 
                         </form>
                     </tr>
@@ -109,25 +90,25 @@ else if( current_user_can('beheerder')) { //beheerder role
 
                 <?php foreach ($getArtikel as $row){  ?>
 
-                  <?php  if ( $add === true ) {  //add artikel?>
-                    <tr>
-                        <form method="post">
-                            <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
-                            <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
-                            <td><?php echo $row->Aanmaakdatum;?></td>
-                            <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                            <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
+                    <?php  if ( $add === true ) {  ?>
+                        <tr>
+                            <form method="post">
+                                <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
+                                <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
+                                <td><?php echo $row->Aanmaakdatum;?></td>
+                                <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
 
-                        </form>
-                    </tr>
+                            </form>
+                        </tr>
                     <?php } else{ ?>
-                      <tr>
-                              <td><?php echo $row->Artikelnummer;?></td>
-                              <td><?php echo $row->Artikelnaam;?></td>
-                              <td><?php echo $row->Aanmaakdatum;?></td>
-                              <td><?php echo $row->omschrijving;?></td>
-                      </tr>
-                      <?php } ?>
+                        <tr>
+                            <td><?php echo $row->Artikelnummer;?></td>
+                            <td><?php echo $row->Artikelnaam;?></td>
+                            <td><?php echo $row->Aanmaakdatum;?></td>
+                            <td><?php echo $row->omschrijving;?></td>
+                        </tr>
+                    <?php } ?>
 
                 <?php }  //close artikelen loop ?>
 
@@ -141,33 +122,22 @@ else if( current_user_can('beheerder')) { //beheerder role
                     <th width="10%">Tussenvoegsel</th>
                     <th width="10%">Achternaam</th>
                     <th width="50%">Email</th>
-                   <?php if ( $edit === true || $add === true  ) { ?>
-                    <th width="7%">Actie</th>
+                    <?php if ( $edit === true || $add === true  ) { ?>
+                        <th width="7%">Actie</th>
                     <?php } ?>
                 </tr>
                 <?php  if ( $add === true ) {  //add klant row ?>
-                <tr>
-                    <form method="post">
-<<<<<<< HEAD
-                        <td>Laatste row ++</td>
-                        <td><input type="text" name="voorNaam"></td>
-                        <td><input type="text" name="TussenVoegsel"></td>
-                        <td><input type="text" name="Achternaam"></td>
-                        <td><input type="text" name="email"></td>
-                        <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
+                    <tr>
+                        <form method="post">
+                            <td>Laatste row ++</td>
+                            <td><input type="text" name="voorNaam"></td>
+                            <td><input type="text" name="TussenVoegsel"></td>
+                            <td><input type="text" name="Achternaam"></td>
+                            <td><input type="text" name="email"></td>
+                            <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
 
-=======
-                    <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
-                    <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
-                        <td><?php echo $row->Aanmaakdatum;?></td>
-                    <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                        <?php
-                        if ( is_user_logged_in() ) { ?>
-                    <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a></div></td>
-                        <?php } ?>
->>>>>>> Beta2
-                    </form>
-                </tr>
+                        </form>
+                    </tr>
                 <?php } ?>
                 <?php foreach ($getKlant as $row){ ?>
 
@@ -206,9 +176,9 @@ else if( current_user_can('beheerder')) { //beheerder role
 
 
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
 
-  <?php }  //end view?>
+<?php }  //end view?>
 
 <?php
 
@@ -284,8 +254,6 @@ if (isset($_GET['editArtikel'])) {
 }
 
 //edit artikel
-
-if ($delete === true) {
     if (isset($_POST['editArtikel'])) {
 
 
@@ -307,7 +275,7 @@ if ($delete === true) {
 
     }
 
-}
+
 
 //edit klant
 if ( isset( $_POST['editKlant'] ) ) {
