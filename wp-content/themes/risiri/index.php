@@ -12,6 +12,8 @@ $tableLog = 'risiri_log';
 
 $getKlant = $wpdb->get_results( "SELECT * FROM $tableKlant" );
 $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
+$maxKlant = $wpdb->get_var( "SELECT MAX(klantnummer) FROM $tableKlant" );
+$maxArtikel = $wpdb->get_var( "SELECT MAX(artikelNummer) FROM $tableArtikel" );
 
 //add role beheerder
 add_role( 'beheerder', 'beheerder' );
@@ -78,7 +80,7 @@ else if( current_user_can('beheerder')) { //beheerder role
 
                     <tr>
                         <form method="post">
-                            <td>Laatste row ++</td>
+                            <td><?php echo $maxArtikel + 1; ?></td>
                             <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
                             <td id="date">.</td>
                             <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
@@ -130,7 +132,7 @@ else if( current_user_can('beheerder')) { //beheerder role
                 <?php  if ( $add === true ) {  //add klant row ?>
                     <tr>
                         <form method="post">
-                            <td>Laatste row ++</td>
+                            <td><?php echo $maxKlant + 1; ?></td>
                             <td><input type="text" name="voorNaam"></td>
                             <td><input type="text" name="TussenVoegsel"></td>
                             <td><input type="text" name="Achternaam"></td>
