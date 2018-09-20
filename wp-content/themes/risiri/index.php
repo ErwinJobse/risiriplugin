@@ -8,6 +8,7 @@ global $wpdb;
 
 $tableKlant = 'risiri_klanten';
 $tableArtikel = 'risiri_artikelen';
+$tableLog = 'risiri_log';
 
 $getKlant = $wpdb->get_results( "SELECT * FROM $tableKlant" );
 $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
@@ -199,6 +200,13 @@ if ( isset( $_POST['submitArtikel'] ) ) {
 
 
     }
+    //log
+    $wpdb->insert($tableLog, array(
+
+        'event' => $_POST['Artikelnaam'] . " " . $_POST['omschrijving'] . " added",
+    ),
+        array('%s')
+    );
     echo "<meta http-equiv='refresh' content='0'>";
 
 
@@ -222,6 +230,14 @@ if ( isset( $_POST['submitKlant'] ) ) {
 
 
         );
+        //log
+        $wpdb->insert($tableLog, array(
+
+            'event' => $_POST['voorNaam'] . " " . $_POST['TussenVoegsel'] . " added",
+        ),
+            array('%s')
+        );
+
         echo "<meta http-equiv='refresh' content='0'>";
 
 
@@ -234,6 +250,13 @@ if (isset($_GET['delArtikel'])) {
     $del = $_GET['delArtikel'];
     //SQL query for deletion.
     $wpdb->delete( $tableArtikel, array( 'Artikelnummer' => $del ) );
+    //log
+    $wpdb->insert($tableLog, array(
+
+        'event' => $del . " deleted",
+    ),
+        array('%s')
+    );
 
 }
 
@@ -242,38 +265,44 @@ if (isset($_GET['delKlant'])) {
     $del = $_GET['delKlant'];
     //SQL query for deletion.
     $wpdb->delete( $tableKlant, array( 'Klantnummer' => $del ) );
+    $wpdb->insert($tableLog, array(
+
+        'event' => $del . " deleted",
+    ),
+        array('%s')
+    );
 
 }
 
-//EDIT Artikel
-if (isset($_GET['editArtikel'])) {
-    $del = $_GET['editArtikel'];
-    //SQL query for deletion.
-    $wpdb->delete( $tableArtikel, array( 'Artikelnummer' => $del ) );
-
-}
 
 //edit artikel
-    if (isset($_POST['editArtikel'])) {
+if (isset($_POST['editArtikel'])) {
 
 
-        if (!empty($_POST['Artikelnaam'])) {
+    if (!empty($_POST['Artikelnaam'])) {
 
-            $wpdb->update($tableArtikel, array(
+        $wpdb->update($tableArtikel, array(
 
-                'Artikelnummer' => $_POST['Artikelnummer'],
-                'Artikelnaam' => $_POST['Artikelnaam'],
-                'omschrijving' => $_POST['omschrijving']
+            'Artikelnummer' => $_POST['Artikelnummer'],
+            'Artikelnaam' => $_POST['Artikelnaam'],
+            'omschrijving' => $_POST['omschrijving']
 
-            ),
-                array('Artikelnummer' => $_POST['Artikelnummer'])
-            );
-            echo "<meta http-equiv='refresh' content='0'>";
+        ),
+            array('Artikelnummer' => $_POST['Artikelnummer'])
+        );
+        //log
+        $wpdb->insert($tableLog, array(
 
+            'event' => $_POST['Artikelnummer'] . " " . $_POST['Artikelnaam'] . " " . $_POST['omschrijving'] . " edited",
+        ),
+            array('%s')
+        );
+        echo "<meta http-equiv='refresh' content='0'>";
 
-        }
 
     }
+
+}
 
 
 
@@ -291,6 +320,13 @@ if ( isset( $_POST['editKlant'] ) ) {
 
         ),
             array('klantnummer' => $_POST['klantnummer'])
+        );
+        //log
+        $wpdb->insert($tableLog, array(
+
+            'event' => $_POST['klantnummer'] . " " . $_POST['voorNaam'] . " " . $_POST['TussenVoegsel'] . " edited",
+        ),
+            array('%s')
         );
         echo "<meta http-equiv='refresh' content='0'>";
 
