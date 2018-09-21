@@ -15,8 +15,9 @@ $getArtikel = $wpdb->get_results( "SELECT * FROM $tableArtikel" );
 $maxKlant = $wpdb->get_var( "SELECT MAX(klantnummer) FROM $tableKlant" );
 $maxArtikel = $wpdb->get_var( "SELECT MAX(artikelNummer) FROM $tableArtikel" );
 
-//add role beheerder
-add_role( 'beheerder', 'beheerder' );
+//add role Gebruiker
+add_role( 'Gebruiker', 'Gebruiker' );
+remove_role( 'beheerder' );
 
 //check functions based on role
 if( current_user_can('manage_options')) { //admin role
@@ -26,7 +27,7 @@ if( current_user_can('manage_options')) { //admin role
     $add = true;
 
 }
-else if( current_user_can('beheerder')) { //beheerder role
+else if( current_user_can('Gebruiker')) { //Gebruiker role
     $view = true;
     $edit = true;
     $delete = false;
