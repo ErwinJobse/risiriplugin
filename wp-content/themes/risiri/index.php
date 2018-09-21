@@ -62,117 +62,113 @@ else if( current_user_can('beheerder')) { //beheerder role
         </ul>
 
         <div id="tab-artikelen">
-            <table id="data-table" cellspacing="0">
-                <tr>
-                    <th width="12%">Artikelnummer</th>
-                    <th width="15%">Artikelnaam</th>
-                    <th width="15%">Aanmaakdatum</th>
-                    <th width="44%">Omschrijving</th>
+            <div class="Table" id="data-table">
+                <div class="Row">
+                    <div class="Cell">Artikelnummer</div>
+                    <div class="Cell">Artikelnaam</div>
+                    <div class="Cell">Aanmaakdatum</div>
+                    <div class="Cell">Omschrijving</div>
                     <?php
                     if ( $edit === true || $add === true  ) { ?>
-                        <th width="7%">Actie</th>
+                        <div class="Cell">Actie</div>
                     <?php } ?>
-                </tr>
+                </div>
 
                 <?php
                 if ( $add === TRUE ) { // add artikel row ?>
 
-
-                    <tr>
-                        <form method="post">
-                            <td><?php echo $maxArtikel + 1; ?></td>
-                            <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
-                            <td id="date">.</td>
-                            <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
-                            <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
-
-                        </form>
-                    </tr>
+                            <form method="post" class="Row">
+                                <div class="Cell"><?php echo $maxArtikel + 1; ?></div>
+                                <div class="Cell"><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></div>
+                                <div class="Cell" id="date">.</div>
+                                <div class="Cell"><input type="text" name="omschrijving" placeholder="Omschrijving"></div>
+                                <div class="Cell"><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></div>
+                            </form>
 
                 <?php } ?>
 
                 <?php foreach ($getArtikel as $row){  ?>
 
                     <?php  if ( $add === true ) {  ?>
-                        <tr>
-                            <form method="post">
-                                <td><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></td>
-                                <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
-                                <td><?php echo $row->Aanmaakdatum;?></td>
-                                <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
+
+                            <form method="post" class="Row">
+                                <div class="Cell"><input type="text" name="Artikelnummer" value="<?php echo $row->Artikelnummer;?>"></div>
+                                <div class="Cell"><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></div>
+                                <div class="Cell"><?php echo $row->Aanmaakdatum;?></div>
+                                <div class="Cell"><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></div>
+                                <div class="Cell action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></></div>
 
                             </form>
-                        </tr>
+
                     <?php } else{ ?>
-                        <tr>
-                            <td><?php echo $row->Artikelnummer;?></td>
-                            <td><?php echo $row->Artikelnaam;?></td>
-                            <td><?php echo $row->Aanmaakdatum;?></td>
-                            <td><?php echo $row->omschrijving;?></td>
-                        </tr>
+                        <div class="Row">
+                            <div class="Cell"><?php echo $row->Artikelnummer;?></div>
+                            <div class="Cell"><?php echo $row->Artikelnaam;?></div>
+                            <div class="Cell"><?php echo $row->Aanmaakdatum;?></div>
+                            <div class="Cell"><?php echo $row->omschrijving;?></div>
+                        </div>
                     <?php } ?>
 
                 <?php }  //close artikelen loop ?>
 
-            </table>
-        </div>
+            </div>
+
         <div id="tab-klanten">
-            <table id="data-table" cellspacing="0">
-                <tr>
-                    <th width="8%">Klantnummer</th>
-                    <th width="10%">Voornaam</th>
-                    <th width="10%">Tussenvoegsel</th>
-                    <th width="10%">Achternaam</th>
-                    <th width="50%">Email</th>
+            <div id="data-table">
+                <div>
+                    <div class="Cell">Klantnummer</div>
+                    <div class="Cell">Voornaam</div>
+                    <div class="Cell">Tussenvoegsel</div>
+                    <div class="Cell">Achternaam</div>
+                    <div class="Cell">Email</div>
                     <?php if ( $edit === true || $add === true  ) { ?>
-                        <th width="7%">Actie</th>
+                        <div>Actie</div>
                     <?php } ?>
-                </tr>
+                </div>
                 <?php  if ( $add === true ) {  //add klant row ?>
-                    <tr>
+                    <div class="Heading">
                         <form method="post">
-                            <td><?php echo $maxKlant + 1; ?></td>
-                            <td><input type="text" name="voorNaam"></td>
-                            <td><input type="text" name="TussenVoegsel"></td>
-                            <td><input type="text" name="Achternaam"></td>
-                            <td><input type="text" name="email"></td>
-                            <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
+                            <div><?php echo $maxKlant + 1; ?></div>
+                            <div class="Cell"><input type="text" name="voorNaam" placeholder="voornaam"></div>
+                            <div class="Cell"><input type="text" name="TussenVoegsel" placeholder="Tussenvoegsel"></div>
+                            <div class="Cell"><input type="text" name="Achternaam" placeholder="Achternaam"></div>
+                            <div class="Cell"><input type="text" name="email" placeholder="email"></div>
+                            <div class="Cell"><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></div>
 
                         </form>
-                    </tr>
+                    </div>
                 <?php } ?>
                 <?php foreach ($getKlant as $row){ ?>
 
                     <?php  if ( $edit === true ) { ?>
-                        <tr>
+                        <div class="Heading">
                             <form method="post">
-                                <td><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></td>
-                                <td><input type="text" name="voorNaam" value="<?php echo $row->voorNaam;?>""></td>
-                                <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
-                                <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
-                                <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
+                                <div class="Cell"><input type="text" name="klantnummer" value="<?php echo $row->klantnummer;?>"></div>
+                                <div class="Cell"><input type="text" name="voorNaam" value="<?php echo $row->voorNaam;?>""></div>
+                                <div class="Cell"><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></div>
+                                <div class="Cell"><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></div>
+                                <div class="Cell"><input type="text" name="email" value="<?php echo $row->email;?>"></div>
+                                <div class="Cell"><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></div>
 
                             </form>
-                        </tr>
+                        </div>
                     <?php } else{?>
-                        <tr>
+                        <div class="Heading">
 
-                            <td><?php echo $row->klantnummer;?></td>
-                            <td><?php echo $row->voorNaam;?></td>
-                            <td><?php echo $row->TussenVoegsel;?></td>
-                            <td><?php echo $row->Achternaam;?></td>
-                            <td><?php echo $row->email;?></td>
-                        </tr>
+                            <div class="Cell"><?php echo $row->klantnummer;?></div>
+                            <div class="Cell"><?php echo $row->voorNaam;?></div>
+                            <div class="Cell"><?php echo $row->TussenVoegsel;?></div>
+                            <div class="Cell"><?php echo $row->Achternaam;?></div>
+                            <div class="Cell"><?php echo $row->email;?></div>
+                        </div>
                     <?php } ?>
 
                 <?php } //close klanten loop ?>
 
-                </tr>
-            </table>
-        </div>
+            </div>
+            </div>
     </div>
+
 
 
 
