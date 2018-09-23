@@ -134,11 +134,11 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                     <tr>
                         <form method="post">
                             <td><?php echo $maxKlant + 1; ?></td>
-                            <td><input type="text" name="voorNaam"></td>
-                            <td><input type="text" name="TussenVoegsel"></td>
-                            <td><input type="text" name="Achternaam"></td>
-                            <td><input type="text" name="email"></td>
-                            <td><button type="submit" class="actionbutton" name="submitKlant"><i class="fa fa-plus plus"></i></button></td>
+                            <td><input type="text" name="voorNaam" placeholder="Voornaam"></td>
+                            <td><input type="text" name="TussenVoegsel" placeholder="Tussenvoegsel"></td>
+                            <td><input type="text" name="Achternaam" placeholder="Achternaam"></td>
+                            <td><input type="text" name="email" placeholder="Email"></td>
+                            <td><button type="submit" class="actionbutton" name="submitKlant" placeholder="Artikelnaam"><i class="fa fa-plus plus"></i></button></td>
 
                         </form>
                     </tr>
