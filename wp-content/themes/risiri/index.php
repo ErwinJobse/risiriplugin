@@ -274,7 +274,8 @@ if (isset($_GET['delKlant'])) {
     ),
         array('%s')
     );
-
+//    echo "<meta http-equiv='refresh' content='0;URL=#tab-klanten'/>";
+//    header("Location: /#tab-klanten");
 }
 
 
