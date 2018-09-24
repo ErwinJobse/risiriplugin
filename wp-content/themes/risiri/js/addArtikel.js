@@ -1,3 +1,9 @@
+/**
+ * Created by PhpStorm.
+ * User: Erwin Jobse
+ * Date: 9/20/2018
+ * Time: 8:47 AM
+ */
 $(function() {
 
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
@@ -10,19 +16,21 @@ $(function() {
             // get values from FORM
             var Artikelnaam = $("input#Artikelnaam").val();
             var omschrijving = $("input#omschrijving").val();
-   ;
+
+            var post_url = $(this).attr("action"); //get form action url
+
 
             $this = $("#sendMessageButton");
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             $.ajax({
-                url: "././class/mail/contact_me.php", //fixme
+                url: 'http://localhost/risiriplugin/wp-content/themes/risiri/addArtikel.php',
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
+                    Artikelnaam: Artikelnaam,
+                    omschrijving: omschrijving,
+
                 },
+
                 cache: false,
                 success: function() {
                     // Success message
@@ -30,7 +38,7 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>added </strong>");
                     $('#success > .alert-success')
                         .append('</div>');
                     //clear all fields
@@ -41,10 +49,16 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#success > .alert-danger').append($("<strong>").text("Sorry, it seems that my server is not responding. Please try again later!"));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");
+                    var table = document.getElementById("myTable");
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell1.innerHTML = "NEW CELL1";
+                    cell2.innerHTML = "NEW CELL2";
                 },
                 complete: function() {
                     setTimeout(function() {
@@ -84,3 +98,5 @@ $('#name').focus(function() {
 
 
  </form>
+
+ */

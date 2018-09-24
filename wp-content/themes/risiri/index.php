@@ -4,6 +4,7 @@
  *
  * @package WordPress
  */
+global $wp;
 global $wpdb;
 
 $tableKlant = 'risiri_klanten';
@@ -17,7 +18,7 @@ $maxArtikel = $wpdb->get_var( "SELECT MAX(artikelNummer) FROM $tableArtikel" );
 
 //add role Gebruiker
 add_role( 'Gebruiker', 'Gebruiker' );
-remove_role( 'beheerder' );
+
 
 //check functions based on role
 if( current_user_can('manage_options')) { //admin role
@@ -54,6 +55,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
         } );
     </script>
 
+    <div id="success"></div>
 
     <div id="tabs">
 
@@ -78,17 +80,18 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                 <?php
                 if ( $add === TRUE ) { // add artikel row ?>
 
+                    <form name="sentMessage" id="contactForm">
+                        <tr>
 
-                    <tr>
-                            <form method="post">
-                            <td><?php echo $maxArtikel + 1; ?></td>
-                            <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
-                            <td id="date">.</td>
-                            <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
-                            <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
+                                <td><?php echo $maxArtikel + 1; ?></td>
+                                <td><input type="text" class="form-control" name="Artikelnaam" placeholder="Artikelnaam" required data-validation-required-message="Vul aub de artikelnaam in"></td>
+                                <td id="date">.</td>
+                                <td><input type="text"  class="form-control" name="omschrijving" placeholder="Omschrijving"></td>
+                                <td><button type="submit" class="actionbutton" name="submitArtikel" id="sendMessageButton"><i class="fa fa-plus plus"></i></button></td>
 
-                        </form>
-                    </tr>
+
+                        </tr>
+                    </form>
 
                 <?php } ?>
 
@@ -101,7 +104,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                                 <td><?php echo $row->Aanmaakdatum;?></td>
                                 <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteArtikel" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -153,7 +156,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteKlant" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -174,6 +177,23 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
             </table>
         </div>
     </div>
+
+    <!-- only for test -->
+    <form name="sentMessage" id="contactForm" action="<?php echo bloginfo('template_directory'); ?>/addArtikel.php" method="POST">
+        <input class="form-control" id="Artikelnaam"  required data-validation-required-message="Please enter your name.">
+        <input class="form-control" id="omschrijving"  required data-validation-required-message="sorry">
+
+
+
+
+
+
+        <button type="submit"  id="sendMessageButton" >Send</button>
+
+
+
+
+    </form>
 
 
 
@@ -249,8 +269,8 @@ if ( isset( $_POST['submitKlant'] ) ) {
 
 }
 //delete Artikel
-if (isset($_GET['delArtikel'])) {
-    $del = $_GET['delArtikel'];
+if (isset( $_POST['deleteArtikel'])) {
+    $del = $_POST['Artikelnummer'];
     //SQL query for deletion.
     $wpdb->delete( $tableArtikel, array( 'Artikelnummer' => $del ) );
     //log
@@ -260,12 +280,14 @@ if (isset($_GET['delArtikel'])) {
     ),
         array('%s')
     );
+    echo "<meta http-equiv='refresh' content='0'>";
+
 
 }
 
 //delete klant
-if (isset($_GET['delKlant'])) {
-    $del = $_GET['delKlant'];
+if (isset( $_POST['deleteKlant'])) {
+    $del = $_POST['klantnummer'];
     //SQL query for deletion.
     $wpdb->delete( $tableKlant, array( 'Klantnummer' => $del ) );
     $wpdb->insert($tableLog, array(
@@ -274,6 +296,7 @@ if (isset($_GET['delKlant'])) {
     ),
         array('%s')
     );
+    echo "<meta http-equiv='refresh' content='0'>";
 
 }
 
