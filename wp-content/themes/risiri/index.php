@@ -65,7 +65,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
         </ul>
 
         <div id="tab-artikelen">
-            <table id="data-table" cellspacing="0">
+            <table id="data-artikelen" cellspacing="0">
                 <tr>
                     <th width="12%">Artikelnummer</th>
                     <th width="15%">Artikelnaam</th>
@@ -122,7 +122,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
             </table>
         </div>
         <div id="tab-klanten">
-            <table id="data-table" cellspacing="0">
+            <table id="data-klanten" cellspacing="0">
                 <tr>
                     <th width="8%">Klantnummer</th>
                     <th width="10%">Voornaam</th>
