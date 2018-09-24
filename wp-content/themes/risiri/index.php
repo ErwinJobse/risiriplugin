@@ -101,7 +101,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                                 <td><?php echo $row->Aanmaakdatum;?></td>
                                 <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteArtikel" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -153,7 +153,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->klantnummer;?>#tab-klanten" name="delete" ></a><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteKlant" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -249,8 +249,8 @@ if ( isset( $_POST['submitKlant'] ) ) {
 
 }
 //delete Artikel
-if (isset($_GET['delArtikel'])) {
-    $del = $_GET['delArtikel'];
+if (isset( $_POST['deleteArtikel'])) {
+    $del = $_POST['Artikelnummer'];
     //SQL query for deletion.
     $wpdb->delete( $tableArtikel, array( 'Artikelnummer' => $del ) );
     //log
@@ -260,12 +260,14 @@ if (isset($_GET['delArtikel'])) {
     ),
         array('%s')
     );
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-artikelen'\" />";
+
 
 }
 
 //delete klant
-if (isset($_GET['delKlant'])) {
-    $del = $_GET['delKlant'];
+if (isset( $_POST['deleteKlant'])) {
+    $del = $_POST['klantnummer'];
     //SQL query for deletion.
     $wpdb->delete( $tableKlant, array( 'Klantnummer' => $del ) );
     $wpdb->insert($tableLog, array(
@@ -274,8 +276,8 @@ if (isset($_GET['delKlant'])) {
     ),
         array('%s')
     );
-//    echo "<meta http-equiv='refresh' content='0;URL=#tab-klanten'/>"; Infinite loop
-//    header("Location: /#tab-klanten"); Werkt niet omdat WP header
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-klanten'\" />";
+
 }
 
 
