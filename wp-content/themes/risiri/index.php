@@ -153,7 +153,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delKlant=<?php echo $row->klantnummer;?>#tab-klanten" name="delete" ></a><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -210,7 +210,7 @@ if ( isset( $_POST['submitArtikel'] ) ) {
     ),
         array('%s')
     );
-    echo "<meta http-equiv='refresh' content='0'>";
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-artikelen'\" />";
 
 
 }
@@ -241,7 +241,7 @@ if ( isset( $_POST['submitKlant'] ) ) {
             array('%s')
         );
 
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-klanten'\" />";
 
 
 
@@ -300,7 +300,7 @@ if (isset($_POST['editArtikel'])) {
         ),
             array('%s')
         );
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-artikelen'\" />";
 
 
     }
@@ -331,7 +331,7 @@ if ( isset( $_POST['editKlant'] ) ) {
         ),
             array('%s')
         );
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-klanten'\" />";
 
     }
 
