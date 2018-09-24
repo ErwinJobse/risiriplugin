@@ -104,7 +104,8 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                                 <td><?php echo $row->Aanmaakdatum;?></td>
                                 <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteArtikel" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button>
+                                <?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteArtikel" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -156,7 +157,8 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteKlant" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button>
+                                <?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteKlant" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
 
                             </form>
                         </tr>
