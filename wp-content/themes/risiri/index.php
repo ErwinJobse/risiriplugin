@@ -48,10 +48,13 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
     <?php get_header(); ?>
 
     <script>
-        $( function() {
-            $( "#tabs" ).tabs();
-            $( "#tabs" ).show();
-        } );
+    $(function() {
+        $("#tabs").tabs({
+            activate: function(event, ui) {
+                window.location.hash = ui.newPanel.attr('id');
+            }
+        });
+    });
     </script>
 
 
