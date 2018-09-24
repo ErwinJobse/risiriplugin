@@ -65,10 +65,10 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
         <div id="tab-artikelen">
             <table id="data-table" cellspacing="0">
                 <tr>
-                    <th width="12%">Artikelnummer</th>
+                    <th width="8%">Artikelnummer</th>
                     <th width="15%">Artikelnaam</th>
                     <th width="15%">Aanmaakdatum</th>
-                    <th width="44%">Omschrijving</th>
+                    <th width="48%">Omschrijving</th>
                     <?php
                     if ( $edit === true || $add === true  ) { ?>
                         <th width="7%">Actie</th>
@@ -274,8 +274,8 @@ if (isset($_GET['delKlant'])) {
     ),
         array('%s')
     );
-//    echo "<meta http-equiv='refresh' content='0;URL=#tab-klanten'/>";
-//    header("Location: /#tab-klanten");
+//    echo "<meta http-equiv='refresh' content='0;URL=#tab-klanten'/>"; Infinite loop
+//    header("Location: /#tab-klanten"); Werkt niet omdat WP header
 }
 
 

@@ -101,6 +101,7 @@ body{
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
+    width: 100%;
 }
 
 #tabs tbody{
