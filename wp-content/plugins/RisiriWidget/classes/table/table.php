@@ -1,12 +1,17 @@
 <?php
 
+
+/**
+ * Template Name: index
+ *
+ * @package WordPress
+ */
+
 function table_creation()
 {
-
     include(plugin_dir_path(__FILE__) . '/roleCheck.php');
     include(plugin_dir_path(__FILE__) . '/db.php');
-
-    ?>
+?>
 
     <?php if ($view === TRUE) { //show content  ?>
 
@@ -35,7 +40,9 @@ function table_creation()
     </div>
 
     <!-- only for test -->
+
     <form name="sentMessage" id="addArtikel" action="<?php echo plugins_url(); ?>/addArtikel.php"
+
           method="POST">
         <input class="form-control" id="Artikelnaam" required
                data-validation-required-message="Please enter your name.">
@@ -44,11 +51,11 @@ function table_creation()
 
         <button type="submit" id="addArtikelButton">Send</button>
 
-
     </form>
 
 
-    <?php }  //end view
-    ?>
+<?php }  //end view ?>
 
-<?php } // End table function ?>
+    <?php } ?>
+
+
