@@ -1,50 +1,10 @@
 <?php
 
-
-/**
- * Template Name: index
- *
- * @package WordPress
- */
-
 function table_creation()
 {
 
-    global $wpdb;
-
-    $tableKlant = 'risiri_klanten';
-    $tableArtikel = 'risiri_artikelen';
-    $tableLog = 'risiri_log';
-
-    $getKlant = $wpdb->get_results("SELECT * FROM $tableKlant");
-    $getArtikel = $wpdb->get_results("SELECT * FROM $tableArtikel");
-    $maxKlant = $wpdb->get_var("SELECT MAX(klantnummer) FROM $tableKlant");
-    $maxArtikel = $wpdb->get_var("SELECT MAX(artikelNummer) FROM $tableArtikel");
-
-//add role Gebruiker
-    add_role('Gebruiker', 'Gebruiker');
-
-
-//check functions based on role
-    if (current_user_can('manage_options')) { //admin role
-        $view = true;
-        $edit = true;
-        $delete = true;
-        $add = true;
-
-    } else if (current_user_can('Gebruiker')) { //Gebruiker role
-        $view = true;
-        $edit = true;
-        $delete = false;
-        $add = true;
-
-
-    } else { //everybody else
-        $view = true;
-        $edit = false;
-        $delete = false;
-        $add = false;
-    }
+    include( plugin_dir_path( __FILE__ ) . 'classes/table/roleCheck.php');
+    include( plugin_dir_path( __FILE__ ) . 'classes/table/db.php');
 
     ?>
 
@@ -205,7 +165,7 @@ function table_creation()
     </div>
 
     <!-- only for test -->
-    <form name="sentMessage" id="contactForm" action="<?php echo bloginfo('template_directory'); ?>/addArtikel.php"
+    <form name="sentMessage" id="contactForm" action="<?php echo plugins_url(); ?>/addArtikel.php"
           method="POST">
         <input class="form-control" id="Artikelnaam" required
                data-validation-required-message="Please enter your name.">
@@ -218,12 +178,12 @@ function table_creation()
     </form>
 
 
-    <?php get_footer(); ?>
+
 
 <?php }  //end view
     ?>
 
-    <?php
+    <?php } /* End table
 
 //add artikel
     if (isset($_POST['submitArtikel'])) {
@@ -378,6 +338,6 @@ function table_creation()
 
 }
 
+*/
 
 ?>
-
