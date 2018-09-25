@@ -49,7 +49,7 @@
 
     </head>
 
-    <body>
+    <body style="background-color: #EDF7F9;">
     <?php
 
 
