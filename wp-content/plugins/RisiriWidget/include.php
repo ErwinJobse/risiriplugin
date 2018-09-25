@@ -1,7 +1,6 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="<?php echo plugin_dir_path( __FILE__ ); ?>/style.css">
         <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -17,11 +16,21 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
+        <?php
+
+        // CSS files -------------------------------------------
+        wp_register_style('style', plugins_url('style.css',__FILE__ ));
+        wp_enqueue_style('style');
 
 
-        <script type="text/javascript" src="<?php echo plugin_dir_path( __FILE__ ); ?>/js/addArtikel.js"></script>
+
+        // JS files ----------------------------------------------
+        wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
+        wp_enqueue_script('addArtikel');
 
 
+        //php files -----------------------------------------------
+        include( plugin_dir_path( __FILE__ ) . 'classes/table/table.php');
 
 
 
