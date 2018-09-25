@@ -12,10 +12,10 @@ License: GPL2
 
 include( plugin_dir_path( __FILE__ ) . 'include.php');
 
-add_shortcode('test', 'table_creation');
+add_shortcode('risiriTable', 'table_creation');
 
-wp_enqueue_script('my-script', get_stylesheet_directory_uri() . '/js/addArtikel.js');
-wp_localize_script('my-script', 'myScript', array(
+wp_enqueue_script('addArtikel', get_stylesheet_directory_uri() . '/js/addArtikel.js');
+wp_localize_script('addArikelt', 'addArtikel', array(
     'pluginsUrl' => plugins_url(),
 ));
 
