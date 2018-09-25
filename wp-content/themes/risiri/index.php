@@ -49,10 +49,13 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
     <?php get_header(); ?>
 
     <script>
-        $( function() {
-            $( "#tabs" ).tabs();
-            $( "#tabs" ).show();
-        } );
+    $(function() {
+        $("#tabs").tabs({
+            activate: function(event, ui) {
+                window.location.hash = ui.newPanel.attr('id');
+            }
+        });
+    });
     </script>
 
     <div id="success"></div>
@@ -67,10 +70,10 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
         <div id="tab-artikelen">
             <table id="data-artikelen" cellspacing="0">
                 <tr>
-                    <th width="12%">Artikelnummer</th>
+                    <th width="8%">Artikelnummer</th>
                     <th width="15%">Artikelnaam</th>
                     <th width="15%">Aanmaakdatum</th>
-                    <th width="44%">Omschrijving</th>
+                    <th width="48%">Omschrijving</th>
                     <?php
                     if ( $edit === true || $add === true  ) { ?>
                         <th width="7%">Actie</th>
@@ -83,11 +86,13 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                     <form name="sentMessage" id="contactForm">
                         <tr>
 
-                                <td><?php echo $maxArtikel + 1; ?></td>
-                                <td><input type="text" class="form-control" name="Artikelnaam" placeholder="Artikelnaam" required data-validation-required-message="Vul aub de artikelnaam in"></td>
-                                <td id="date">.</td>
-                                <td><input type="text"  class="form-control" name="omschrijving" placeholder="Omschrijving"></td>
-                                <td><button type="submit" class="actionbutton" name="submitArtikel" id="sendMessageButton"><i class="fa fa-plus plus"></i></button></td>
+                    <tr>
+                        <form method="post">
+                            <td>Laatste row ++</td>
+                            <td><input type="text" name="Artikelnaam" placeholder="Artikelnaam"></td>
+                            <td id="date">.</td>
+                            <td><input type="text" name="omschrijving" placeholder="Omschrijving"></td>
+                            <td><button type="submit" class="actionbutton" name="submitArtikel"><i class="fa fa-plus plus"></i></button></td>
 
 
                         </tr>
@@ -104,7 +109,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td ><input type="text" name="Artikelnaam" value="<?php echo $row->Artikelnaam;?>"></td>
                                 <td><?php echo $row->Aanmaakdatum;?></td>
                                 <td><input type="text" name="omschrijving" value="<?php echo $row->omschrijving;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteArtikel" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->Artikelnummer;?>" name="delete" ></a><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -136,7 +141,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                 <?php  if ( $add === true ) {  //add klant row ?>
                     <tr>
                         <form method="post">
-                            <td><?php echo $maxKlant + 1; ?></td>
+                            <td>Laatste row ++</td>
                             <td><input type="text" name="voorNaam"></td>
                             <td><input type="text" name="TussenVoegsel"></td>
                             <td><input type="text" name="Achternaam"></td>
@@ -156,7 +161,7 @@ else if( current_user_can('Gebruiker')) { //Gebruiker role
                                 <td><input type="text" name="TussenVoegsel" value="<?php echo $row->TussenVoegsel;?>"></td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam;?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email;?>"></td>
-                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editArtikel" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><button class="actionbutton"  name="deleteKlant" ><i class="fas fa-trash-alt trash"></i></button><?php } ?></div></td>
+                                <td><div class="action-buttons"><button type="submit" class="actionbutton" name="editKlant" value="edit"><i class="fas fa-pen pen"></i></button><?php if ( $delete === true  ) { ?><a class="fas fa-trash-alt trash"  href="index.php?delArtikel=<?php echo $row->klantnummer;?>" name="delete" ></a><?php } ?></div></td>
 
                             </form>
                         </tr>
@@ -230,7 +235,7 @@ if ( isset( $_POST['submitArtikel'] ) ) {
     ),
         array('%s')
     );
-    echo "<meta http-equiv='refresh' content='0'>";
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-artikelen'\" />";
 
 
 }
@@ -261,7 +266,7 @@ if ( isset( $_POST['submitKlant'] ) ) {
             array('%s')
         );
 
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-klanten'\" />";
 
 
 
@@ -280,7 +285,6 @@ if (isset( $_POST['deleteArtikel'])) {
     ),
         array('%s')
     );
-    echo "<meta http-equiv='refresh' content='0'>";
 
 
 }
@@ -296,7 +300,6 @@ if (isset( $_POST['deleteKlant'])) {
     ),
         array('%s')
     );
-    echo "<meta http-equiv='refresh' content='0'>";
 
 }
 
@@ -323,7 +326,7 @@ if (isset($_POST['editArtikel'])) {
         ),
             array('%s')
         );
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-artikelen'\" />";
 
 
     }
@@ -354,7 +357,7 @@ if ( isset( $_POST['editKlant'] ) ) {
         ),
             array('%s')
         );
-        echo "<meta http-equiv='refresh' content='0'>";
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL='#tab-klanten'\" />";
 
     }
 

@@ -13,10 +13,9 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer');
-@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Lobster|Pacifico|Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-/*font-family: 'Roboto', sans-serif;*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,900');
+
+font-family: 'Roboto', sans-serif;
 /*font-family: 'Lobster', cursive;*/
 /*font-family: 'Abel', sans-serif;*/
 /*font-family: 'Pacifico', cursive;*/
@@ -79,7 +78,8 @@ body{
 #table-name{
     font-size: 3em;
     color: #67B0E3;
-    font-family: "Roboto Light";
+    font-family: "Roboto";
+    font-weight: 300;
     margin: auto;
     line-height: 170px;
     padding-right: 100px;
@@ -108,6 +108,7 @@ body{
     border-collapse: collapse;
     border-radius: 1em;
     overflow: hidden;
+    width: 100%;
 }
 
 #tabs tbody{
@@ -120,7 +121,8 @@ body{
 }
 
 #tabs th{
-    font-family: 'Roboto Black';
+    font-family: 'Roboto';
+    font-weight: 900;
     color: #707070;
     border: 1px solid #B6B6B6;
 
@@ -129,6 +131,7 @@ body{
 #tabs td{
     border: 1px solid #B6B6B6;
     font-family: 'Roboto';
+    font-weight: 400;
     padding: 0;
 }
 
@@ -138,6 +141,7 @@ body{
     border: none;
     text-align: center;
     font-family: 'Roboto';
+    font-weight: 400;
     color: #707070;
     width: 100%;
     line-height: 40px;
