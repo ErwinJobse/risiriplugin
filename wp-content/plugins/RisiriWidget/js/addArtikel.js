@@ -32,7 +32,7 @@ $(function () {
                 },
 
                 cache: false,
-                success: function () {
+                success: function (data) {
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -44,22 +44,14 @@ $(function () {
                     //clear all fields
                     $('#addArtikel').trigger("reset");
 
-                    //get date
-                    var today = new Date();
-                    var dd = today.getDate();
-                    var mm = today.getMonth() + 1; //January is 0!
-                    var yyyy = today.getFullYear();
+                    console.log(data);
 
-                    if (dd < 10) {
-                        dd = '0' + dd
-                    }
+                    var key = "json";
 
-                    if (mm < 10) {
-                        mm = '0' + mm
-                    }
+                    var myJSON = JSON.parse(data);
 
-                    today = yyyy + '-' + mm + '-' + dd;
-
+                    console.log(myJSON);
+                    console.log(myJSON.Artikelnummer);
 
                     var table = document.getElementById("data-artikelen");
                     var row = table.insertRow(-1);
@@ -69,9 +61,9 @@ $(function () {
                     var cell4 = row.insertCell(3);
                     var cell5 = row.insertCell(4);
 
-                    cell1.innerHTML = "NUMMER"; //fixme
-                    cell2.innerHTML = Artikelnaam;
-                    cell3.innerHTML = today;
+                    cell1.innerHTML = myJSON[0].Artikelnummer; //fixme
+                    cell2.innerHTML = "hello";
+                    cell3.innerHTML = "today";
                     cell4.innerHTML = omschrijving;
                     cell5.innerHTML = "button"; //fixme
 

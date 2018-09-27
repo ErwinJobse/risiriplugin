@@ -43,7 +43,7 @@ function table_creation()
 
     <!-- only for test -->
 
-    <form name="sentMessage" id="addArtikel" action="<?php echo plugins_url(); ?>/addArtikel.php"
+    <form name="sentMessage" id="addArtikel" action="<?php echo plugins_url(); ?>/risiriWidget/classes/handler/addArtikel.php/?ajax=true"
 
           method="POST">
         <input class="form-control" id="Artikelnaam" required

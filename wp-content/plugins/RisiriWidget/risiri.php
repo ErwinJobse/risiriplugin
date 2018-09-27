@@ -8,7 +8,16 @@ License: GPL2
 */
 
 
+function ajax_query() {
+    // Return normally if the ajax query isn't set
+    if ( ! isset( $_GET['_ajax'] ) ) {
+        return;
+    }
 
+    set_query_var( 'ajax', 'true' );
+}
+
+add_filter( 'template_redirect', 'ajax_query' );
 
 include( plugin_dir_path( __FILE__ ) . 'include.php');
 

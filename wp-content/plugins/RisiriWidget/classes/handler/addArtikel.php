@@ -49,7 +49,9 @@ $wpdb->insert($tableLog, array(
     array('%s')
 );
 
+//send results back
+$return = $wpdb->get_results( "SELECT * FROM $tableArtikel WHERE Artikelnaam = '$Artikelnaam'" );
 
-return true;
+echo json_encode($return);
 
 
