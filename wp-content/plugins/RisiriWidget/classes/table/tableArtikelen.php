@@ -31,7 +31,7 @@
                             <td><input type="text" class="form-control" name="omschrijving" placeholder="Omschrijving">
                             </td>
                             <td>
-                                <button type="submit" class="actionbutton" name="submitArtikel" id="sendMessageButton">
+                                <button type="submit" class="actionbutton" name="submitArtikel" id="addArtikelButton">
                                     <i class="fa fa-plus plus"></i></button>
                             </td>
 

@@ -15,7 +15,9 @@ function table_creation()
 
     <?php if ($view === TRUE) { //show content  ?>
 
-    <?php get_header(); ?>
+    <div class="navbar-logo">
+        <?php the_custom_logo(); ?>
+    </div>
 
     <script>
         $(function () {
