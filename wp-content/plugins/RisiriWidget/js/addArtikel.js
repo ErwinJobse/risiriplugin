@@ -23,7 +23,7 @@ $(function () {
             $this = $("#addArtikelButton");
             $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
             $.ajax({
-                url: 'http://localhost/risiriplugin/wp-content/themes/risiri/addArtikel.php', //FIXME
+                url: $form.attr('action'),
                 type: "POST",
                 data: {
                     Artikelnaam: Artikelnaam,
