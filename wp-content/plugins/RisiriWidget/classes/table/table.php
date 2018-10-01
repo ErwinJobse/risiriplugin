@@ -13,6 +13,15 @@ public function __construct()
         include(plugin_dir_path(__FILE__) . '/include.php');
         include(plugin_dir_path(__FILE__) . '/roleCheck.php');
         include(plugin_dir_path(__FILE__) . '/db.php');
+
+        //css file for table
+        wp_register_style('table', plugins_url('table.css',__FILE__ ));
+        wp_enqueue_style('table');
+
+
+
+        wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
+        wp_enqueue_script('addArtikel');
         ?>
 
         <?php if ($view === TRUE) { //show content  ?>
@@ -37,8 +46,8 @@ public function __construct()
                 <li><a href="#tab-klanten">Klanten</a></li>
             </ul>
 
-            <?php include(plugin_dir_path(__FILE__) . '/tableArtikelen.php'); ?>
-            <?php include(plugin_dir_path(__FILE__) . '/tableKlanten.php'); ?>
+            <?php include(plugin_dir_path(__FILE__) . '/tables/tableArtikelen.php'); ?>
+            <?php include(plugin_dir_path(__FILE__) . '/tables/tableKlanten.php'); ?>
 
 
         </div>
