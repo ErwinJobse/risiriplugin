@@ -7,7 +7,7 @@
  */ ?>
 
 
-<?php if  (isset($_GET['ajax'])) { } else{?>
+
 
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,22 +25,9 @@
         <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<?php }?>
-
 
         <?php
 
-        // CSS files -------------------------------------------
-        wp_register_style('style', plugins_url('style.css',__FILE__ ));
-        wp_enqueue_style('style');
 
 
 
-        // JS files ----------------------------------------------
-        wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
-        wp_enqueue_script('addArtikel');
-
-
-        //php files -----------------------------------------------
-        include( plugin_dir_path( __FILE__ ) . 'classes/table/table.php');
-        ?>

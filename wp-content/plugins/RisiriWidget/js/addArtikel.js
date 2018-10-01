@@ -44,14 +44,10 @@ $(function () {
                     //clear all fields
                     $('#addArtikel').trigger("reset");
 
-                    console.log(data);
 
-                    var key = "json";
+                    var phpReturn = JSON.parse(data);
 
-                    var myJSON = JSON.parse(data);
 
-                    console.log(myJSON);
-                    console.log(myJSON.Artikelnummer);
 
                     var table = document.getElementById("data-artikelen");
                     var row = table.insertRow(-1);
@@ -61,18 +57,18 @@ $(function () {
                     var cell4 = row.insertCell(3);
                     var cell5 = row.insertCell(4);
 
-                    cell1.innerHTML = myJSON[0].Artikelnummer; //fixme
-                    cell2.innerHTML = "hello";
-                    cell3.innerHTML = "today";
-                    cell4.innerHTML = omschrijving;
-                    cell5.innerHTML = "button"; //fixme
+                    cell1.innerHTML = phpReturn[0].Artikelnummer; //fixme
+                    cell2.innerHTML = phpReturn[0].Artikelnaam;
+                    cell3.innerHTML = phpReturn[0].Aanmaakdatum;
+                    cell4.innerHTML = phpReturn[0].omschrijving;
+                    cell5.innerHTML = "<button type=\"submit\" class=\"actionbutton\" name=\"editArtikel\" value=\"edit\"><i class=\"fas fa-pen pen\"></i></button>"; //fixme
 
                 },
                 error: function () {
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                        .append("</button>");
+                        .append("</button>");s
                     $('#success > .alert-danger').append($("<strong>").text("Er is iets mis gegaan, probeer het later opnieuw!"));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields

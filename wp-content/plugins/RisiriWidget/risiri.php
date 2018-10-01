@@ -1,27 +1,26 @@
 <?php
 /*
-Plugin Name: Risiri
-Description: This plugin adds a custom widget.
-Version: 1.0
-Author: Erwin Jobse
-License: GPL2
+Plugin Name: Risiri warehouse management plugin
+Plugin URI: https://github.com/MextroNL/risiriplugin
+Description: some nice text...
+Version: 0.4
 */
 
 
-function ajax_query() {
-    // Return normally if the ajax query isn't set
-    if ( ! isset( $_GET['_ajax'] ) ) {
-        return;
-    }
+include( plugin_dir_path( __FILE__ ) . 'classes/table/table.php');
 
-    set_query_var( 'ajax', 'true' );
-}
+// CSS files -------------------------------------------
+wp_register_style('style', plugins_url('style.css',__FILE__ ));
+wp_enqueue_style('style');
 
-add_filter( 'template_redirect', 'ajax_query' );
 
-include( plugin_dir_path( __FILE__ ) . 'include.php');
 
-add_shortcode('risiriTable', 'table_creation');
+// JS files ----------------------------------------------
+wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
+wp_enqueue_script('addArtikel');
+
+
+
 
 wp_enqueue_script('addArtikel', get_stylesheet_directory_uri() . '/js/addArtikel.js');
 wp_localize_script('addArikelt', 'addArtikel', array(

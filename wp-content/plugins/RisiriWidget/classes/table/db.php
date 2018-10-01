@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Erwin Jobse
- * Date: 9/25/2018
- * Time: 9:25 AM
+ *@author: Erwin Jobse
  */
 
 global $wpdb;
