@@ -1,11 +1,11 @@
 <?php
 
-class table{
+class table2{
 
 
     public function __construct(){
 
-            add_shortcode('risiriTable', array($this, 'shortcode'));
+            add_shortcode('risiriTable2', array($this, 'shortcode'));
         }
 
     public function shortcode(){
@@ -15,13 +15,12 @@ class table{
         include(plugin_dir_path(__FILE__) . '/db.php');
 
         //css file for table
-        wp_register_style('table', plugins_url('table.css',__FILE__ ));
-        wp_enqueue_style('table');
+        wp_register_style('table2', plugins_url('table.css',__FILE__ ));
+        wp_enqueue_style('table2');
 
+        wp_register_script( 'script', plugins_url( 'js/script.js', __FILE__ ) );
+        wp_enqueue_script('script');
 
-
-        wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
-        wp_enqueue_script('addArtikel');
         ?>
 
         <?php if ($view === TRUE) { //show content  ?>
@@ -52,27 +51,12 @@ class table{
 
         </div>
 
-        <!-- only for test -->
-
-        <form name="sentMessage" id="addArtikel"
-              action="<?php echo plugins_url(); ?>/risiriWidget/classes/handler/addArtikel.php/?ajax=true"
-
-              method="POST">
-            <input class="form-control" id="Artikelnaam" required
-                   data-validation-required-message="Please enter your name.">
-            <input class="form-control" id="omschrijving" required data-validation-required-message="sorry">
-
-
-            <button type="submit" id="addArtikelButton">Send</button>
-
-        </form>
-
 
     <?php }  //end view
     }
 }
 
-$risiriTable = new table();
+$risiriTable2 = new table2();
 
     ?>
 
