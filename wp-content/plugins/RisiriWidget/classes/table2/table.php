@@ -18,7 +18,7 @@ class table2{
         wp_register_style('table2', plugins_url('table.css',__FILE__ ));
         wp_enqueue_style('table2');
 
-        wp_register_script( 'script', plugins_url( 'js/script.js', __FILE__ ) );
+        wp_register_script( 'script', plugins_url( 'js/jquery.tabledit.js', __FILE__ ) );
         wp_enqueue_script('script');
 
         ?>

@@ -7,68 +7,93 @@
  */ ?>
 
 <div id="tab-artikelen">
-    <div class="container">
-        <h1>example</h1>
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <table cellspacing="5" class="table table-bordered table-striped" id="myTable"></table>
-            </div>
-            <div class="col-md-12 col-lg-12">
-                <input type="button" class="btn btn-primary" value="Show Data" id="btnGetData" />
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $(function () {
-            $("#myTable").dynamicTable({
-                columns: [{
-                    text: "Name",
-                    key: "name"
-                },
-                    {
-                        text: "achternaam",
-                        key: "achternaam"
-                    },
 
-                ],
-                data: [{
-                    name: 'Mr.  Brown',
-                    achternaam: 'honson',
-                },
-                    {
-                        name: 'Ms. Rebeca n',
-                        achternaam: 'Joh',
+
+
+        <table id="tabledit" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Artikelnummer</th>
+                <th>Artikelnaam</th>
+                <th>Aanmaakdatum</th>
+                <th>omschrijving</th>
+            </tr>
+
+            <!-- add artikel row -->
+            <tr>
+                <td>Artikelnummer</td>
+                <td>Artikelnaam</td>
+                <td>Aanmaakdatum</td>
+                <td>omschrijving</td>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+
+    <script>
+        function viewData(){
+            $.ajax({
+                url: '<?php echo plugin_dir_url( __FILE__ ) ?>/artikel.php?p=view',
+                method: 'GET'
+            }).done(function(data){
+                $('tbody').html(data)
+                tableData()
+            })
+        }
+        function tableData(){
+            $('#tabledit').Tabledit({
+                url: '<?php echo plugin_dir_url( __FILE__ ) ?>/artikel.php',
+                eventType: 'dblclick',
+                editButton: true,
+                deleteButton: true,
+                hideIdentifier: false,
+                buttons: {
+                    edit: {
+                        class: 'btn btn-sm btn-warning',
+                        html: '<span class="glyphicon glyphicon-pencil"></span> Edit',
+                        action: 'edit'
                     },
-                ],
-                getControl: function (columnKey) {
-                    if (columnKey == "achernaam") {
-                        return '<input type="text" class="form-control" />';
+                    delete: {
+                        class: 'btn btn-sm btn-danger',
+                        html: '<span class="glyphicon glyphicon-trash"></span> Trash',
+                        action: 'delete'
+                    },
+                    save: {
+                        class: 'btn btn-sm btn-success',
+                        html: 'Save'
+                    },
+                    restore: {
+                        class: 'btn btn-sm btn-warning',
+                        html: 'Restore',
+                        action: 'restore'
+                    },
+                    confirm: {
+                        class: 'btn btn-sm btn-default',
+                        html: 'Confirm'
                     }
-
-
-
-                    return '<input type="text" class="form-control" />';
                 },
+                columns: {
+                    identifier: [0, 'Artikelnummer'],
+                    editable: [[1, 'Artikelnaam'],[2, 'Aanmaakdatum'],[3, 'omschrijving'], ]
+                },
+                onSuccess: function(data, textStatus, jqXHR) {
+                    viewData()
+                },
+                onFail: function(jqXHR, textStatus, errorThrown) {
+                    console.log('onFail(jqXHR, textStatus, errorThrown)');
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                },
+                onAjax: function(action, serialize) {
+                    console.log('onAjax(action, serialize)');
+                    console.log(action);
+                    console.log(serialize);
+                }
             });
-
-            $('#btnGetData').click(function () {
-                var data = $("#myTable").getTableData();
-                console.log(data);
-            });
-        });
+        }
+        viewData();
     </script>
-    <script type="text/javascript">
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36251023-1']);
-        _gaq.push(['_setDomainName', 'jqueryscript.net']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
         </div>

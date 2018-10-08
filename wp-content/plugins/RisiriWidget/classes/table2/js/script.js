@@ -25,6 +25,7 @@
                 var theButtons = {
                     cancelButton: $(tableCell).find('*[data-codeapi-cancelcommand]'),
                     deleteButton: $(tableCell).find('*[data-codeapi-deletecommand]'),
+                    deleteButton: $(tableCell).find('*[data-codeapi-deletecommand]'),
                     editButton: $(tableCell).find('*[data-codeapi-editcommand]'),
                     saveButton: $(tableCell).find('*[data-codeapi-savecommand]')
                 };
@@ -183,7 +184,7 @@
             var tableRow = $('<tr></tr>');
             $this.append($(tableRow));
 
-            var tableCell = $('<th>#</th>');
+            var tableCell = $('<th>nummer</th>');
             $(tableRow).append($(tableCell));
 
             // key, text
