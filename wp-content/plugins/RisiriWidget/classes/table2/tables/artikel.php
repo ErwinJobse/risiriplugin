@@ -21,7 +21,7 @@ $getArtikel = $wpdb->get_results("SELECT * FROM $tableArtikel");
 $maxKlant = $wpdb->get_var("SELECT MAX(klantnummer) FROM $tableKlant");
 $maxArtikel = $wpdb->get_var("SELECT MAX(artikelNummer) FROM $tableArtikel");
 
-$page = isset($_GET['p'])? $_GET['p'] : '' ;
+/* $page = isset($_GET['p'])? $_GET['p'] : '' ;
 if($page=='view'){
      foreach ($getArtikel as $row) { ?>
 
@@ -67,5 +67,41 @@ if($page=='view'){
 
     echo json_encode($input);
 
+} */
+
+if(isset($_POST['edit_row']))
+{
+    $row=$_POST['row_id'];
+    $name=$_POST['name_val'];
+    $omschrijving=$_POST['age_val'];
+
+    $wpdb->update($tableArtikel, array(
+
+        'Artikelnummer' => $row,
+        'Artikelnaam' => $name,
+        'omschrijving' => $omschrijving
+
+    ),
+        array('Artikelnummer' => $row)
+    );
+    echo "success";
+    exit();
+}
+
+if(isset($_POST['delete_row']))
+{
+    $row_no=$_POST['row_id'];
+    mysql_query("delete from user_detail where id='$row_no'");
+    echo "success";
+    exit();
+}
+
+if(isset($_POST['insert_row']))
+{
+    $name=$_POST['name_val'];
+    $age=$_POST['age_val'];
+    mysql_query("insert into user_detail values('','$name','$age')");
+    echo mysql_insert_id();
+    exit();
 }
 ?>
