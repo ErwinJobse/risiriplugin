@@ -52,4 +52,29 @@ function my_admin_head() {
 }
 add_action('admin_head', 'my_admin_head');
 
+
+//Widget Register
+$args = array(
+    'name'          => __( 'Sidebar name', 'theme_text_domain' ),
+    'id'            => 'unique-sidebar-id',    // ID should be LOWERCASE  ! ! !
+    'description'   => '',
+    'class'         => '',
+    'before_widget' => '<li id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</li>',
+    'before_title'  => '<h2 class="widgettitle">',
+    'after_title'   => '</h2>' );
+register_sidebar( $args );
+function arphabet_widgets_init()
+{
+//Full page Widgets
+    register_sidebar(array(
+        'name' => 'Full Page Widget',
+        'id' => 'full-page-widget',
+        'description' => 'Widget covering full page',
+        'before_widget' => '<div class="widget-1">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget1-title">',
+        'after_title' => '</h3>',
+    ));
+}
 ?>

@@ -26,9 +26,11 @@ class table{
 
         <?php if ($view === TRUE) { //show content  ?>
 
+<!--
         <div class="navbar-logo">
-            <?php the_custom_logo(); ?>
+            <?php //the_custom_logo(); ?>
         </div>
+-->
 
         <script>
             $(function () {
