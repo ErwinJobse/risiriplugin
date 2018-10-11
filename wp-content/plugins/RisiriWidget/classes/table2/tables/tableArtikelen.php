@@ -15,14 +15,10 @@
                     "selectable":false,
                     "fields": {
                         "Artikelnummer":{
-                            "mandatory":true,
-
+                            "mandatory":false,
                         },
                         "Artikelnaam":{
                             "mandatory":true,
-                        },
-                        "Aanmaakdatum":{
-                            "mandatory":false,
                         },
                         "omschrijving":{
                             "mandatory":false,
@@ -80,3 +76,5 @@
     </div>
 
 </div>
+
+<?php include(plugin_dir_path(__FILE__) . 'js/artikel.tabledit.php'); ?>
