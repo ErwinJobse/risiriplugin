@@ -195,6 +195,28 @@ body{
 
 /*Actie*/
 
+.voltooid{
+/*visibility: hidden;*/
+color: #707070;
+font-family: 'Roboto';
+text-align: center;
+border: 2px solid #B6B6B6;
+background-color: #CBEBF6;
+border-collapse: collapse;
+border-radius: 1em;
+overflow: hidden;
+margin: auto;
+width: 50%;
+}
+.meldingText{
+    font-family: 'Roboto';
+    
+}
+.kleur{
+/*    color: red !important;*/
+font-weight: 900;
+text-decoration: underline #707070 !important;
+}
 .action-buttons{
     padding: 0 10px 0 10px;
 }
