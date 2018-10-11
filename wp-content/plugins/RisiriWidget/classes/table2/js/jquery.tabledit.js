@@ -1,599 +1,1024 @@
 
 if (typeof jQuery === 'undefined') {
-  throw new Error('Tabledit requires jQuery library.');
+    throw new Error('FullTable requires jQuery library.');
+}
+
+if (typeof Array.isArray != "function") {
+    Array.isArray = function(obj) {
+        if (typeof obj != "object") return false;
+        if (typeof obj.length == "undefined") return false;
+        for (var i in obj) {
+            if (!obj.hasOwnProperty(i)) continue;
+            if (isNaN(i)) return false;
+        }
+        return true;
+    };
 }
 
 (function($) {
     'use strict';
 
-    $.fn.Tabledit = function(options) {
+    $.fn.FullTable = function() {
+
         if (!this.is('table')) {
-            throw new Error('Tabledit only works when applied to a table.');
+            return this;
         }
 
-        var $table = this;
+        var table = $(this);
+
+        table.getKeys = function() {
+            if ($(table).data('fulltable-keys') == null) $(table).data('fulltable-keys', []);
+            return $(table).data('fulltable-keys');
+        };
+        table.setKeys = function(val) {
+            $(table).data('fulltable-keys', val);
+        };
+
+        table.getRows = function() {
+            if ($(table).data('fulltable-rows') == null) $(table).data('fulltable-rows', []);
+            return $(table).data('fulltable-rows');
+        };
+        table.setRows = function(val) {
+            $(table).data('fulltable-rows', val);
+        };
+
+        table.getSorting = function() {
+            if ($(table).data('fulltable-sorting') == null) $(table).data('fulltable-sorting', []);
+            return $(table).data('fulltable-sorting');
+        };
+        table.setSorting = function(val) {
+            $(table).data('fulltable-sorting', val);
+        };
+
+        table.getEvents = function() {
+            if ($(table).data('fulltable-events') == null) $(table).data('fulltable-events', {});
+            return $(table).data('fulltable-events');
+        };
+        table.setEvents = function(val) {
+            $(table).data('fulltable-events', val);
+        };
+
+        var types = {
+            "integer":["integer", "number"],
+            "decimal":["decimal", "float", "double"],
+            "string":["string", "literal"]
+        };
+
+        var on = function() {
+            return methods['on'].apply(this, arguments);
+        };
+
+        var clean = function() {
+            return methods['clean'].apply(this, arguments);
+        };
+
+        var changeSettings = function() {
+            return methods['changeSettings'].apply(this, arguments);
+        };
+
+        var drawHeader = function() {
+            return methods['drawHeader'].apply(this, arguments);
+        };
+
+        var drawBody = function() {
+            return methods['drawBody'].apply(this, arguments);
+        };
+
+        var draw = function() {
+            return methods['draw'].apply(this, arguments);
+        };
+
+        var filter = function() {
+            return methods['filter'].apply(this, arguments);
+        };
+
+        var order = function() {
+            return methods['order'].apply(this, arguments);
+        };
+
+        var validateRow = function() {
+            return methods['validateRow'].apply(this, arguments);
+        };
+
+        var addRow = function() {
+            return methods['addRow'].apply(this, arguments);
+        };
+
+        var editRow = function() {
+            return methods['editRow'].apply(this, arguments);
+        };
+
+        var removeRow = function() {
+            return methods['removeRow'].apply(this, arguments);
+        };
+
+        var saveRow = function() {
+            return methods['saveRow'].apply(this, arguments);
+        };
+
+        var discardRow = function() {
+            return methods['discardRow'].apply(this, arguments);
+        };
+
+        var checkRow = function() {
+            return methods['checkRow'].apply(this, arguments);
+        };
+
+        var addSortItem = function(fieldName, fieldSort) {
+            var removing_indexes = [];
+            for (var index in table.getSorting()) {
+                if (!table.getSorting().hasOwnProperty(index)) continue;
+                var sortingItem = table.getSorting()[index];
+                if (sortingItem.name == fieldName) {
+                    removing_indexes.push(index);
+                }
+            }
+            removing_indexes = removing_indexes.reverse();
+            for (var index in removing_indexes) {
+                if (!removing_indexes.hasOwnProperty(index)) continue;
+                index = removing_indexes[index];
+                table.getSorting().splice(index, 1);
+            }
+            table.getSorting().push({
+                name: fieldName,
+                sort: fieldSort
+            });
+        }
+
+        var getHeaderFromDom = function() {
+            // Init headers and field names.
+            $(table).find("thead th").each(function(th_index, th) {
+                var fieldName = $(th).attr("fulltable-field-name");
+                if (fieldName == null) {
+                    fieldName = (new Date()).getTime()+""+(Math.floor(Math.random()*1e8));
+                    $(th).attr("fulltable-field-name", fieldName);
+                }
+                table.getKeys()[th_index] = fieldName;
+            });
+        };
+
+        var drawRow = function(data, tr) {
+            if (typeof data != "object") data = null;
+            if (tr == null) {
+                tr = $("<tr/>");
+                for (var key in table.getKeys()) {
+                    if (!table.getKeys().hasOwnProperty(key)) continue;
+                    key = table.getKeys()[key];
+                    var td = $("<td/>");
+                    $(td).attr("fulltable-field-name", key);
+                    $(tr).append($(td));
+                }
+            }
+            var row = {};
+            $(tr).children("td").each(function(td_index, td) {
+                var key = table.getKeys()[td_index];
+                if (key != null) $(td).attr("fulltable-field-name", key);
+                var value;
+                if (data == null) {
+                    value = $(td).text();
+                } else {
+                    value = data[key];
+                }
+                var text = value;
+                var fieldData = options.fields[key];
+                if (fieldData == null) fieldData = {};
+                // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                if (fieldData.options != null) {
+                    text = "";
+                    var found = false;
+                    for (var option in fieldData.options) {
+                        if (!fieldData.options.hasOwnProperty(option)) continue;
+                        option = fieldData.options[option];
+                        if (option.value == value) {
+                            text = option.title;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) value = null;
+                }
+                row[key] = value;
+                $(td).text(text);
+            });
+            row["__dom"] = $(tr);
+            row["__filtered"] = false;
+            addSelectionControl(row, "body");
+            addEditionControl(row, "body");
+            return row;
+        };
+
+        var getBodyFromDom = function() {
+            $(table).find("tbody tr").each(function(tr_index, tr) {
+                table.getRows()[tr_index] = drawRow(null, tr);
+            });
+        };
+
+        var addEditionControl = function(row, type) {
+            if (!options.editable) return;
+            if (typeof row != "object") return;
+            var tr = row["__dom"];
+            if (!$(tr).is("tr")) return;
+            if ($(tr).find(".fulltable-edition-control").length > 0) return;
+            var edition_control = null;
+            if ($(tr).parent().is("thead") || type == "head") {
+                edition_control = $("<th>", {
+                    'class':"fulltable-edition-control"
+                });
+            }
+            if ($(tr).parent().is("tbody") || type == "body") {
+                edition_control = $("<td/>", {
+                    'class':"fulltable-edition-control"
+                });
+                edition_control.append($("<a/>", {
+                    'class':"fulltable-edit",
+                    'text':"E"
+                }).click(function() {
+                    editRow(row);
+                }));
+                edition_control.append($("<a/>", {
+                    'class':"fulltable-remove",
+                    'text':"F"
+                }).click(function() {
+                    removeRow(row);
+                }));
+                edition_control.append($("<a/>", {
+                    'class':"fulltable-save",
+                    'text':"G"
+                }).click(function() {
+                    saveRow(row);
+                }));
+                edition_control.append($("<a/>", {
+                    'class':"fulltable-create",
+                    'text':"I"
+                }).click(function() {
+                    saveRow(row);
+                }));
+                edition_control.append($("<a/>", {
+                    'class':"fulltable-discard",
+                    'text':"H"
+                }).click(function() {
+                    discardRow(row);
+                }));
+            }
+            $(tr).append($(edition_control));
+        };
+
+        var addSelectionControl = function(row, type) {
+            if (!options.selectable) return;
+            if (typeof row != "object") return;
+            var tr = row["__dom"];
+            if (!$(tr).is("tr")) return;
+            if ($(tr).find(".fulltable-selection-control").length > 0) return;
+            var selection_control = null;
+            if ($(tr).parent().is("thead") || type == "head") {
+                selection_control = $("<th>", {
+                    'class':"fulltable-selection-control"
+                });
+            }
+            if ($(tr).parent().is("tbody") || type == "body") {
+                selection_control = $("<td/>", {
+                    'class':"fulltable-selection-control"
+                });
+                selection_control.append($("<input/>", {
+                    'type':"checkbox",
+                    'class':"checkbox",
+                    'value':row["__selected"]
+                }).change(function() {
+                    checkRow(row);
+                }));
+            }
+            $(tr).prepend($(selection_control));
+        };
+
+        var showRowForm = function(row) {
+            for (var fieldName in row) {
+                if (!row.hasOwnProperty(fieldName)) continue;
+                if (fieldName.indexOf("__") == 0) continue;
+                var value = row[fieldName];
+                if (value == "") value = null;
+                var td = $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']");
+                $(td).empty();
+                var fieldData = options.fields[fieldName];
+                if (fieldData == null) fieldData = {};
+                var input;
+                // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                if (fieldData.options != null) {
+                    input = $("<select>", {
+                        'disabled':fieldData.disabled
+                    });
+                    var optionDom = $("<option>", {
+                        'disabled':fieldData.mandatory,
+                        'selected':'selected',
+                        'text':fieldData.placeholder,
+                        'value':null
+                    });
+                    $(input).append($(optionDom));
+                    for (var option in fieldData.options) {
+                        if (!fieldData.options.hasOwnProperty(option)) continue;
+                        option = fieldData.options[option];
+                        optionDom = $("<option>", {
+                            'text':option.title,
+                            'value':option.value
+                        });
+                        $(input).append($(optionDom));
+                    }
+                } else {
+                    input = $("<input>", {
+                        'type':"text",
+                        'placeholder':fieldData.placeholder,
+                        'disabled':fieldData.disabled
+                    });
+                }
+                if (value != null) $(input).val(value);
+                $(input).change(function(event) {
+                    $(event.target).removeClass("invalid");
+                });
+                $(input).keyup(function(event) {
+                    $(event.target).removeClass("invalid");
+                });
+                $(td).append($(input));
+            }
+            $(row["__dom"]).addClass("fulltable-editing");
+        };
+
+        var methods = {
+            'on':function(eventName, eventHandler) {
+                if (typeof eventName != "string" || typeof eventHandler != "function") return;
+                if (eventName != "on" && methods[eventName] != null) {
+                    table.getEvents()[eventName] = function() {
+                        eventHandler.apply(this, arguments);
+                    };
+                }
+            },
+            'clean':function() {
+                $(table).find(".fulltable-edition-control, .fulltable-sort, .fulltable-filter").remove();
+                $(table).removeClass(function (index, className) {
+                    return (className.match("/(^|\s)fulltable-\S+/g") || []).join(' ');
+                });
+                $(table).find("*").removeClass(function (index, className) {
+                    return (className.match("/(^|\s)fultablle-\S+/g") || []).join(' ');
+                });
+                var dataKeys = ["fulltable-creating", "fulltable-editing"];
+                for (var dataKey in dataKeys) {
+                    if (!dataKeys.hasOwnProperty(dataKey)) continue;
+                    $(table).removeData(dataKey);
+                    $(table).find("*").removeData(dataKey);
+                }
+                if (typeof table.getEvents().clean == "function") table.getEvents().clean();
+            },
+            'changeSettings':function(newOptionsPart) {
+                if (typeof newOptionsPart != "object") return this;
+                for (var key in options) {
+                    if (!options.hasOwnProperty(key)) continue;
+                    if (newOptionsPart[key] == null) continue;
+                    if (key == "fields") {
+                        var fields = options["fields"]
+                        var newFields = newOptionsPart["fields"];
+                        if (typeof newFields != "object") continue;
+                        for (var newFieldName in newFields) {
+                            if (!newFields.hasOwnProperty(newFieldName)) continue;
+                            var newField = newFields[newFieldName];
+                            if (fields[newFieldName] == null) {
+                                fields[newFieldName] = newField;
+                                continue;
+                            }
+                            for (var key in newField) {
+                                if (!newField.hasOwnProperty(key)) continue;
+                                fields[newFieldName][key] = newFields[newFieldName][key];
+                            }
+                        }
+                        continue;
+                    }
+                    options[key] = newOptionsPart[key];
+                }
+                draw();
+                if (typeof table.getEvents().changeSettings == "function") table.getEvents().changeSettings(newOptionsPart, options);
+                return this;
+            },
+            'draw':function() {
+                drawHeader();
+                drawBody();
+                return this;
+            },
+            'drawHeader':function() {
+                // Drawing of header
+                $(table).find("thead th:not(.fulltable-edition-control):not(.fulltable-selection-control)").each(function(th_index, th) {
+                    var fieldName = $(th).attr("fulltable-field-name");
+                    var apply_order = function(reverse) {
+                        var fieldSort = 0;
+                        if ($(th).hasClass("fulltable-asc")) {
+                            fieldSort = 1;
+                        } else if ($(th).hasClass("fulltable-desc")) {
+                            fieldSort = -1;
+                        }
+                        if (reverse) fieldSort = -fieldSort;
+                        addSortItem(fieldName, fieldSort);
+                    };
+                    apply_order(false);
+
+                    // Insertion of ordenation button.
+                    $(th).children("a.fulltable-sort").remove();
+                    if (options.orderable) {
+                        var fieldData = options.fields[fieldName];
+                        if (fieldData == null) fieldData = {};
+                        if (fieldData.orderable == null || fieldData.orderable == true) {
+                            var sortElement = $("<a/>").addClass("fulltable-sort").addClass("fulltable-sort-asc").text("A");
+                            $(sortElement).click(function(event) {
+                                apply_order(true);
+                                order();
+                            });
+                            $(th).append(sortElement);
+                            var sortElement = $("<a/>").addClass("fulltable-sort").addClass("fulltable-sort-desc").text("C");
+                            $(sortElement).click(function(event) {
+                                apply_order(true);
+                                order();
+                            });
+                            $(th).append(sortElement);
+                        }
+                    }
+                    // Insertion of filtering fields.
+                    $(th).children("span.fulltable-filter, input.fulltable-filter, select.fulltable-filter").remove();
+                    if (options.filterable) {
+                        var fieldData = options.fields[fieldName];
+                        if (fieldData == null) fieldData = {};
+                        if (fieldData.filterable == null || fieldData.filterable == true) {
+                            var filterFieldElement;
+                            // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                            if (fieldData.options != null) {
+                                filterFieldElement = $("<select>", {
+                                    'class':"fulltable-filter"
+                                });
+                                var optionDom = $("<option>", {
+                                    'text':"", // TODO: Implement a placeholder for combo filter.
+                                    'value':null
+                                });
+                                $(filterFieldElement).append($(optionDom));
+                                // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                                for (var option in fieldData.options) {
+                                    if (!fieldData.options.hasOwnProperty(option)) continue;
+                                    option = fieldData.options[option];
+                                    optionDom = $("<option>", {
+                                        'text':option.title,
+                                        'value':option.value
+                                    });
+                                    $(filterFieldElement).append($(optionDom));
+                                }
+                            } else {
+                                filterFieldElement = $("<input/>", {
+                                    'class':"fulltable-filter",
+                                    'type':"text"
+                                });
+                            }
+                            var filterSpanWrapper = $("<span>", {
+                                'class':"fulltable-filter"
+                            });
+                            $(th).append(filterSpanWrapper);
+                            $(filterSpanWrapper).append(filterFieldElement);
+                        }
+                    }
+                }).removeClass("fulltable-asc").removeClass("fulltable-desc").addClass("fulltable-asc");
+
+                $(table).find("input, select").change(function(event) {
+                    filter();
+                });
+                $(table).find("input, select").keyup(function(event) {
+                    filter();
+                });
+
+                // Appending of header for edition controls
+                addEditionControl({"__dom":$(table).find("thead tr")}, "head");
+                addSelectionControl({"__dom":$(table).find("thead tr")}, "head");
+                if (typeof table.getEvents().drawHeader == "function") table.getEvents().drawHeader();
+                return this;
+            },
+            'drawBody':function() {
+                $(table).find("tbody tr").detach();
+                for (var row in table.getRows()) {
+                    if (!table.getRows().hasOwnProperty(row)) continue;
+                    row = table.getRows()[row];
+                    if ((row["__filtered"] && !row["__creating"]) || row["__removed"]) continue;
+                    row["__invalidOptionRemoved"] = false;
+                    for (var fieldName in row) {
+                        if (!row.hasOwnProperty(fieldName)) continue;
+                        $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']").empty();
+                        if (row["__creating"] || $(row["__dom"]).data("fulltable-editing")) continue;
+                        var value = row[fieldName];
+                        var text = value;
+                        var fieldData = options.fields[fieldName];
+                        if (fieldData == null) fieldData = {};
+                        if (fieldData.options != null) {
+                            // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                            var found = false;
+                            if (value == null) {
+                                if (!fieldData.mandatory) found = true;
+                            } else {
+                                for (var option in fieldData.options) {
+                                    if (!fieldData.options.hasOwnProperty(option)) continue;
+                                    option = fieldData.options[option];
+                                    if (option.value == value) {
+                                        found = true;
+                                        text = option.title;
+                                        break;
+                                    }
+                                }
+                            }
+                            row["__invalidOptionRemoved"] = row["__invalidOptionRemoved"] || !found; // If option is not in option list, this restriction must be activated.
+                        } else {
+                            row["__invalidOptionRemoved"] = row["__invalidOptionRemoved"] || false; // If options has been removed from field settings, this restriction must be also removed.
+                        }
+                        if (value == null) text = "";
+                        $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']").text(text);
+                        if (row["__invalidOptionRemoved"]) break;
+                    }
+                    if (row["__invalidOptionRemoved"] && !row["__creating"]) continue;
+                    if ($(row["__dom"]).data("fulltable-editing")) {
+                        showRowForm(row);
+                    }
+                    $(table).find("tbody").append(row["__dom"]);
+                }
+                if (typeof table.getEvents().drawBody == "function") table.getEvents().drawBody(table.getRows());
+                return this;
+            },
+            'filter':function() {
+                for (var row in table.getRows()) {
+                    if (!table.getRows().hasOwnProperty(row)) continue;
+                    row = table.getRows()[row];
+                    if (row["__removed"] == true) {
+                        $(row["__dom"]).remove();
+                        continue;
+                    }
+                    row["__filtered"] = false;
+                    $(table).find("tbody").append($(row["__dom"]));
+                }
+                $(table).find("thead th input.fulltable-filter, thead th select.fulltable-filter").each(function (i, e) {
+                    var filtering_value = $(e).val();
+                    var fieldName = $(e).parents("th").first().attr("fulltable-field-name");
+                    for (var row in table.getRows()) {
+                        if (!table.getRows().hasOwnProperty(row)) continue;
+                        row = table.getRows()[row];
+                        var filtered_value = row[fieldName];
+                        var filtered = false;
+                        if ($(row["__dom"]).data("fulltable-editing")) continue;
+                        var fieldData = options.fields[fieldName];
+                        if (fieldData == null) fieldData = {};
+                        // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                        if (fieldData.options != null) {
+                            filtered = (filtering_value != null && filtering_value != '' && filtered_value != filtering_value);
+                        } else {
+                            if (filtered_value == null) filtered_value = '';
+                            filtered = (filtering_value != null && filtering_value != '' && filtered_value.toUpperCase().indexOf(filtering_value.toUpperCase()) < 0);
+                        }
+                        if (filtered) {
+                            $(row["__dom"]).detach();
+                            row["__filtered"] = true;
+                        }
+                    }
+                });
+                if (typeof table.getEvents().filter == "function") table.getEvents().filter();
+                order();
+                return this;
+            },
+            'order':function(sorting) {
+                var fields = table.getSorting();
+                if (Array.isArray(sorting)) {
+                    sorting = sorting.reverse();
+                    for (var sortingItem in sorting) {
+                        if (!sorting.hasOwnProperty(sortingItem)) continue;
+                        sortingItem = sorting[sortingItem];
+                        if (sortingItem.name != null && typeof(sortingItem.sort) == "number") {
+                            addSortItem(sortingItem.name, sortingItem.sort);
+                        }
+                    }
+                }
+                var compareFunction = function(field, order) {
+                    if (order == null) order = 1;
+                    var result = function (a, b) {
+                        if (a["__creating"] == true) return 1;
+                        if (b["__creating"] == true) return -1;
+                        if (a == null || b == null) return 0;
+                        var fieldData = options.fields[field];
+                        if (fieldData == null) fieldData = {};
+                        // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                        if (fieldData.options != null) {
+                            var foundA = false, foundB = false;
+                            for (var option in fieldData.options) {
+                                if (!fieldData.options.hasOwnProperty(option)) continue;
+                                option = fieldData.options[option];
+                                if (!foundA && option["value"] == a[field]) {
+                                    a = option["title"];
+                                    foundA = true;
+                                }
+                                if (!foundB && option["value"] == b[field]) {
+                                    b = option["title"];
+                                    foundB = true;
+                                }
+                                if (foundA && foundB) break;
+                            }
+                        } else {
+                            a = a[field];
+                            b = b[field];
+                        }
+                        if (typeof a == "string") a = a.toUpperCase();
+                        if (typeof b == "string") b = b.toUpperCase();
+                        if (a == null || b == null) return 0;
+                        if (!isNaN(a) && !isNaN(b)) {
+                            a = Number(a);
+                            b = Number(b);
+                            return order*(a - b);
+                        } else {
+                            if (a < b)
+                                return order*(-1);
+                            else if (a == b)
+                                return 0;
+                            else
+                                return order*(1);
+                        }
+                    };
+                    return result;
+                };
+                if (!Array.isArray(fields) || fields.length == 0) return this;
+                for (var field in fields) {
+                    if (!fields.hasOwnProperty(field)) continue;
+                    field = fields[field];
+                    table.setRows(table.getRows().sort(compareFunction(field.name, field.sort)));
+                    var head = $(table).find("thead th[fulltable-field-name='" + field.name + "']"); // TODO: Improve saving header in all rows by reference.
+                    $(head).removeClass("fulltable-asc").removeClass("fulltable-desc");
+                    if (field.sort >= 0) $(head).addClass("fulltable-asc");
+                    else $(head).addClass("fulltable-desc");
+                }
+                drawBody();
+                if (typeof table.getEvents().order == "function") table.getEvents().order();
+                return this;
+            },
+            'validateRow':function(row, writeRow) {
+                if (typeof row != "object") return this;
+                var error = false;
+                var errors = [];
+                var values = {};
+                var texts = {};
+                row["__validated_texts"] = texts;
+                row["__validated_values"] = values;
+                for (var fieldName in row) {
+                    if (!row.hasOwnProperty(fieldName)) continue;
+                    var fieldError = false;
+                    if (fieldName.indexOf("__") == 0) continue;
+                    var fieldData = options.fields[fieldName] || {};
+                    var td = $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']");
+                    var value = null;
+                    var text = null;
+                    if ($(td).find("input").length > 0) {
+                        value = $(td).find("input").val();
+                        text = value;
+                    } else if ($(td).find("select").length > 0) {
+                        value = $(td).find("select").val();
+                    } else {
+                        text = $(td).text();
+                    }
+                    // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                    if (fieldData.options != null) {
+                        var found = false;
+                        for (var option in fieldData.options) {
+                            if (!fieldData.options.hasOwnProperty(option)) continue;
+                            option = fieldData.options[option];
+                            if (option["value"] == value) {
+                                text = option["title"];
+                                found = true;
+                                break;
+                            } else {
+                                if (text = "") text = null;
+                                if (option["value"] == text) {
+                                    value = option["value"];
+                                    text = option["title"];
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!found) {
+                            value = null;
+                        }
+                    }
+                    if (value == "") value = null;
+
+                    // Validations:
+                    if (value == null && fieldData.mandatory) {
+                        fieldError = true;
+                        if (fieldData.errors != null && fieldData.errors.mandatory != null) {
+                            errors.push(fieldData.errors.mandatory);
+                        }
+                    }
+                    if (value != null && fieldData.type != null) {
+                        var type = null;
+                        for (var typeEntry in types) {
+                            if (!types.hasOwnProperty(typeEntry)) continue;
+                            var typeNames = types[typeEntry];
+                            if (typeNames.indexOf(fieldData.type) >= 0) {
+                                type = typeEntry;
+                                break;
+                            }
+                        }
+                        switch (type) {
+                            case "decimal":
+                                if (isNaN(value)) {
+                                    fieldError = true;
+                                    if (fieldData.errors != null && fieldData.errors.type != null) {
+                                        errors.push(fieldData.errors.type);
+                                        value = null;
+                                    }
+                                    break;
+                                }
+                                value = Number(value);
+                                break;
+                            case "integer":
+                                if (isNaN(value)) {
+                                    fieldError = true;
+                                    if (fieldData.errors != null && fieldData.errors.type != null) {
+                                        errors.push(fieldData.errors.type);
+                                        value = null;
+                                    }
+                                    break;
+                                }
+                                value = Number(value);
+                                if (Math.floor(value) != value) {
+                                    fieldError = true;
+                                    if (fieldData.errors != null && fieldData.errors.type != null) {
+                                        errors.push(fieldData.errors.type);
+                                        value = null;
+                                    }
+                                    break;
+                                }
+                                break;
+                            case "string":
+                            default:
+
+                                break;
+                        }
+                    }
+                    if (value != null && typeof fieldData.validator == "function") {
+                        if (!(fieldData.validator(value, row, table.getRows(), table) === true)) {
+                            fieldError = true;
+                            if (fieldData.errors != null && fieldData.errors.validator != null) {
+                                errors.push(fieldData.errors.validator);
+                                value = null;
+                            }
+                        }
+                    }
+
+                    if (value == null) text = "";
+                    values[fieldName] = value;
+                    texts[fieldName] = text;
+
+                    if (writeRow == null) writeRow = false;
+                    if (writeRow) {
+                        for (var fieldName in values) {
+                            if (!values.hasOwnProperty(fieldName)) continue;
+                            if ($(td).find("input, select").length > 0) {
+                                $(td).find("input, select").val(value);
+                            } else {
+                                $(td).empty();
+                                $(td).text(text);
+                            }
+                        }
+                    }
+                    if (fieldError) {
+                        $(td).find("input, select").addClass("invalid");
+                        error = true;
+                    }
+                }
+                if (error) {
+                    if (typeof table.getEvents().error == "function") table.getEvents().error(errors);
+                }
+                return !error;
+            },
+            'addRow':function() {
+                if (!options.editable) return this;
+                if ($(table).data("fulltable-creating")) return this;
+                $(table).data("fulltable-creating", true);
+                var row = {};
+                var row_index = table.getRows().length;
+                table.getRows()[row_index] = row;
+                row["__creating"] = true;
+                row["__dom"] = $("<tr/>");
+                row["__filtering"] = false;
+                row["__invalidOptionRemoved"] = false;
+                for (var fieldName in table.getKeys()) {
+                    if (!table.getKeys().hasOwnProperty(fieldName)) continue;
+                    fieldName = table.getKeys()[fieldName];
+                    var td = $("<td/>", {
+                        'fulltable-field-name': fieldName
+                    });
+                    $(row["__dom"]).append($(td));
+                    row[fieldName] = "";
+                }
+                $(table).children("tbody").append($(row["__dom"]));
+                addEditionControl(row, "body");
+                addSelectionControl(row, "body");
+                $(row["__dom"]).find("td.fulltable-selection-control input[type='checkbox']").prop("disabled", true);
+                $(row["__dom"]).data("fulltable-editing", true);
+                showRowForm(row);
+                $(row["__dom"]).addClass("fulltable-creating");
+                if (typeof table.getEvents().addRow == "function") table.getEvents().addRow(row);
+                return this;
+            },
+            'editRow':function(row) {
+                if (!options.editable) return this;
+                if (typeof row != "object") return this;
+                $(row["__dom"]).data("fulltable-editing", true);
+                showRowForm(row);
+                if (typeof table.getEvents().editRow == "function") table.getEvents().editRow(row);
+                if (options.alwaysCreating === true) addRow(); // Here this invocation should not be needed, but it cannot cause problems because method idenpontency.
+                return this;
+            },
+            'removeRow':function(row) {
+                if (!options.editable) return this;
+                if (typeof row != "object") return this;
+                row["__removed"] = true;
+                $(row["__dom"]).detach();
+                for (var fieldName in row) {
+                    if (!row.hasOwnProperty(fieldName)) continue;
+                    if (fieldName.indexOf("__") == 0) continue;
+                    var value = row[fieldName];
+                    var td = $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']");
+                    $(td).empty();
+                    var input = $("<input>", {
+                        'type':"text",
+                        'value':value
+                    });
+                    $(td).append($(input));
+                }
+                if (typeof table.getEvents().removeRow == "function") table.getEvents().removeRow(row);
+                if (options.alwaysCreating === true) addRow();
+                return this;
+            },
+            'saveRow':function(row) {
+                if (!options.editable) return this;
+                if (typeof row != "object") return this;
+                if (!validateRow(row)) return this;
+                $(row["__dom"]).removeClass("fulltable-editing");
+                $(row["__dom"]).data("fulltable-editing", false);
+                if (row["__creating"]) {
+                    $(table).data("fulltable-creating", false);
+                    $(row["__dom"]).removeClass("fulltable-creating");
+                    $(row["__dom"]).find("td.fulltable-selection-control input[type='checkbox']").prop("disabled", false);
+                    row["__creating"] = false;
+                }
+                for (var fieldName in row) {
+                    if (!row.hasOwnProperty(fieldName)) continue;
+                    if (fieldName.indexOf("__") == 0) continue;
+                    var td = $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']");
+                    $(td).empty();
+                    $(td).text(row["__validated_texts"][fieldName]);
+                    row[fieldName] = row["__validated_values"][fieldName];
+                }
+                if (typeof table.getEvents().saveRow == "function") table.getEvents().saveRow(row);
+                if (options.alwaysCreating === true) addRow();
+                return this;
+            },
+            'discardRow': function(row) {
+                if (!options.editable) return this;
+                if (typeof row != "object") return this;
+                $(row["__dom"]).data("fulltable-editing", false);
+                $(row["__dom"]).removeClass("fulltable-editing");
+                if (row["__creating"]) {
+                    $(table).data("fulltable-creating", false);
+                    row["__creating"] = false;
+                    row["__removed"] = true;
+                    $(row["__dom"]).detach();
+                } else {
+                    for (var fieldName in row) {
+                        if (!row.hasOwnProperty(fieldName)) continue;
+                        if (fieldName.indexOf("__") == 0) continue;
+                        var value = row[fieldName];
+                        var text = value;
+                        if (text == null) text = "";
+                        var fieldData = options.fields[fieldName] || {};
+                        // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+                        if (fieldData.options != null) {
+                            text = "";
+                            for (var option in fieldData.options) {
+                                if (!fieldData.options.hasOwnProperty(option)) continue;
+                                option = fieldData.options[option];
+                                if (option["value"] == value) {
+                                    text = option["title"];
+                                    break;
+                                }
+                            }
+                        }
+                        var td = $(row["__dom"]).find("td[fulltable-field-name='" + fieldName + "']");
+                        $(td).empty();
+                        $(td).text(text);
+                    }
+                }
+                if (typeof table.getEvents().discardRow == "function") table.getEvents().discardRow(row);
+                if (options.alwaysCreating === true) addRow();
+                return this;
+            },
+            'checkRow': function(row) {
+                if (row["__selected"] == null) row["__selected"] = false;
+                row["__selected"] = !row["__selected"];
+                if (typeof table.getEvents().checkRow == "function") table.getEvents().checkRow(row);
+            },
+            'getData':function(selected) {
+                var result = [];
+                for (var row in table.getRows()) {
+                    if (!table.getRows().hasOwnProperty(row)) continue;
+                    row = table.getRows()[row];
+                    if (row["__selected"] == null) row["__selected"] = false;
+                    if (selected === false && row["__selected"] == true) continue;
+                    if (selected === true && row["__selected"] == false) continue;
+                    var resultRow = {};
+                    if (row["__creating"] === true) continue;
+                    if (row["__removed"] === true || row["__invalidOptionRemoved"] === true) continue;
+                    result.push(resultRow);
+                    for (var fieldName in row) {
+                        if (!row.hasOwnProperty(fieldName)) continue;
+                        if (fieldName.indexOf("__") == 0) continue;
+                        var value = row[fieldName];
+                        resultRow[fieldName] = value;
+                    }
+                }
+                if (typeof table.getEvents().getData == "function") table.getEvents().getData();
+                return result;
+            },
+            'setData':function(data) {
+                if (!Array.isArray(data)) {
+                    return this;
+                }
+                var oldData = table.getRows().splice(0, table.getRows().length);
+                var newData = data;
+                for (var rowData in data) {
+                    if (!data.hasOwnProperty(rowData)) continue;
+                    rowData = data[rowData];
+                    var row = drawRow(rowData, null);
+                    if (!validateRow(row)) continue;
+                    table.getRows().push(row);
+                }
+                drawBody();
+                if (typeof table.getEvents().setData == "function") table.getEvents().setData(oldData, newData);
+                return this;
+            },
+            'error': function() {
+                return this;
+            }
+        };
+
+        // DEPRECATED: Compatibility, uncomment if needed
+        /*
+        methods['create'] = methods['addRow'];
+        methods['edit'] = methods['editRow'];
+        methods['remove'] = methods['removeRow'];
+        methods['save'] = methods['saveRow'];
+        methods['discard'] = methods['discardRow'];
+        methods['getValue'] = methods['getData'];
+        */
 
         var defaults = {
-            url: window.location.href,
-            inputClass: 'form-control input-sm',
-            toolbarClass: 'btn-toolbar',
-            groupClass: 'btn-group btn-group-sm',
-            dangerClass: 'danger',
-            warningClass: 'warning',
-            mutedClass: 'text-muted',
-            eventType: 'click',
-            rowIdentifier: 'id',
-            hideIdentifier: false,
-            autoFocus: true,
-            editButton: true,
-            deleteButton: true,
-            saveButton: true,
-            restoreButton: false,
-            buttons: {
-                edit: {
-                    class: 'btn btn-sm btn-default',
-                    html: '<span class="glyphicon glyphicon-pencil"></span>',
-                    action: 'edit'
-                },
-                delete: {
-                    class: 'btn btn-sm btn-default',
-                    html: '<span class="glyphicon glyphicon-trash"></span>',
-                    action: 'delete'
-                },
-                save: {
-                    class: 'btn btn-sm btn-success',
-                    html: 'Save'
-                },
-                restore: {
-                    class: 'btn btn-sm btn-warning',
-                    html: 'Restore',
-                    action: 'restore'
-                },
-                confirm: {
-                    class: 'btn btn-sm btn-danger',
-                    html: 'Confirm'
-                }
-            },
-            onDraw: function() { return; },
-            onSuccess: function() { return; },
-            onFail: function() { return; },
-            onAlways: function() { return; },
-            onAjax: function() { return; }
-        };
+            "editable":true,
+            "filterable":true,
+            "orderable":true,
+            "selectable":false,
+            "fields":{},
+            "on":{
+                "update":function() {
 
-        var settings = $.extend(true, defaults, options);
-
-        var $lastEditedRow = 'undefined';
-        var $lastDeletedRow = 'undefined';
-        var $lastRestoredRow = 'undefined';
-
-        /**
-         * Draw Tabledit structure (identifier column, editable columns, toolbar column).
-         *
-         * @type {object}
-         */
-        var Draw = {
-            columns: {
-                identifier: function() {
-                    // Hide identifier column.
-                    if (settings.hideIdentifier) {
-                        $table.find('th:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + '), tbody td:nth-child(' + parseInt(settings.columns.identifier[0]) + 1 + ')').hide();
-                    }
-
-                    var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.identifier[0]) + 1) + ')');
-
-                    $td.each(function() {
-                        // Create hidden input with row identifier.
-                        var span = '<span class="tabledit-span tabledit-identifier">' + $(this).text() + '</span>';
-                        var input = '<input class="tabledit-input tabledit-identifier" type="hidden" name="' + settings.columns.identifier[1] + '" value="' + $(this).text() + '" disabled>';
-
-                        // Add elements to table cell.
-                        $(this).html(span + input);
-
-                        // Add attribute "id" to table row.
-                        $(this).parent('tr').attr(settings.rowIdentifier, $(this).text());
-                    });
-                },
-                editable: function() {
-                    for (var i = 0; i < settings.columns.editable.length; i++) {
-                        var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
-
-                        $td.each(function() {
-                            // Get text of this cell.
-                            var text = $(this).text();
-
-                            // Add pointer as cursor.
-                            if (!settings.editButton) {
-                                $(this).css('cursor', 'pointer');
-                            }
-
-                            // Create span element.
-                            var span = '<span class="tabledit-span">' + text + '</span>';
-
-                            // Check if exists the third parameter of editable array.
-                            if (typeof settings.columns.editable[i][2] !== 'undefined') {
-                                // Create select element.
-                                var input = '<select class="tabledit-input ' + settings.inputClass + '" name="' + settings.columns.editable[i][1] + '" style="display: none;" disabled>';
-
-                                // Create options for select element.
-                                $.each(jQuery.parseJSON(settings.columns.editable[i][2]), function(index, value) {
-                                    if (text === value) {
-                                        input += '<option value="' + index + '" selected>' + value + '</option>';
-                                    } else {
-                                        input += '<option value="' + index + '">' + value + '</option>';
-                                    }
-                                });
-
-                                // Create last piece of select element.
-                                input += '</select>';
-                            } else {
-                                // Create text input element.
-                                var input = '<input class="tabledit-input ' + settings.inputClass + '" type="text" name="' + settings.columns.editable[i][1] + '" value="' + $(this).text() + '" style="display: none;" disabled>';
-                            }
-
-                            // Add elements and class "view" to table cell.
-                            $(this).html(span + input);
-                            $(this).addClass('tabledit-view-mode');
-                       });
-                    }
-                },
-                toolbar: function() {
-                    if (settings.editButton || settings.deleteButton) {
-                        var editButton = '';
-                        var deleteButton = '';
-                        var saveButton = '';
-                        var restoreButton = '';
-                        var confirmButton = '';
-
-                        // Add toolbar column header if not exists.
-                        if ($table.find('th.tabledit-toolbar-column').length === 0) {
-                            $table.find('tr:first').append('<th class="tabledit-toolbar-column"></th>');
-                        }
-
-                        // Create edit button.
-                        if (settings.editButton) {
-                            editButton = '<button type="button" class="tabledit-edit-button ' + settings.buttons.edit.class + '" style="float: none;">' + settings.buttons.edit.html + '</button>';
-                        }
-
-                        // Create delete button.
-                        if (settings.deleteButton) {
-                            deleteButton = '<button type="button" class="tabledit-delete-button ' + settings.buttons.delete.class + '" style="float: none;">' + settings.buttons.delete.html + '</button>';
-                            confirmButton = '<button type="button" class="tabledit-confirm-button ' + settings.buttons.confirm.class + '" style="display: none; float: none;">' + settings.buttons.confirm.html + '</button>';
-                        }
-
-                        // Create save button.
-                        if (settings.editButton && settings.saveButton) {
-                            saveButton = '<button type="button" class="tabledit-save-button ' + settings.buttons.save.class + '" style="display: none; float: none;">' + settings.buttons.save.html + '</button>';
-                        }
-
-                        // Create restore button.
-                        if (settings.deleteButton && settings.restoreButton) {
-                            restoreButton = '<button type="button" class="tabledit-restore-button ' + settings.buttons.restore.class + '" style="display: none; float: none;">' + settings.buttons.restore.html + '</button>';
-                        }
-
-                        var toolbar = '<div class="tabledit-toolbar ' + settings.toolbarClass + '" style="text-align: left;">\n\
-                                           <div class="' + settings.groupClass + '" style="float: none;">' + editButton + deleteButton + '</div>\n\
-                                           ' + saveButton + '\n\
-                                           ' + confirmButton + '\n\
-                                           ' + restoreButton + '\n\
-                                       </div></div>';
-
-                        // Add toolbar column cells.
-                        $table.find('tbody>tr').append('<td style="white-space: nowrap; width: 1%;">' + toolbar + '</td>');
-                    }
                 }
             }
         };
 
-        /**
-         * Change to view mode or edit mode with table td element as parameter.
-         *
-         * @type object
-         */
-        var Mode = {
-            view: function(td) {
-                // Get table row.
-                var $tr = $(td).parent('tr');
-                // Disable identifier.
-                $(td).parent('tr').find('.tabledit-input.tabledit-identifier').prop('disabled', true);
-                // Hide and disable input element.
-                $(td).find('.tabledit-input').blur().hide().prop('disabled', true);
-                // Show span element.
-                $(td).find('.tabledit-span').show();
-                // Add "view" class and remove "edit" class in td element.
-                $(td).addClass('tabledit-view-mode').removeClass('tabledit-edit-mode');
-                // Update toolbar buttons.
-                if (settings.editButton) {
-                    $tr.find('button.tabledit-save-button').hide();
-                    $tr.find('button.tabledit-edit-button').removeClass('active').blur();
-                }
-            },
-            edit: function(td) {
-                Delete.reset(td);
-                // Get table row.
-                var $tr = $(td).parent('tr');
-                // Enable identifier.
-                $tr.find('.tabledit-input.tabledit-identifier').prop('disabled', false);
-                // Hide span element.
-                $(td).find('.tabledit-span').hide();
-                // Get input element.
-                var $input = $(td).find('.tabledit-input');
-                // Enable and show input element.
-                $input.prop('disabled', false).show();
-                // Focus on input element.
-                if (settings.autoFocus) {
-                    $input.focus();
-                }
-                // Add "edit" class and remove "view" class in td element.
-                $(td).addClass('tabledit-edit-mode').removeClass('tabledit-view-mode');
-                // Update toolbar buttons.
-                if (settings.editButton) {
-                    $tr.find('button.tabledit-edit-button').addClass('active');
-                    $tr.find('button.tabledit-save-button').show();
-                }
-            }
-        };
+        var options = $(table).data('options');
 
-        /**
-         * Available actions for edit function, with table td element as parameter or set of td elements.
-         *
-         * @type object
-         */
-        var Edit = {
-            reset: function(td) {
-                $(td).each(function() {
-                    // Get input element.
-                    var $input = $(this).find('.tabledit-input');
-                    // Get span text.
-                    var text = $(this).find('.tabledit-span').text();
-                    // Set input/select value with span text.
-                    if ($input.is('select')) {
-                        $input.find('option').filter(function() {
-                            return $.trim($(this).text()) === text;
-                        }).attr('selected', true);
-                    } else {
-                        $input.val(text);
-                    }
-                    // Change to view mode.
-                    Mode.view(this);
-                });
-            },
-            submit: function(td) {
-                // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.edit.action);
+        var method = null;
+        var methodArguments = null;
 
-                if (ajaxResult === false) {
-                    return;
-                }
-
-                $(td).each(function() {
-                    // Get input element.
-                    var $input = $(this).find('.tabledit-input');
-                    // Set span text with input/select new value.
-                    if ($input.is('select')) {
-                        $(this).find('.tabledit-span').text($input.find('option:selected').text());
-                    } else {
-                        $(this).find('.tabledit-span').text($input.val());
-                    }
-                    // Change to view mode.
-                    Mode.view(this);
-                });
-
-                // Set last edited column and row.
-                $lastEditedRow = $(td).parent('tr');
-            }
-        };
-
-        /**
-         * Available actions for delete function, with button as parameter.
-         *
-         * @type object
-         */
-        var Delete = {
-            reset: function(td) {
-                // Reset delete button to initial status.
-                $table.find('.tabledit-confirm-button').hide();
-                // Remove "active" class in delete button.
-                $table.find('.tabledit-delete-button').removeClass('active').blur();
-            },
-            submit: function(td) {
-                Delete.reset(td);
-                // Enable identifier hidden input.
-                $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
-                // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.delete.action);
-                // Disable identifier hidden input.
-                $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
-
-                if (ajaxResult === false) {
-                    return;
-                }
-
-                // Add class "deleted" to row.
-                $(td).parent('tr').addClass('tabledit-deleted-row');
-                // Hide table row.
-                $(td).parent('tr').addClass(settings.mutedClass).find('.tabledit-toolbar button:not(.tabledit-restore-button)').attr('disabled', true);
-                // Show restore button.
-                $(td).find('.tabledit-restore-button').show();
-                // Set last deleted row.
-                $lastDeletedRow = $(td).parent('tr');
-            },
-            confirm: function(td) {
-                // Reset all cells in edit mode.
-                $table.find('td.tabledit-edit-mode').each(function() {
-                    Edit.reset(this);
-                });
-                // Add "active" class in delete button.
-                $(td).find('.tabledit-delete-button').addClass('active');
-                // Show confirm button.
-                $(td).find('.tabledit-confirm-button').show();
-            },
-            restore: function(td) {
-                // Enable identifier hidden input.
-                $(td).parent('tr').find('input.tabledit-identifier').attr('disabled', false);
-                // Send AJAX request to server.
-                var ajaxResult = ajax(settings.buttons.restore.action);
-                // Disable identifier hidden input.
-                $(td).parents('tr').find('input.tabledit-identifier').attr('disabled', true);
-
-                if (ajaxResult === false) {
-                    return;
-                }
-
-                // Remove class "deleted" to row.
-                $(td).parent('tr').removeClass('tabledit-deleted-row');
-                // Hide table row.
-                $(td).parent('tr').removeClass(settings.mutedClass).find('.tabledit-toolbar button').attr('disabled', false);
-                // Hide restore button.
-                $(td).find('.tabledit-restore-button').hide();
-                // Set last restored row.
-                $lastRestoredRow = $(td).parent('tr');
-            }
-        };
-
-        /**
-         * Send AJAX request to server.
-         *
-         * @param {string} action
-         */
-        function ajax(action)
-        {
-            var serialize = $table.find('.tabledit-input').serialize()
-
-            if (!serialize) {
-                return false;
-            }
-
-            serialize += '&action=' + action;
-
-            var result = settings.onAjax(action, serialize);
-
-            if (result === false) {
-                return false;
-            }
-
-            var jqXHR = $.post(settings.url, serialize, function(data, textStatus, jqXHR) {
-                if (action === settings.buttons.edit.action) {
-                    $lastEditedRow.removeClass(settings.dangerClass).addClass(settings.warningClass);
-                    setTimeout(function() {
-                        //$lastEditedRow.removeClass(settings.warningClass);
-                        $table.find('tr.' + settings.warningClass).removeClass(settings.warningClass);
-                    }, 1400);
-                }
-
-                settings.onSuccess(data, textStatus, jqXHR);
-            }, 'json');
-
-            jqXHR.fail(function(jqXHR, textStatus, errorThrown) {
-                if (action === settings.buttons.delete.action) {
-                    $lastDeletedRow.removeClass(settings.mutedClass).addClass(settings.dangerClass);
-                    $lastDeletedRow.find('.tabledit-toolbar button').attr('disabled', false);
-                    $lastDeletedRow.find('.tabledit-toolbar .tabledit-restore-button').hide();
-                } else if (action === settings.buttons.edit.action) {
-                    $lastEditedRow.addClass(settings.dangerClass);
-                }
-
-                settings.onFail(jqXHR, textStatus, errorThrown);
-            });
-
-            jqXHR.always(function() {
-                settings.onAlways();
-            });
-
-            return jqXHR;
+        if (typeof arguments[0] == "string") {
+            if (options == null) return this;
+            method = methods[arguments[0]];
+            methodArguments = Array.prototype.slice.call(arguments, 1);
+            if (typeof method != "function") return this;
+            return method.apply(this, methodArguments);
         }
 
-        Draw.columns.identifier();
-        Draw.columns.editable();
-        Draw.columns.toolbar();
-
-        settings.onDraw();
-
-        if (settings.deleteButton) {
-            /**
-             * Delete one row.
-             *
-             * @param {object} event
-             */
-            $table.on('click', 'button.tabledit-delete-button', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    // Get current state before reset to view mode.
-                    var activated = $(this).hasClass('active');
-
-                    var $td = $(this).parents('td');
-
-                    Delete.reset($td);
-
-                    if (!activated) {
-                        Delete.confirm($td);
-                    }
-
-                    event.handled = true;
-                }
-            });
-
-            /**
-             * Delete one row (confirm).
-             *
-             * @param {object} event
-             */
-            $table.on('click', 'button.tabledit-confirm-button', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    var $td = $(this).parents('td');
-
-                    Delete.submit($td);
-
-                    event.handled = true;
-                }
-            });
-        }
-
-        if (settings.restoreButton) {
-            /**
-             * Restore one row.
-             *
-             * @param {object} event
-             */
-            $table.on('click', 'button.tabledit-restore-button', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    Delete.restore($(this).parents('td'));
-
-                    event.handled = true;
-                }
-            });
-        }
-
-        if (settings.editButton) {
-            /**
-             * Activate edit mode on all columns.
-             *
-             * @param {object} event
-             */
-            $table.on('click', 'button.tabledit-edit-button', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    var $button = $(this);
-
-                    // Get current state before reset to view mode.
-                    var activated = $button.hasClass('active');
-
-                    // Change to view mode columns that are in edit mode.
-                    Edit.reset($table.find('td.tabledit-edit-mode'));
-
-                    if (!activated) {
-                        // Change to edit mode for all columns in reverse way.
-                        $($button.parents('tr').find('td.tabledit-view-mode').get().reverse()).each(function() {
-                            Mode.edit(this);
-                        });
-                    }
-
-                    event.handled = true;
-                }
-            });
-
-            /**
-             * Save edited row.
-             *
-             * @param {object} event
-             */
-            $table.on('click', 'button.tabledit-save-button', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    // Submit and update all columns.
-                    Edit.submit($(this).parents('tr').find('td.tabledit-edit-mode'));
-
-                    event.handled = true;
-                }
-            });
-        } else {
-            /**
-             * Change to edit mode on table td element.
-             *
-             * @param {object} event
-             */
-            $table.on(settings.eventType, 'tr:not(.tabledit-deleted-row) td.tabledit-view-mode', function(event) {
-                if (event.handled !== true) {
-                    event.preventDefault();
-
-                    // Reset all td's in edit mode.
-                    Edit.reset($table.find('td.tabledit-edit-mode'));
-
-                    // Change to edit mode.
-                    Mode.edit(this);
-
-                    event.handled = true;
-                }
-            });
-
-            /**
-             * Change event when input is a select element.
-             */
-            $table.on('change', 'select.tabledit-input:visible', function(event) {
-                if (event.handled !== true) {
-                    // Submit and update the column.
-                    Edit.submit($(this).parent('td'));
-
-                    event.handled = true;
-                }
-            });
-
-            /**
-             * Click event on document element.
-             *
-             * @param {object} event
-             */
-            $(document).on('click', function(event) {
-                var $editMode = $table.find('.tabledit-edit-mode');
-                // Reset visible edit mode column.
-                if (!$editMode.is(event.target) && $editMode.has(event.target).length === 0) {
-                    Edit.reset($table.find('.tabledit-input:visible').parent('td'));
-                }
-            });
-        }
-
-        /**
-         * Keyup event on document element.
-         *
-         * @param {object} event
-         */
-        $(document).on('keyup', function(event) {
-            // Get input element with focus or confirmation button.
-            var $input = $table.find('.tabledit-input:visible');
-            var $button = $table.find('.tabledit-confirm-button');
-
-            if ($input.length > 0) {
-                var $td = $input.parents('td');
-            } else if ($button.length > 0) {
-                var $td = $button.parents('td');
+        if (options == null) {
+            if (typeof arguments[0] == "object") {
+                options = arguments[0];
+                options = $.extend(true, defaults, options);
             } else {
-                return;
+                options = defaults;
             }
+            $(table).data('options', options);
+        }
 
-            // Key?
-            switch (event.keyCode) {
-                case 9:  // Tab.
-                    if (!settings.editButton) {
-                        Edit.submit($td);
-                        Mode.edit($td.closest('td').next());
-                    }
-                    break;
-                case 13: // Enter.
-                    Edit.submit($td);
-                    break;
-                case 27: // Escape.
-                    Edit.reset($td);
-                    Delete.reset($td);
-                    break;
-            }
-        });
+        $(table).addClass("fulltable");
+        if (options.editable) {
+            $(table).addClass("fulltable-editable");
+        }
+
+        getHeaderFromDom();
+        drawHeader();
+        getBodyFromDom();
+        drawBody();
+        if (options.alwaysCreating === true) addRow();
+        filter();
 
         return this;
     };
