@@ -148,6 +148,18 @@ body{
     line-height: 40px;
 }
 
+#tabs input[type="number"]
+{
+    background: transparent;
+    border: none;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: #707070;
+    width: 100%;
+    line-height: 40px;
+}
+
 #tabs input:focus{
     outline: none;
 }

@@ -13,7 +13,8 @@
                     <th width="10%">Voornaam</th>
                     <th width="10%">Tussenvoegsel</th>
                     <th width="10%">Achternaam</th>
-                    <th width="50%">Email</th>
+                    <th width="30%">Email</th>
+                    <th width="20%">Telefoon</th>
                     <?php if ($edit === true || $add === true) { ?>
                         <th width="7%">Actie</th>
                     <?php } ?>
@@ -26,6 +27,7 @@
                             <td><input type="text" name="TussenVoegsel"></td>
                             <td><input type="text" name="Achternaam"></td>
                             <td><input type="text" name="email"></td>
+                            <td><input type="number" name="telefoon"></td>
                             <td>
                                 <button type="submit" class="actionbutton" name="submitKlant"><i
                                             class="fa fa-plus plus"></i></button>
@@ -45,6 +47,7 @@
                                 </td>
                                 <td><input type="text" name="Achternaam" value="<?php echo $row->Achternaam; ?>"></td>
                                 <td><input type="text" name="email" value="<?php echo $row->email; ?>"></td>
+                                <td><input type="text" name="telefoon" value="<?php echo $row->telNummer; ?>"></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button type="submit" class="actionbutton" name="editArtikel" value="edit"><i
