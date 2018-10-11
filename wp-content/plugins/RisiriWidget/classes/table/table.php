@@ -20,17 +20,13 @@ class table{
 
 
 
-        wp_register_script( 'addArtikel', plugins_url( 'js/addArtikel.js', __FILE__ ) );
-        wp_enqueue_script('addArtikel');
         ?>
 
         <?php if ($view === TRUE) { //show content  ?>
 
-<!--
         <div class="navbar-logo">
-            <?php //the_custom_logo(); ?>
+            <?php the_custom_logo(); ?>
         </div>
--->
 
         <script>
             $(function () {
@@ -53,21 +49,6 @@ class table{
 
 
         </div>
-
-        <!-- only for test -->
-
-        <form name="sentMessage" id="addArtikel"
-              action="<?php echo plugins_url(); ?>/risiriWidget/classes/handler/addArtikel.php/?ajax=true"
-
-              method="POST">
-            <input class="form-control" id="Artikelnaam" required
-                   data-validation-required-message="Please enter your name.">
-            <input class="form-control" id="omschrijving" required data-validation-required-message="sorry">
-
-
-            <button type="submit" id="addArtikelButton">Send</button>
-
-        </form>
 
 
     <?php }  //end view

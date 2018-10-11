@@ -216,7 +216,7 @@ if (typeof Array.isArray != "function") {
                 table.getRows()[tr_index] = drawRow(null, tr);
             });
         };
-
+        <?php if ($edit === true) { ?>
         var addEditionControl = function(row, type) {
             if (!options.editable) return;
             if (typeof row != "object") return;
@@ -226,9 +226,12 @@ if (typeof Array.isArray != "function") {
             var edition_control = null;
             if ($(tr).parent().is("thead") || type == "head") {
                 edition_control = $("<th>", {
-                    'class':"fulltable-edition-control"
+                    'class':"fulltable-edition-control",
+                    'text':"buttons"
+
                 });
             }
+
             if ($(tr).parent().is("tbody") || type == "body") {
                 edition_control = $("<td/>", {
                     'class':"fulltable-edition-control"
@@ -239,12 +242,14 @@ if (typeof Array.isArray != "function") {
                 }).click(function() {
                     editRow(row);
                 }));
+                <?php if ($delete === true) { ?>
                 edition_control.append($("<a/>", {
                     'class':"fulltable-remove",
                     'text':"F"
                 }).click(function() {
                     removeRow(row);
                 }));
+                <?php } //end delete function?>
                 edition_control.append($("<a/>", {
                     'class':"fulltable-save",
                     'text':"G"
@@ -264,6 +269,7 @@ if (typeof Array.isArray != "function") {
                     discardRow(row);
                 }));
             }
+            <?php } //end edit function?>
             $(tr).append($(edition_control));
         };
 
@@ -1021,7 +1027,10 @@ if (typeof Array.isArray != "function") {
         drawHeader();
         getBodyFromDom();
         drawBody();
+        <?php if ($delete === true) { ?>
         if (options.alwaysCreating === true) addRow();
+        <?php } ?>
+
         filter();
 
         return this;

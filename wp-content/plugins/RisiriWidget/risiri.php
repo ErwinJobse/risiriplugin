@@ -16,7 +16,7 @@ class RisiriWarehouseManagement{
     public function includes()
     {
         include_once(plugin_dir_path(__FILE__) . 'classes/table/table.php');
-        include_once(plugin_dir_path(__FILE__) . 'classes/table2/table.php');
+
     }
 }
 
