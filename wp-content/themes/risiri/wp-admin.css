@@ -1,0 +1,46 @@
+#wpwrap{
+    color: #fff !important;
+}
+#menu-comments{
+    display: none;
+}
+
+/*#menu-pages{*/
+    /*display: none;*/
+/*}*/
+
+#menu-tools{
+    display: none;
+}
+
+#menu-media{
+    display: none;
+}
+
+/*#menu-posts{*/
+    /*display: none;*/
+/*}*/
+
+/*#adminmenuback{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
+
+/*#adminmenuwrap{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
+
+/*#adminmenuwrap li{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
+
+/*.wp-submenu-wrap{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
+
+/*#wpadminbar{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
+
+/*#adminmenumain{*/
+    /*background-color: #67B0E3 !important;*/
+/*}*/
