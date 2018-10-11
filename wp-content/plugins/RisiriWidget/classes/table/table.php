@@ -25,10 +25,10 @@ class table{
         ?>
 
         <?php if ($view === TRUE) { //show content  ?>
-        <div class="voltooid">
+        <div class="meldingVoltooid">
             <p><h3>Melding:</h3></p>
         <div class="meldingText">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="kleur">elit.</a></p>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
         </div>
         </div>
 <!--

@@ -195,7 +195,7 @@ body{
 
 /*Actie*/
 
-.voltooid{
+.meldingVoltooid{
 /*visibility: hidden;*/
 color: #707070;
 font-family: 'Roboto';
@@ -212,7 +212,7 @@ width: 50%;
     font-family: 'Roboto';
     
 }
-.kleur{
+.meldingKleur{
 /*    color: red !important;*/
 font-weight: 900;
 text-decoration: underline #707070 !important;
