@@ -28,7 +28,7 @@ if (typeof jQuery === 'undefined') {
             editButton: true,
             deleteButton: true,
             saveButton: true,
-            restoreButton: true,
+            restoreButton: false,
             buttons: {
                 edit: {
                     class: 'btn btn-sm btn-default',
