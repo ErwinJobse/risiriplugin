@@ -9,5 +9,4 @@
 ?>
 
 <div id="tab-Uitleningen">
-
 </div>
