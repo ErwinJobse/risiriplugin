@@ -77,4 +77,4 @@
 
 </div>
 
-<?php include(plugin_dir_path(__FILE__) . 'js/artikel.tabledit.php'); ?>
+<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>

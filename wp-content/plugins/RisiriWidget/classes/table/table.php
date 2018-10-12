@@ -10,9 +10,9 @@ class table{
 
     public function shortcode(){
 
-        include(plugin_dir_path(__FILE__) . '/include.php');
-        include(plugin_dir_path(__FILE__) . '/roleCheck.php');
-        include(plugin_dir_path(__FILE__) . '/db.php');
+        include(RisiriWidget_PLUGIN_DIR . '/classes/table/include.php');
+        include(RisiriWidget_PLUGIN_DIR . '/classes/global/roleCheck.php');
+        include(RisiriWidget_PLUGIN_DIR . '/classes/global/db.php');
 
         //css file for table
         wp_register_style('table', plugins_url('table.css',__FILE__ ));
@@ -51,8 +51,8 @@ class table{
                 <li><a href="#tab-klanten">Klanten</a></li>
             </ul>
 
-            <?php include(plugin_dir_path(__FILE__) . '/tables/tableArtikelen.php'); ?>
-            <?php include(plugin_dir_path(__FILE__) . '/tables/tableKlanten.php'); ?>
+            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
+            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
 
 
         </div>
