@@ -42,8 +42,8 @@
             }
         );
     </script>
-    </head>
-    <body>
+
+
     <div id="jquery-script-menu">
         <div class="jquery-script-center">
 
