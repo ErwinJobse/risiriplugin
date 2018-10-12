@@ -49,10 +49,14 @@ class table{
             <ul id="table-nav">
                 <li><a href="#tab-artikelen">Artikelen</a></li>
                 <li><a href="#tab-klanten">Klanten</a></li>
+                <li><a href="#tab-uitleningen">Uitleningen</a></li>
+                <li><a href="#tab-reserveringen">Reserveringen</a></li>
             </ul>
 
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
+            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php'); ?>
+            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
 
 
         </div>
