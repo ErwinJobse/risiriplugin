@@ -31,10 +31,7 @@ class table{
             </div>
         </div>
 
-        <div class="navbar-logo">
-            <?php the_custom_logo(); ?>
-        </div>
-
+       
         <script>
             $(function () {
                 $("#tabs").tabs();
