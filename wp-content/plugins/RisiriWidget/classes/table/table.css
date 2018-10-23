@@ -103,6 +103,7 @@ body{
 #artikelen-table{
     width: 100%;
     margin: auto;
+
 }
 
 #klanten-table{
@@ -196,6 +197,13 @@ body{
 .left-cell{
     text-align: left !important;
     padding-left: 10px;
+
+}
+
+.left-cell p{
+    width:500px;
+    height:45px;
+    overflow:auto;
 }
 
 #tabs input[type="text"]
@@ -315,28 +323,28 @@ text-decoration: underline #707070 !important;
 .pen{
     color: #67B0E3;
     font-size: 20px;
-    padding-left: 30px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
 .plus{
     color: #78E374;
     font-size: 25px;
-    padding-left: 30px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
 .fa-check{
     color: #78E374;
     font-size: 25px;
-    padding-left: 30px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
 .fa-times{
     color: #F14444 !important;
     padding-left: 30px;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
 }
 
