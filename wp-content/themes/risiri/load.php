@@ -51,6 +51,7 @@
 
 <div id="overlay">
     <div id="progstat">
+        <img src="<?php bloginfo('stylesheet_directory'); ?>/images/loading.gif" alt="Loading" />
         <b>RiSiRi Magazijn Applicatie</b><br>
         <b>Loading...</b>
     </div>
