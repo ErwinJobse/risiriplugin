@@ -265,7 +265,7 @@ if (typeof Array.isArray != "function") {
                     saveRow(row);
                 }));
                 edition_control.append($("<i/>", {
-                    'class':"fulltable-discard fas fa-trash-alt trash",
+                    'class':"fulltable-discard fas fa-times",
                     'text':""
                 }).click(function() {
                     discardRow(row);
@@ -429,18 +429,18 @@ if (typeof Array.isArray != "function") {
                     apply_order(false);
 
                     // Insertion of ordenation button.
-                    $(th).children("a.fulltable-sort").remove();
+                    $(th).children("i.fulltable-sort").remove();
                     if (options.orderable) {
                         var fieldData = options.fields[fieldName];
                         if (fieldData == null) fieldData = {};
                         if (fieldData.orderable == null || fieldData.orderable == true) {
-                            var sortElement = $("<a/>").addClass("fulltable-sort").addClass("fulltable-sort-asc").text("A");
+                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-asc fas fa-sort-up").text("");
                             $(sortElement).click(function(event) {
                                 apply_order(true);
                                 order();
                             });
                             $(th).append(sortElement);
-                            var sortElement = $("<a/>").addClass("fulltable-sort").addClass("fulltable-sort-desc").text("C");
+                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-desc fas fa-sort-down").text("");
                             $(sortElement).click(function(event) {
                                 apply_order(true);
                                 order();
