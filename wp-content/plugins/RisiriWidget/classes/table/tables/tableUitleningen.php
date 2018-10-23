@@ -72,7 +72,10 @@
                 <td><span><?php echo $row->Klantnummer; ?></span></td>
                 <td><span><?php echo $row->uitleenDatum; ?></span></td>
                 <td><span><?php echo $row->inleverDatum; ?></span></td>
-                <td><span><?php echo $row->ingeleverd; ?></span></td>
+                <td><span><?php if($row->ingeleverd){
+                    echo "Ja";
+                        } else{ echo "Nee"; }
+                ?></span></td>
                 <td><span><?php echo $row->Artikelnummer; ?></span></td>
             </tr>
             </tr>
