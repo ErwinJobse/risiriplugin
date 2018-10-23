@@ -408,10 +408,10 @@ table.fulltable thead th a.fulltable-sort {
     height: 9px;
     cursor: pointer;
 }
-table.fulltable thead th.fulltable-asc a.fulltable-sort-desc {
+table.fulltable thead th.fulltable-asc i.fulltable-sort-desc {
     display:none!important;
 }
-table.fulltable thead th.fulltable-desc a.fulltable-sort-asc {
+table.fulltable thead th.fulltable-desc i.fulltable-sort-asc {
     display:none!important;
 }
 table.fulltable.fulltable-editable td.fulltable-edition-control {
