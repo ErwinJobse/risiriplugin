@@ -190,7 +190,12 @@ body{
     border: 1px solid #B6B6B6;
     font-family: 'Roboto';
     font-weight: 400;
-    padding: 0;
+    text-align: center;
+}
+
+.left-cell{
+    text-align: left !important;
+    padding-left: 10px;
 }
 
 #tabs input[type="text"]

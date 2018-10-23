@@ -57,7 +57,7 @@
                 <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
                 <th fulltable-field-name="Artikelnaam">Artikelnaam</th>
                 <th fulltable-field-name="Aanmaakdatum">Aanmaakdatum</th>
-                <th fulltable-field-name="omschrijving">Omschrijving</th>
+                <th fulltable-field-name="omschrijving" >Omschrijving</th>
 
             </tr>
             </thead>
@@ -67,7 +67,7 @@
                 <td><span><?php echo $row->Artikelnummer; ?></span></td>
                 <td><span><?php echo $row->Artikelnaam; ?></span></td>
                 <td><span><?php echo $row->Aanmaakdatum; ?></span></td>
-                <td><span><?php echo $row->omschrijving; ?></span></td>
+                <td class="left-cell"><span><?php echo $row->omschrijving; ?></span></td>
             </tr>
             <?php } ?>
             </tbody>
