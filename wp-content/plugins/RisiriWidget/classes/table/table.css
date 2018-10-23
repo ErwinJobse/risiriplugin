@@ -32,6 +32,13 @@ body{
     float: left;
 }
 
+.container{
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+
+}
+
 .table-container{
 
 }
@@ -47,7 +54,7 @@ body{
 #table-nav{
     background-color: rgba(255,255,255,0);
     border: none;
-    margin-left: 220px;
+    margin-left: 50px;
     text-align: center;
 }
 
@@ -91,6 +98,33 @@ body{
 #tab-artikelen{
     padding: 0;
 }
+/*All Tables for 100% width*/
+
+#artikelen-table{
+    width: 100%;
+    margin: auto;
+}
+
+#klanten-table{
+    width: 100%;
+    margin: auto;
+}
+
+#uitleningen-table{
+    width: 100%;
+    margin: auto;
+}
+#reserveringen-table{
+    width: 100%;
+    margin: auto;
+}
+
+#te-laat-table{
+    width: 100%;
+    margin: auto;
+}
+
+
 #tab-klanten{
     padding: 0;
 }
@@ -185,6 +219,10 @@ body{
 
 /*Column Search Style*/
 
+.fulltable-filter{
+    width: 90%;
+}
+
 .fulltable-filter input[type="text"]{
     border: 1px solid #B6B6B6 !important;
     border-radius: 5px !important;
@@ -232,6 +270,7 @@ body{
 #tabs tr:nth-child(even) {
     background-color: #CBEBF6;
 }
+
 
 
 /*Actie*/
