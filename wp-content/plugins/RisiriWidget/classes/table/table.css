@@ -98,6 +98,9 @@ body{
     padding: 0;
 }
 
+#tab-uitleningen{
+    padding: 0;
+}
 
 #data-artikelen{
     text-align: center;
@@ -191,6 +194,10 @@ body{
     margin: auto !important;
     text-align: center !important;
 
+}
+
+.fulltable-edition-control{
+    /*padding..*/
 }
 
 
