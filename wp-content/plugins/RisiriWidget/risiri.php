@@ -20,12 +20,16 @@ class RisiriWarehouseManagement{
             RisiriWidget ) ) );
         define( 'RisiriWidget_REQUIRED_WP_VERSION', '4.9.8' );
 
+        createDB::createTables();
+
 
     }
 
     public function includes()
     {
         include_once(plugin_dir_path(__FILE__) . 'classes/table/table.php');
+        include_once(plugin_dir_path(__FILE__) . 'classes/global/createDB.php');
+
 
     }
 }

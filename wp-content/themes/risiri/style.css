@@ -111,10 +111,6 @@ body{
     width: 100%;
 }
 
-#tabs tbody{
-    border: 6px solid #B6B6B6;
-    background-color: #CBEBF6;
-}
 
 #tabs tr{
     height: 45px;
