@@ -47,7 +47,7 @@ body{
 #table-nav{
     background-color: rgba(255,255,255,0);
     border: none;
-    margin-left: 50px;
+    margin-left: 220px;
     text-align: center;
 }
 
@@ -94,6 +94,9 @@ body{
 #tab-klanten{
     padding: 0;
 }
+#tab-reserveringen{
+    padding: 0;
+}
 
 
 #data-artikelen{
@@ -113,10 +116,26 @@ body{
 }
 
 #tabs tbody{
-    border: 6px solid #B6B6B6;
+    border-spacing: 0;
     background-color: #CBEBF6;
+    border-right: 4px solid #B6B6B6;
+    border-left: 4px solid #B6B6B6;
+    border-bottom: 4px solid #B6B6B6;
+    border-radius: 5px;
+
 }
 
+#tabs thead{
+    /*border: 4px solid #B6B6B6;*/
+    /*background-color: #CBEBF6 !important;*/
+    border-right: 4px solid #B6B6B6;
+    border-left: 4px solid #B6B6B6;
+    border-top: 4px solid #B6B6B6;
+}
+
+#tabs thead tr{
+    background-color: #CBEBF6 !important;
+}
 #tabs tr{
     height: 45px;
 }
@@ -126,6 +145,7 @@ body{
     font-weight: 900;
     color: #707070;
     border: 1px solid #B6B6B6;
+    text-align: center;
 
 }
 
@@ -160,6 +180,20 @@ body{
     line-height: 40px;
 }
 
+/*Column Search Style*/
+
+.fulltable-filter input[type="text"]{
+    border: 1px solid #B6B6B6 !important;
+    border-radius: 5px !important;
+    background-color: #fff !important;
+    width: 90% !important;
+    height: 35px !important;
+    margin: auto !important;
+    text-align: center !important;
+
+}
+
+
 #tabs input:focus{
     outline: none;
 }
@@ -184,11 +218,11 @@ body{
     background-color: rgba(0,0,0,0);
 }
 
-#tabs tr:nth-child(even) {
-    background-color: rgba(255,255,255,0.5);
+#tabs tr:nth-child(odd) {
+    background-color: #d8f0f8;
 }
 
-#tabs tr:nth-child(odd) {
+#tabs tr:nth-child(even) {
     background-color: #CBEBF6;
 }
 

@@ -57,7 +57,7 @@
                 <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
                 <th fulltable-field-name="Artikelnaam">Artikelnaam</th>
                 <th fulltable-field-name="Aanmaakdatum">Aanmaakdatum</th>
-                <th fulltable-field-name="omschrijving">omschrijving</th>
+                <th fulltable-field-name="omschrijving">Omschrijving</th>
 
             </tr>
             </thead>
