@@ -316,6 +316,28 @@ text-decoration: underline #707070 !important;
     font-size: 25px;
 }
 
+.fa-check{
+    color: #78E374;
+    font-size: 25px;
+}
+
+.fa-times{
+    color: #F14444 !important;
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.fa-sort-down{
+    color: #707070 !important;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.fa-sort-up{
+    color: #707070 !important;
+    padding-left: 5px;
+    font-size: 15px;
+}
 
 
 /*table tr:first-child {*/
