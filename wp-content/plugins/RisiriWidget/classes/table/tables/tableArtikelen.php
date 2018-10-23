@@ -67,7 +67,7 @@
                 <td><span><?php echo $row->Artikelnummer; ?></span></td>
                 <td><span><?php echo $row->Artikelnaam; ?></span></td>
                 <td><span><?php echo $row->Aanmaakdatum; ?></span></td>
-                <td class="left-cell"><?php echo "<p class='poep'>" . $row->omschrijving . "</p>"; ?></td>
+                <td class="textarea"><span><?php echo $row->omschrijving; ?></span></td>
             </tr>
             <?php } ?>
             </tbody>

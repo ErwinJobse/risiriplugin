@@ -453,6 +453,9 @@ table.fulltable.fulltable-editable td.fulltable-edition-control a {
     cursor:pointer;
     text-align:center;
 }
+
+
+
 table.fulltable.fulltable-editable td.fulltable-edition-control i.fulltable-create {
     display:none;
 }
@@ -473,3 +476,13 @@ table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-con
 }
 
 
+
+.textarea {
+
+    max-height: 100px;
+    width: 100%;
+    overflow-y: auto;
+    display: table-cell;
+
+
+}
