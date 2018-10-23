@@ -14,6 +14,7 @@ include($path.'wp-load.php');
 
 $tableKlant = 'risiri_klanten';
 $tableArtikel = 'risiri_artikelen';
+$tableTelaat = 'risiri_telaat';
 $tableLog = 'risiri_log';
 
 $getKlant = $wpdb->get_results("SELECT * FROM $tableKlant");

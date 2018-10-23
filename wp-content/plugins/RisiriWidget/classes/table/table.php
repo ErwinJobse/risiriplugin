@@ -51,12 +51,14 @@ class table{
                 <li><a href="#tab-klanten">Klanten</a></li>
                 <li><a href="#tab-uitleningen">Uitleningen</a></li>
                 <li><a href="#tab-reserveringen">Reserveringen</a></li>
+                <li><a href="#tab-Telaat">Te laat</a></li>
             </ul>
 
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php'); ?>
             <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
+            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); ?>
 
 
         </div>
