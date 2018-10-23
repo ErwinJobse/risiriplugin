@@ -448,7 +448,7 @@ if (typeof Array.isArray != "function") {
                         }
                     }
                     // Insertion of filtering fields.
-                    $(th).children("span.fulltable-filter, input.fulltable-filter, select.fulltable-filter").remove();
+                    $(th).children("div.fulltable-filter, input.fulltable-filter, select.fulltable-filter").remove();
                     if (options.filterable) {
                         var fieldData = options.fields[fieldName];
                         if (fieldData == null) fieldData = {};
@@ -479,7 +479,7 @@ if (typeof Array.isArray != "function") {
                                     'placeholder':"Search"
                                 });
                             }
-                            var filterSpanWrapper = $("<span>", {
+                            var filterSpanWrapper = $("<div>", {
                                 'class':"fulltable-filter"
                             });
                             $(th).append(filterSpanWrapper);
