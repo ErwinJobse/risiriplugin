@@ -434,13 +434,13 @@ if (typeof Array.isArray != "function") {
                         var fieldData = options.fields[fieldName];
                         if (fieldData == null) fieldData = {};
                         if (fieldData.orderable == null || fieldData.orderable == true) {
-                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-asc fas fa-sort-up").text("");
+                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-asc fas fa-caret-up").text("");
                             $(sortElement).click(function(event) {
                                 apply_order(true);
                                 order();
                             });
                             $(th).append(sortElement);
-                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-desc fas fa-sort-down").text("");
+                            var sortElement = $("<i/>").addClass("fulltable-sort").addClass("fulltable-sort-desc fas fa-caret-down").text("");
                             $(sortElement).click(function(event) {
                                 apply_order(true);
                                 order();
