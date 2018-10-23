@@ -227,7 +227,8 @@ if (typeof Array.isArray != "function") {
             if ($(tr).parent().is("thead") || type == "head") {
                 edition_control = $("<th>", {
                     'class':"fulltable-edition-control",
-                    'text':"buttons"
+                    'text':"Acties"
+
 
                 });
             }
@@ -453,7 +454,6 @@ if (typeof Array.isArray != "function") {
                         if (fieldData == null) fieldData = {};
                         if (fieldData.filterable == null || fieldData.filterable == true) {
                             var filterFieldElement;
-                            // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
                             if (fieldData.options != null) {
                                 filterFieldElement = $("<select>", {
                                     'class':"fulltable-filter"
@@ -463,7 +463,6 @@ if (typeof Array.isArray != "function") {
                                     'value':null
                                 });
                                 $(filterFieldElement).append($(optionDom));
-                                // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
                                 for (var option in fieldData.options) {
                                     if (!fieldData.options.hasOwnProperty(option)) continue;
                                     option = fieldData.options[option];
@@ -476,7 +475,8 @@ if (typeof Array.isArray != "function") {
                             } else {
                                 filterFieldElement = $("<input/>", {
                                     'class':"fulltable-filter",
-                                    'type':"text"
+                                    'type':"text",
+                                    'placeholder':"Search"
                                 });
                             }
                             var filterSpanWrapper = $("<span>", {
