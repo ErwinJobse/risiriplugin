@@ -77,4 +77,16 @@ function arphabet_widgets_init()
         'after_title' => '</h3>',
     ));
 }
+//logo universele link naar wp-admin
+add_filter( 'get_custom_logo', 'add_custom_logo_url' );
+function add_custom_logo_url() {
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    $html = sprintf( '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+            esc_url(admin_url()),
+            wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+                'class'    => 'custom-logo',
+            ) )
+        );
+    return $html;   
+} 
 ?>
