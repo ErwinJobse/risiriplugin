@@ -221,15 +221,14 @@ body{
 
 .fulltable-filter{
     width: 90%;
+    margin: auto;
 }
 
 .fulltable-filter input[type="text"]{
     border: 1px solid #B6B6B6 !important;
     border-radius: 5px !important;
     background-color: #fff !important;
-    width: 90% !important;
     height: 35px !important;
-    margin: auto !important;
     text-align: center !important;
 
 }
