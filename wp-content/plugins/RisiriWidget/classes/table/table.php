@@ -40,7 +40,6 @@ class table{
         </script>
 
         <div id="success"></div>
-
         <div id="tabs">
 
             <ul id="table-nav">
