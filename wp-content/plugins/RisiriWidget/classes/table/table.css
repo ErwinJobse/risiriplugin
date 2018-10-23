@@ -251,7 +251,7 @@ width: 50%;
 }
 .meldingText{
     font-family: 'Roboto';
-    
+
 }
 .meldingKleur{
 /*    color: red !important;*/
@@ -388,3 +388,5 @@ table.fulltable.fulltable-editable tr td.fulltable-edition-control a.fulltable-s
 table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-save, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-discard {
     display:inline-block;
 }
+
+
