@@ -237,35 +237,36 @@ if (typeof Array.isArray != "function") {
                 edition_control = $("<td/>", {
                     'class':"fulltable-edition-control"
                 });
-                edition_control.append($("<a/>", {
-                    'class':"fulltable-edit",
-                    'text':"E"
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-edit fas fa-pen pen",
+                    'text':""
+
                 }).click(function() {
                     editRow(row);
                 }));
                 <?php if ($delete === true) { ?>
-                edition_control.append($("<a/>", {
-                    'class':"fulltable-remove",
-                    'text':"F"
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-remove fas fa-trash-alt trash",
+                    'text':""
                 }).click(function() {
                     removeRow(row);
                 }));
                 <?php } //end delete function?>
-                edition_control.append($("<a/>", {
-                    'class':"fulltable-save",
-                    'text':"G"
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-save fas fa-check",
+                    'text':""
                 }).click(function() {
                     saveRow(row);
                 }));
-                edition_control.append($("<a/>", {
-                    'class':"fulltable-create",
-                    'text':"I"
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-create fa fa-plus plus",
+                    'text':""
                 }).click(function() {
                     saveRow(row);
                 }));
-                edition_control.append($("<a/>", {
-                    'class':"fulltable-discard",
-                    'text':"H"
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-discard fas fa-trash-alt trash",
+                    'text':""
                 }).click(function() {
                     discardRow(row);
                 }));
@@ -811,6 +812,10 @@ if (typeof Array.isArray != "function") {
                 row["__dom"] = $("<tr/>");
                 row["__filtering"] = false;
                 row["__invalidOptionRemoved"] = false;
+
+                console.log(row); //todo ajax edit row
+
+
                 for (var fieldName in table.getKeys()) {
                     if (!table.getKeys().hasOwnProperty(fieldName)) continue;
                     fieldName = table.getKeys()[fieldName];
@@ -834,9 +839,13 @@ if (typeof Array.isArray != "function") {
                 if (!options.editable) return this;
                 if (typeof row != "object") return this;
                 $(row["__dom"]).data("fulltable-editing", true);
+
+
+
                 showRowForm(row);
                 if (typeof table.getEvents().editRow == "function") table.getEvents().editRow(row);
                 if (options.alwaysCreating === true) addRow(); // Here this invocation should not be needed, but it cannot cause problems because method idenpontency.
+
                 return this;
             },
             'removeRow':function(row) {
@@ -856,11 +865,13 @@ if (typeof Array.isArray != "function") {
                     });
                     $(td).append($(input));
                 }
+                console.log(row); //todo add ajax  remove row
+
                 if (typeof table.getEvents().removeRow == "function") table.getEvents().removeRow(row);
                 if (options.alwaysCreating === true) addRow();
                 return this;
             },
-            'saveRow':function(row) {
+            'saveRow':function(row) {  //addrow
                 if (!options.editable) return this;
                 if (typeof row != "object") return this;
                 if (!validateRow(row)) return this;
@@ -872,6 +883,10 @@ if (typeof Array.isArray != "function") {
                     $(row["__dom"]).find("td.fulltable-selection-control input[type='checkbox']").prop("disabled", false);
                     row["__creating"] = false;
                 }
+
+                console.log(row); //todo add ajax addrow
+
+
                 for (var fieldName in row) {
                     if (!row.hasOwnProperty(fieldName)) continue;
                     if (fieldName.indexOf("__") == 0) continue;
@@ -894,10 +909,13 @@ if (typeof Array.isArray != "function") {
                     row["__creating"] = false;
                     row["__removed"] = true;
                     $(row["__dom"]).detach();
+
+
                 } else {
                     for (var fieldName in row) {
                         if (!row.hasOwnProperty(fieldName)) continue;
                         if (fieldName.indexOf("__") == 0) continue;
+
                         var value = row[fieldName];
                         var text = value;
                         if (text == null) text = "";
