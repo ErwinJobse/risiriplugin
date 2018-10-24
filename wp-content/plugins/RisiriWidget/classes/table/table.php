@@ -41,8 +41,7 @@ class table{
 
         <div id="success"></div>
         <div id="tabs">
-
-            <div id="tabs">
+            
 
                 <ul id="table-nav">
                     <li><a href="#tab-artikelen">Artikelen</a></li>
