@@ -288,7 +288,7 @@ body{
 /*Actie*/
 
 .meldingVoltooid{
-/*visibility: hidden;*/
+visibility: hidden;
 color: #707070;
 font-family: 'Roboto';
 text-align: center;

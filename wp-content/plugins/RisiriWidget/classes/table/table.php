@@ -31,7 +31,7 @@ class table{
             </div>
         </div>
 
-       
+
         <script>
             $(function () {
                 $("#tabs").tabs();
@@ -49,10 +49,11 @@ class table{
                 <li><a href="#tab-reserveringen">Reserveringen</a></li>
             </ul>
 
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
+            <?php
+            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php');
+            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php');
+            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php');
+            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
 
 
         </div>
