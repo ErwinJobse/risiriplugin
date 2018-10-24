@@ -5,8 +5,8 @@ class table{
 
     public function __construct(){
 
-            add_shortcode('risiriTable', array($this, 'shortcode'));
-        }
+        add_shortcode('risiriTable', array($this, 'shortcode'));
+    }
 
     public function shortcode(){
 
@@ -24,49 +24,49 @@ class table{
 
         <?php if ($view === TRUE) { //show content  ?>
 
-        <div class="meldingVoltooid">
-            <p><h3>Melding:</h3></p>
-            <div class="meldingText">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
+            <div class="meldingVoltooid">
+                <p><h3>Melding:</h3></p>
+                <div class="meldingText">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
+                </div>
             </div>
-        </div>
-
-       
-        <script>
-            $(function () {
-                $("#tabs").tabs();
-            $("#tabs").show();
-            });
-        </script>
-
-        <div id="success"></div>
-
-        <div id="tabs">
-
-            <ul id="table-nav">
-                <li><a href="#tab-artikelen">Artikelen</a></li>
-                <li><a href="#tab-klanten">Klanten</a></li>
-                <li><a href="#tab-uitleningen">Uitleningen</a></li>
-                <li><a href="#tab-reserveringen">Reserveringen</a></li>
-                <li><a href="#tab-Telaat">Te laat</a></li>
-            </ul>
-
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
-            <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); ?>
 
 
-        </div>
+            <script>
+                $(function () {
+                    $("#tabs").tabs();
+                    $("#tabs").show();
+                });
+            </script>
+
+            <div id="success"></div>
+
+            <div id="tabs">
+
+                <ul id="table-nav">
+                    <li><a href="#tab-artikelen">Artikelen</a></li>
+                    <li><a href="#tab-klanten">Klanten</a></li>
+                    <li><a href="#tab-uitleningen">Uitleningen</a></li>
+                    <li><a href="#tab-reserveringen">Reserveringen</a></li>
+                    <li><a href="#tab-telaat">Te laat</a></li>
+                </ul>
+
+                <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php'); ?>
+                <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php'); ?>
+                <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php'); ?>
+                <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php'); ?>
+                <?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); ?>
 
 
-    <?php }  //end view
+            </div>
+
+
+        <?php }  //end view
     }
 }
 
 $risiriTable = new table();
 
-    ?>
+?>
 
 
