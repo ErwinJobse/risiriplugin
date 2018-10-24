@@ -32,6 +32,13 @@ body{
     float: left;
 }
 
+.container{
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+
+}
+
 .table-container{
 
 }
@@ -47,7 +54,7 @@ body{
 #table-nav{
     background-color: rgba(255,255,255,0);
     border: none;
-    margin-left: 220px;
+    margin-left: 50px;
     text-align: center;
 }
 
@@ -91,6 +98,34 @@ body{
 #tab-artikelen{
     padding: 0;
 }
+/*All Tables for 100% width*/
+
+#artikelen-table{
+    width: 100%;
+    margin: auto;
+
+}
+
+#klanten-table{
+    width: 100%;
+    margin: auto;
+}
+
+#uitleningen-table{
+    width: 100%;
+    margin: auto;
+}
+#reserveringen-table{
+    width: 100%;
+    margin: auto;
+}
+
+#te-laat-table{
+    width: 100%;
+    margin: auto;
+}
+
+
 #tab-klanten{
     padding: 0;
 }
@@ -156,7 +191,19 @@ body{
     border: 1px solid #B6B6B6;
     font-family: 'Roboto';
     font-weight: 400;
-    padding: 0;
+    text-align: center;
+}
+
+.left-cell{
+    text-align: left !important;
+    padding-left: 10px;
+
+}
+
+.left-cell p{
+    width:500px;
+    height:45px;
+    overflow:auto;
 }
 
 #tabs input[type="text"]
@@ -185,13 +232,16 @@ body{
 
 /*Column Search Style*/
 
+.fulltable-filter{
+    width: 90%;
+    margin: auto;
+}
+
 .fulltable-filter input[type="text"]{
     border: 1px solid #B6B6B6 !important;
     border-radius: 5px !important;
     background-color: #fff !important;
-    width: 90% !important;
     height: 35px !important;
-    margin: auto !important;
     text-align: center !important;
 
 }
@@ -234,6 +284,7 @@ body{
 }
 
 
+
 /*Actie*/
 
 .meldingVoltooid{
@@ -251,7 +302,7 @@ width: 50%;
 }
 .meldingText{
     font-family: 'Roboto';
-    
+
 }
 .meldingKleur{
 /*    color: red !important;*/
@@ -266,18 +317,50 @@ text-decoration: underline #707070 !important;
     color: #F14444 !important;
     padding-left: 30px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .pen{
     color: #67B0E3;
     font-size: 20px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 .plus{
     color: #78E374;
     font-size: 25px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
+.fa-check{
+    color: #78E374;
+    font-size: 25px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.fa-times{
+    color: #F14444 !important;
+    padding-left: 30px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.fa-caret-down{
+    color: #707070 !important;
+    padding-left: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.fa-caret-up{
+    color: #707070 !important;
+    padding-left: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
 
 
 /*table tr:first-child {*/
@@ -348,10 +431,10 @@ table.fulltable thead th a.fulltable-sort {
     height: 9px;
     cursor: pointer;
 }
-table.fulltable thead th.fulltable-asc a.fulltable-sort-desc {
+table.fulltable thead th.fulltable-asc i.fulltable-sort-desc {
     display:none!important;
 }
-table.fulltable thead th.fulltable-desc a.fulltable-sort-asc {
+table.fulltable thead th.fulltable-desc i.fulltable-sort-asc {
     display:none!important;
 }
 table.fulltable.fulltable-editable td.fulltable-edition-control {
@@ -370,21 +453,36 @@ table.fulltable.fulltable-editable td.fulltable-edition-control a {
     cursor:pointer;
     text-align:center;
 }
-table.fulltable.fulltable-editable td.fulltable-edition-control a.fulltable-create {
+
+
+
+table.fulltable.fulltable-editable td.fulltable-edition-control i.fulltable-create {
     display:none;
 }
-table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control a.fulltable-create {
+table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control i.fulltable-create {
     display:inline-block!important;
 }
-table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control a.fulltable-save {
+table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control i.fulltable-save {
     display:none!important;
 }
-table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-edit, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-remove {
+table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-edit, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-remove {
     display:none;
 }
-table.fulltable.fulltable-editable tr td.fulltable-edition-control a.fulltable-save, table.fulltable.fulltable-editable tr td.fulltable-edition-control a.fulltable-discard {
+table.fulltable.fulltable-editable tr td.fulltable-edition-control i.fulltable-save, table.fulltable.fulltable-editable tr td.fulltable-edition-control i.fulltable-discard {
     display:none;
 }
-table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-save, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control a.fulltable-discard {
+table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-save, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-discard {
     display:inline-block;
+}
+
+
+
+.textarea {
+
+    max-height: 100px;
+    width: 100%;
+    overflow-y: auto;
+    display: table-cell;
+
+
 }
