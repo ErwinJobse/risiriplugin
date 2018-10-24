@@ -103,6 +103,7 @@ body{
 #artikelen-table{
     width: 100%;
     margin: auto;
+
 }
 
 #klanten-table{
@@ -190,7 +191,19 @@ body{
     border: 1px solid #B6B6B6;
     font-family: 'Roboto';
     font-weight: 400;
-    padding: 0;
+    text-align: center;
+}
+
+.left-cell{
+    text-align: left !important;
+    padding-left: 10px;
+
+}
+
+.left-cell p{
+    width:500px;
+    height:45px;
+    overflow:auto;
 }
 
 #tabs input[type="text"]
@@ -304,39 +317,49 @@ text-decoration: underline #707070 !important;
     color: #F14444 !important;
     padding-left: 30px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .pen{
     color: #67B0E3;
     font-size: 20px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 .plus{
     color: #78E374;
     font-size: 25px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 .fa-check{
     color: #78E374;
     font-size: 25px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 .fa-times{
     color: #F14444 !important;
     padding-left: 30px;
-    font-size: 20px;
+    font-size: 25px;
+    cursor: pointer;
 }
 
-.fa-sort-down{
+.fa-caret-down{
     color: #707070 !important;
     padding-left: 5px;
     font-size: 15px;
+    cursor: pointer;
 }
 
-.fa-sort-up{
+.fa-caret-up{
     color: #707070 !important;
     padding-left: 5px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 
@@ -430,6 +453,9 @@ table.fulltable.fulltable-editable td.fulltable-edition-control a {
     cursor:pointer;
     text-align:center;
 }
+
+
+
 table.fulltable.fulltable-editable td.fulltable-edition-control i.fulltable-create {
     display:none;
 }
@@ -450,3 +476,13 @@ table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-con
 }
 
 
+
+.textarea {
+
+    max-height: 100px;
+    width: 100%;
+    overflow-y: auto;
+    display: table-cell;
+
+
+}
