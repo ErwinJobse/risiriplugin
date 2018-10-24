@@ -199,7 +199,7 @@ body{
 }
 
 .textarea {
-    width: 50%;
+    width: 40%;
     display: table-cell;
     text-align: left !important;
     padding-left: 10px;
