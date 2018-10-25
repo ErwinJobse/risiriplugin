@@ -17,6 +17,7 @@
                         "klantnummer":{
                             "mandatory":false,
                             "disabled": true,
+                            "placeholder": "N.V.T.",
                         },
                         "voorNaam":{
                             "mandatory":true,
@@ -29,9 +30,11 @@
                         },
                         "TussenVoegsel":{
                             "mandatory":false,
+                            "placeholder": "Tussenvoegsel",
                         },
                         "Achternaam":{
                             "mandatory":true,
+                            "placeholder": "Achternaam",
                         },
                         "email":{
                             "mandatory":true,
@@ -54,6 +57,7 @@
                         },
                         "telNummer":{
                             "mandatory":true,
+                            "placeholder": "Telefoon",
                         },
 
                     }
