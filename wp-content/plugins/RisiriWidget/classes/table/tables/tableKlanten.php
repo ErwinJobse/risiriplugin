@@ -46,7 +46,7 @@
                                     return true;
                                 }
                                 $("#melding").show();
-                                document.getElementById("meldingT").innerHTML = "You have entered an invalid email address!";
+                                document.getElementById("meldingT").innerHTML = "Je hebt een ongeldig email adres ingevuld!";
                                 return false;
 
                             },

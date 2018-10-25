@@ -13,10 +13,14 @@
                     "alwaysCreating":true,
                     "selectable":false,
                     "fields": {
-                        "Klantnummer":{
+                        "Uitleningnummer":{
                             "mandatory":false,
                             "disabled":true,
                             "placeholder": "N.V.T.",
+                        },
+                        "Klantnummer":{
+                            "mandatory":false,
+                            "placeholder": "Klantnummer",
                         },
                         "uitleenDatum":{
                             "mandatory":true,

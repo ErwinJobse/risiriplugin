@@ -25,7 +25,6 @@ class table{
         <?php if ($view === TRUE) { //show content  ?>
 
             <div class="meldingVoltooid" id="melding">
-                <p><h3>Melding:</h3></p>
                 <div class="meldingText">
                     <p id="meldingT">Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
                 </div>
