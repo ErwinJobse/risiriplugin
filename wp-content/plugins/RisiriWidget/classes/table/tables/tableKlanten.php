@@ -21,15 +21,6 @@
                         "voorNaam":{
                             "mandatory":true,
                             "placeholder": "Voornaam",
-                            "validator":function(voorNaam) {
-                                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(voorNaam))
-                                {
-                                    return true;
-                                }
-                                alert("You have entered an invalid email address!");
-                                return false;
-
-                            },
                             "errors":{
                                 "type":"Height must be a number",
                                 "mandatory":"Height is mandatory",
@@ -48,10 +39,11 @@
                             "validator":function(voorNaam) {
                                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(voorNaam))
                                 {
+                                    $("#melding").hide();
                                     return true;
                                 }
                                 $("#melding").show();
-                                document.getElementById(melding).innerHTML = "You have entered an invalid email address!";
+                                document.getElementById("meldingT").innerHTML = "You have entered an invalid email address!";
                                 return false;
 
                             },
