@@ -18,14 +18,9 @@
 
         </tr>
 <?php
-$date = new DateTime($event['date']);
-$now = new DateTime();
 
-if($date < $now) {
-    echo 'date is in the past';
-}
         foreach ($getUitlening as $item) {
-        if ($date <= $item->inleverdatum && $item->ingeleverd == 0) {
+        if ($item->inleverDatum <= date("Y-m-d")   && $item->ingeleverd == 0) {
 
         ?>
         <tr>
