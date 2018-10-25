@@ -286,6 +286,7 @@ body{
 .fulltable-editing td{
     background-color: #9F9F9F;
     height: 45px;
+    max-height: none;
 }
 .fulltable-editing input[type="text"]{
     color: #fff;
