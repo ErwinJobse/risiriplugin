@@ -16,9 +16,25 @@
                     "fields": {
                         "klantnummer":{
                             "mandatory":false,
+                            "disabled": true,
                         },
                         "voorNaam":{
                             "mandatory":true,
+                            "placeholder": "Voornaam",
+                            "validator":function(voorNaam) {
+                                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(voorNaam))
+                                {
+                                    return true;
+                                }
+                                alert("You have entered an invalid email address!");
+                                return false;
+
+                            },
+                            "errors":{
+                                "type":"Height must be a number",
+                                "mandatory":"Height is mandatory",
+                            }
+
                         },
                         "TussenVoegsel":{
                             "mandatory":false,
@@ -28,6 +44,21 @@
                         },
                         "email":{
                             "mandatory":true,
+                            "placeholder": "Email",
+                            "validator":function(voorNaam) {
+                                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(voorNaam))
+                                {
+                                    return true;
+                                }
+                                $("#melding").show();
+                                document.getElementById(melding).innerHTML = "You have entered an invalid email address!";
+                                return false;
+
+                            },
+                            "errors":{
+                                "type":"Height must be a number",
+                                "mandatory":"Height is mandatory",
+                            }
                         },
                         "telNummer":{
                             "mandatory":true,

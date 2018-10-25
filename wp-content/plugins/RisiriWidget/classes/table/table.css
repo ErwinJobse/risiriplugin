@@ -368,8 +368,8 @@ body{
 
 
 
-.meldingVoltooid{
-visibility: hidden;
+#melding{
+    display: none;
 color: #707070;
 font-family: 'Roboto';
 text-align: center;
@@ -498,7 +498,7 @@ table.fulltable.fulltable-editable th.fulltable-edition-control, table.fulltable
     padding: 0 1em;
 }
 table.fulltable.fulltable-editable input.invalid, table.fulltable.fulltable-editable select.invalid {
-    border: solid 1px #FF3333;
+    border: solid 2px #FF3333 !important;
     background-color:#FFEEEE;
 }
 table.fulltable thead th a.fulltable-sort {

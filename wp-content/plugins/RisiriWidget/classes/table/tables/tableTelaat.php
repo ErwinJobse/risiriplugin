@@ -92,7 +92,7 @@
             }
             ?>
         </table>
-        <?php } else{ echo "Geen uitleningen zijn te laat"; }
+        <?php } else{ echo "Geen uitleningen zijn te laat"; } //todo: make it look nice
         ?>
     </div>
 
