@@ -1,7 +1,4 @@
-
-
 <script>
-
 if (typeof jQuery === 'undefined') {
     throw new Error('FullTable requires jQuery library.');
 }
@@ -1072,5 +1069,7 @@ if (typeof Array.isArray != "function") {
         return this;
     };
 }(jQuery));
+
+
 
 </script>
