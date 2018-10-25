@@ -24,12 +24,12 @@ class table{
 
         <?php if ($view === TRUE) { //show content  ?>
 
-            <div class="meldingVoltooid">
-                <p><h3>Melding:</h3></p>
-                <div class="meldingText">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
-                </div>
-            </div>
+<!--            <div class="meldingVoltooid">-->
+<!--                <p><h3>Melding:</h3></p>-->
+<!--                <div class="meldingText">-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>-->
+<!--                </div>-->
+<!--            </div>-->
 
 
         <script>
@@ -44,11 +44,11 @@ class table{
             
 
                 <ul id="table-nav">
+                    <li><a href="#tab-telaat">Te laat</a></li>
                     <li><a href="#tab-artikelen">Artikelen</a></li>
                     <li><a href="#tab-klanten">Klanten</a></li>
                     <li><a href="#tab-uitleningen">Uitleningen</a></li>
                     <li><a href="#tab-reserveringen">Reserveringen</a></li>
-                    <li><a href="#tab-telaat">Te laat</a></li>
                 </ul>
             <?php
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php');
