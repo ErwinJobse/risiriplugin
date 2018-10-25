@@ -79,6 +79,7 @@ body{
 .table-nav .ui-tabs .ui-tabs-nav li.ui-tabs-active{
     border: 4px solid #c23333 !important;
     border-bottom: none !important;
+
 }
 
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
@@ -499,7 +500,7 @@ table.fulltable.fulltable-editable th.fulltable-edition-control, table.fulltable
 }
 table.fulltable.fulltable-editable input.invalid, table.fulltable.fulltable-editable select.invalid {
     border: solid 2px #FF3333 !important;
-    background-color:#FFEEEE;
+    background-color:#FFEEEE !important;
 }
 table.fulltable thead th a.fulltable-sort {
     font-family: 'jquery.fulltable';
