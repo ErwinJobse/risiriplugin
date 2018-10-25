@@ -276,6 +276,10 @@ body{
     background-color: #67B0E3 !important;
 }
 
+.fulltable-creating input[type="text"]::placeholder{
+    color: #fff;
+}
+
 
 /*Bewerken Rij*/
 .fulltable-editing td{

@@ -15,18 +15,25 @@
                     "fields": {
                         "Klantnummer":{
                             "mandatory":false,
+                            "disabled":true,
+                            "placeholder": "N.V.T.",
                         },
                         "uitleenDatum":{
                             "mandatory":true,
+                            "disabled":true,
+                            "placeholder": "Datum van vandaag",
                         },
                         "inleverDatum":{
                             "mandatory":false,
+                            "placeholder": "Inlever-datum",
                         },
                         "ingeleverd":{
                             "mandatory":true,
+                            "placeholder": "Ja of Nee",
                         },
                         "Artikelnummer":{
                             "mandatory":true,
+                            "placeholder": "Artikelnummers",
                         },
                     }
                 });
