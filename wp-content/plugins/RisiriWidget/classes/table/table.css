@@ -98,6 +98,12 @@ body{
 #tab-artikelen{
     padding: 0;
 }
+
+#tab-telaat{
+    padding: 0;
+    
+}
+
 /*All Tables for 100% width*/
 
 #artikelen-table{
@@ -120,7 +126,7 @@ body{
     margin: auto;
 }
 
-#data-telaat{
+#telaat-table{
     width: 100%;
     margin: auto;
 }
@@ -200,6 +206,18 @@ body{
 
 .textarea {
     width: 40%;
+    display: table-cell;
+    text-align: left !important;
+    padding-left: 10px;
+    max-height: 45px;
+    max-width: 100px;
+    overflow: -webkit-paged-x;
+    white-space: normal;
+
+}
+
+.doel {
+    width: 20%;
     display: table-cell;
     text-align: left !important;
     padding-left: 10px;

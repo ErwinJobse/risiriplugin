@@ -16,19 +16,27 @@
                     "alwaysCreating":true,
                     "selectable":false,
                     "fields": {
-                        "ReserveringNummer":{
+                        "voorNaam":{
                             "mandatory":true,
                         },
-                        "Klantnummer":{
+                        "tussenVoegsel":{
                             "mandatory":true,
                         },
-                        "Artikelnummer":{
+                        "achterNaam":{
                             "mandatory":true,
                         },
-                        "AanmaakDatum":{
+                        "uitleenDatum":{
                             "mandatory":false,
                         },
-
+                        "beginTijd":{
+                            "mandatory":false,
+                        },
+                        "eindTijd":{
+                            "mandatory":false,
+                        },
+                        "doel":{
+                            "mandatory":false,
+                        },
                     }
                 });
                 $("#reserveringen-table-add-row").click(function() {
@@ -57,20 +65,26 @@
         <table class="fulltable fulltable-editable" id="reserveringen-table">
             <thead>
             <tr>
-                <th fulltable-field-name="ReserveringNummer">Reserveringsnummer</th>
-                <th fulltable-field-name="Klantnummer">Klantnummer</th>
-                <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
-                <th fulltable-field-name="AanmaakDatum">Aanmaakdatum</th>
+                <th fulltable-field-name="voorNaam">Voornaam</th>
+                <th fulltable-field-name="tussenVoegsel">Tussenvoegsel</th>
+                <th fulltable-field-name="achterNaam">Achternaam</th>
+                <th fulltable-field-name="uitleenDatum">Datum</th>
+                <th fulltable-field-name="beginTijd">Begintijd</th>
+                <th fulltable-field-name="eindTijd">Eindtijd</th>
+                <th fulltable-field-name="doel">Doel</th>
 
             </tr>
             </thead>
             <tbody>
             <?php foreach ($getReservering as $row) { ?>
                 <tr>
-                    <td><span><?php echo $row->ReserveringNummer; ?></span></td>
-                    <td><span><?php echo $row->Klantnummer; ?></span></td>
-                    <td><span><?php echo $row->Artikelnummer; ?></span></td>
-                    <td><span><?php echo $row->AanmaakDatum; ?></span></td>
+                    <td><span><?php echo $row->voorNaam; ?></span></td>
+                    <td><span><?php echo $row->tussenVoegsel; ?></span></td>
+                    <td><span><?php echo $row->achterNaam; ?></span></td>
+                    <td><span><?php echo $row->uitleenDatum; ?></span></td>
+                    <td><span><?php echo $row->beginTijd; ?></span></td>
+                    <td><span><?php echo $row->eindTijd; ?></span></td>
+                    <td class="doel"><span><?php echo $row->doel; ?></span></td>
                 </tr>
             <?php } ?>
             </tbody>
