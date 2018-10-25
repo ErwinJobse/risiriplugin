@@ -9,29 +9,77 @@
 ?>
 
 <div id="tab-telaat">
-    <table id="data-telaat" cellspacing="0">
-        <tr>
-            <th width="8%">Uitleningnummer</th>
-            <th width="10%">Artikelnummer</th>
-            <th width="10%">Klant</th>
-            <th width="10%">Klantnummer</th>
+    <script type="text/javascript">
+        $(
+            function () {
+                $("#telaat-table").FullTable({
+                    "alwaysCreating": false,
+                    "selectable": false,
+                    "editable": false,
+                    "fields": {
+                        "Uitleningnummer": {
+                            "mandatory": false,
+                        },
+                        "Artikelnummer": {
+                            "mandatory": true,
+                        },
+                        "Klant": {
+                            "mandatory": false,
+                        },
+                        "Klantnummer": {
+                            "mandatory": false,
+                        },
 
-        </tr>
-<?php
+                    }
+                });
+                $("#telaat-table-add-row").click(function () {
+                    $("#telaat-table").FullTable("addRow");
+                });
+                $("#telaat-table-get-value").click(function () {
+                    console.log($("#artikelen-table").FullTable("getData"));
+                });
+                $("#telaat-table").FullTable("on", "error", function (errors) {
+                    for (var error in errors) {
+                        error = errors[error];
+                        console.log(error);
+                    }
+                });
+                $("#telaat-table").FullTable("draw");
+            }
+        );
+    </script>
+    <div id="jquery-script-menu">
+        <div class="jquery-script-center">
 
-        foreach ($getUitlening as $item) {
-        if ($item->inleverDatum <= date("Y-m-d")   && $item->ingeleverd == 0) {
+            <div class="jquery-script-clear"></div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="fulltable fulltable-editable" id="telaat-table">
+            <thead>
+            <tr>
+                <th fulltable-field-name="Uitleningnummer">Uitleningnummer</th>
+                <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
+                <th fulltable-field-name="Klant">Klant</th>
+                <th fulltable-field-name="Klantnummer">Klantnummer</th>
 
-        ?>
-        <tr>
-            <td><?php echo $item->uitleenNummer; ?></td>
-            <td><?php echo $item->Artikelnummer; ?></td>
-            <td><?php echo $item->Klantnummer; ?></td>
-            <td><?php echo $item->Klantnummer; ?></td>
-        </tr>
-        <?php }
-        }
-        ?>
-    </table>
-</div>
+            </tr>
+            </thead>
+            <?php
+
+            foreach ($getUitlening as $item) {
+                if ($item->inleverDatum <= date("Y-m-d") && $item->ingeleverd == 0) {
+
+                    ?>
+                    <tr>
+                        <td><?php echo $item->uitleenNummer; ?></td>
+                        <td><?php echo $item->Artikelnummer; ?></td>
+                        <td><?php echo $item->Klantnummer; ?></td>
+                        <td><?php echo $item->Klantnummer; ?></td>
+                    </tr>
+                <?php }
+            }
+            ?>
+        </table>
+    </div>
 
