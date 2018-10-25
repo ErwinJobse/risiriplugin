@@ -58,6 +58,7 @@
         <table class="fulltable fulltable-editable" id="uitleningen-table">
             <thead>
             <tr>
+                <th fulltable-field-name="Uitleningnummer">Uitleningnummer</th>
                 <th fulltable-field-name="Klantnummer">Klantnummer</th>
                 <th fulltable-field-name="uitleenDatum">Uitleen-datum</th>
                 <th fulltable-field-name="inleverDatum">Inlever-datum</th>
@@ -69,6 +70,7 @@
             <tbody>
             <?php foreach ($getUitlening as $row) { ?>
             <tr>
+                <td><span><?php echo $row->uitleenNummer; ?></span></td>
                 <td><span><?php echo $row->Klantnummer; ?></span></td>
                 <td><span><?php echo $row->uitleenDatum; ?></span></td>
                 <td><span><?php echo $row->inleverDatum; ?></span></td>
