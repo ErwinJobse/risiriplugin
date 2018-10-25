@@ -27,7 +27,7 @@ class table{
             <div class="meldingVoltooid" id="melding">
                 <p><h3>Melding:</h3></p>
                 <div class="meldingText">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
+                    <p id="meldingT">Lorem ipsum dolor sit amet, consectetuer adipiscing <a class="meldingKleur">elit.</a></p>
                 </div>
             </div>
 
