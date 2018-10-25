@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Owen Vermeulen
+ * User: Owen Vermeulen, Erwin Jobse
  * Date: 9/25/2018
  * Time: 10:04 AM
  */
@@ -55,6 +55,10 @@
         </div>
     </div>
     <div class="container">
+
+
+
+        <?php if($maxUitlening > 0) { ?>
         <table class="fulltable fulltable-editable" id="telaat-table">
             <thead>
             <tr>
@@ -88,5 +92,9 @@
             }
             ?>
         </table>
+        <?php } else{ echo "Geen uitleningen zijn te laat"; } //todo: make it look nice
+        ?>
     </div>
+
+
 
