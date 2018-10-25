@@ -98,6 +98,12 @@ body{
 #tab-artikelen{
     padding: 0;
 }
+
+#tab-telaat{
+    padding: 0;
+    
+}
+
 /*All Tables for 100% width*/
 
 #artikelen-table{
@@ -120,7 +126,7 @@ body{
     margin: auto;
 }
 
-#data-telaat{
+#telaat-table{
     width: 100%;
     margin: auto;
 }
