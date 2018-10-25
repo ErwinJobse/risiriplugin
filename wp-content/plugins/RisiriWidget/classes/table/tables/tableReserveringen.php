@@ -84,7 +84,7 @@
                     <td><span><?php echo $row->uitleenDatum; ?></span></td>
                     <td><span><?php echo $row->beginTijd; ?></span></td>
                     <td><span><?php echo $row->eindTijd; ?></span></td>
-                    <td><span><?php echo $row->doel; ?></span></td>
+                    <td class="doel"><span><?php echo $row->doel; ?></span></td>
                 </tr>
             <?php } ?>
             </tbody>
