@@ -232,6 +232,18 @@ body{
 
 }
 
+.doel {
+    width: 20%;
+    display: table-cell;
+    text-align: left !important;
+    padding-left: 10px;
+    max-height: 45px;
+    max-width: 100px;
+    overflow: -webkit-paged-x;
+    white-space: normal;
+
+}
+
 #tabs input[type="text"]
 {
     background: transparent;

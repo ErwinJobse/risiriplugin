@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Owen Vermeulen
+ * User: Owen Vermeulen, Erwin Jobse
  * Date: 9/25/2018
  * Time: 10:04 AM
  */
@@ -55,6 +55,10 @@
         </div>
     </div>
     <div class="container">
+
+
+
+        <?php if($maxUitlening > 0) { ?>
         <table class="fulltable fulltable-editable" id="telaat-table">
             <thead>
             <tr>
@@ -66,7 +70,7 @@
             </tr>
             </thead>
             <?php
-
+            //foreach voor uitleningen in te laat tabel
             foreach ($getUitlening as $item) {
                 if ($item->inleverDatum <= date("Y-m-d") && $item->ingeleverd == 0) {
 
@@ -74,12 +78,23 @@
                     <tr>
                         <td><?php echo $item->uitleenNummer; ?></td>
                         <td><?php echo $item->Artikelnummer; ?></td>
-                        <td><?php echo $item->Klantnummer; ?></td>
+                        <td><?php
+                            foreach ($getKlant as $value) {
+                                if($item->Klantnummer == $value->klantnummer){
+                                echo $value->voorNaam;
+                                }
+                            }
+                            ?>
+                        </td>
                         <td><?php echo $item->Klantnummer; ?></td>
                     </tr>
                 <?php }
             }
             ?>
         </table>
+        <?php } else{ echo "Geen uitleningen zijn te laat"; }
+        ?>
     </div>
+
+
 
