@@ -249,7 +249,25 @@ if (typeof Array.isArray != "function") {
                     'class':"fulltable-remove fas fa-trash-alt trash",
                     'text':""
                 }).click(function() {
+                    removeRow(row);  //show real delete button
+                }));
+
+                //DELETE CHECK --------------------
+
+                //delete conform
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-remove-conform fas fas fa-check",
+                    'text':""
+                }).click(function() {
                     removeRow(row);
+                }));
+
+                //delete mistake
+                edition_control.append($("<i/>", {
+                    'class':"fulltable-remove-mistake fas fas fa-times",
+                    'text':""
+                }).click(function() {
+                    discardRow(row);
                 }));
                 <?php } //end delete function?>
                 edition_control.append($("<i/>", {

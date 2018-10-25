@@ -493,7 +493,7 @@ table.fulltable.fulltable-editable td.fulltable-edition-control i.fulltable-crea
 table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control i.fulltable-create {
     display:inline-block!important;
 }
-table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control i.fulltable-save {
+table.fulltable.fulltable-editable tr.fulltable-creating td.fulltable-edition-control i.fulltable-save  {
     display:none!important;
 }
 table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-edit, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-remove {
@@ -505,5 +505,16 @@ table.fulltable.fulltable-editable tr td.fulltable-edition-control i.fulltable-s
 table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-save, table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-discard {
     display:inline-block;
 }
+
+table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-remove-conform  {
+    display:none;
+
+}
+
+table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-control i.fulltable-remove-conform {
+    display:inline-block;
+}
+
+
 
 
