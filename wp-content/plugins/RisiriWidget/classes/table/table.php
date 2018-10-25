@@ -44,7 +44,7 @@ class table{
             
 
                 <ul id="table-nav">
-                    <li><a href="#tab-telaat">Te laat</a></li>
+                    <li class="telaat-nav"><a href="#tab-telaat">Te laat</a></li>
                     <li><a href="#tab-artikelen">Artikelen</a></li>
                     <li><a href="#tab-klanten">Klanten</a></li>
                     <li><a href="#tab-uitleningen">Uitleningen</a></li>

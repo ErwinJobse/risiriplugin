@@ -76,6 +76,11 @@ body{
     background-color: #41b2f2;
 }
 
+.table-nav .ui-tabs .ui-tabs-nav li.ui-tabs-active{
+    border: 4px solid #c23333 !important;
+    border-bottom: none !important;
+}
+
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
     color: #fff !important;
 }
@@ -101,8 +106,19 @@ body{
 
 #tab-telaat{
     padding: 0;
-    
+
 }
+
+.telaat-nav{
+    background-color: #E23939 !important;
+
+}
+
+.telaat-nav a{
+    color: #fff !important;
+}
+
+
 
 /*All Tables for 100% width*/
 
@@ -330,6 +346,22 @@ body{
     background-color: #CBEBF6;
 }
 
+/*Te laat background color*/
+#telaat-table tr{
+    background: #F6CBCB;
+}
+
+#telaat-table tr:nth-child(odd) {
+    background-color: #f8d8d8;
+}
+
+#telaat-table tr:nth-child(even) {
+    background-color: #F6CBCB;
+}
+
+#telaat-table thead tr{
+    background-color: #F6CBCB !important;
+}
 
 
 /*Actie*/
