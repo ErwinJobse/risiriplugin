@@ -68,7 +68,7 @@
                 <th fulltable-field-name="voorNaam">Voornaam</th>
                 <th fulltable-field-name="tussenVoegsel">Tussenvoegsel</th>
                 <th fulltable-field-name="achterNaam">Achternaam</th>
-                <th fulltable-field-name="uitleenDatum">Uitleendatum</th>
+                <th fulltable-field-name="uitleenDatum">Datum</th>
                 <th fulltable-field-name="beginTijd">Begintijd</th>
                 <th fulltable-field-name="eindTijd">Eindtijd</th>
                 <th fulltable-field-name="doel">Doel</th>
@@ -84,7 +84,7 @@
                     <td><span><?php echo $row->uitleenDatum; ?></span></td>
                     <td><span><?php echo $row->beginTijd; ?></span></td>
                     <td><span><?php echo $row->eindTijd; ?></span></td>
-                    <td><span><?php echo $row->doel; ?></span></td>
+                    <td class="doel"><span><?php echo $row->doel; ?></span></td>
                 </tr>
             <?php } ?>
             </tbody>
