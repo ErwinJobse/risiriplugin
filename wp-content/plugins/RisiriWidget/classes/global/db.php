@@ -18,5 +18,6 @@ $getReservering = $wpdb->get_results("SELECT * FROM $tableReservering");
 
 $maxKlant = $wpdb->get_var("SELECT MAX(klantnummer) FROM $tableKlant");
 $maxArtikel = $wpdb->get_var("SELECT MAX(artikelNummer) FROM $tableArtikel");
+$maxUitlening = $wpdb->get_var("SELECT MAX(UitleenNummer) FROM $tableUitlening");
 
 ?>
