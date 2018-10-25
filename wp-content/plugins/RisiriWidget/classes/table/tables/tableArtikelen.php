@@ -63,7 +63,7 @@
             </thead>
             <tbody>
             <?php foreach ($getArtikel as $row) { ?>
-            <tr>
+            <tr class="row-return">
                 <td><span><?php echo $row->Artikelnummer; ?></span></td>
                 <td><span><?php echo $row->Artikelnaam; ?></span></td>
                 <td><span><?php echo $row->Aanmaakdatum; ?></span></td>

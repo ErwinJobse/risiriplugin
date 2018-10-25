@@ -120,7 +120,7 @@ body{
     margin: auto;
 }
 
-#te-laat-table{
+#data-telaat{
     width: 100%;
     margin: auto;
 }
@@ -192,30 +192,34 @@ body{
     font-family: 'Roboto';
     font-weight: 400;
     text-align: center;
+    color: #707070;
+    line-height: 20px;
+    font-size: 15px;
+    height: 45px;
 }
 
-.left-cell{
+.textarea {
+    width: 40%;
+    display: table-cell;
     text-align: left !important;
     padding-left: 10px;
+    max-height: 45px;
+    max-width: 100px;
+    overflow: -webkit-paged-x;
+    white-space: normal;
 
-}
-
-.left-cell p{
-    width:500px;
-    height:45px;
-    overflow:auto;
 }
 
 #tabs input[type="text"]
 {
     background: transparent;
     border: none;
-    text-align: center;
     font-family: 'Roboto';
     font-weight: 400;
-    color: #707070;
-    width: 100%;
+    text-align: center;
+    color: #fff;
     line-height: 40px;
+    font-size: 15px;
 }
 
 #tabs input[type="number"]
@@ -230,6 +234,30 @@ body{
     line-height: 40px;
 }
 
+/*Toevoegen Rij*/
+.fulltable-creating{
+
+}
+.fulltable-creating td{
+    background-color: #67B0E3 !important;
+}
+
+
+/*Bewerken Rij*/
+.fulltable-editing td{
+    background-color: #9F9F9F;
+    height: 45px;
+}
+.fulltable-editing input[type="text"]{
+    color: #fff;
+    margin: 0 !important;
+}
+/*Bewerken Omschrijving*/
+.textarea input[type="text"]{
+    text-align: left !important;
+}
+
+
 /*Column Search Style*/
 
 .fulltable-filter{
@@ -243,6 +271,7 @@ body{
     background-color: #fff !important;
     height: 35px !important;
     text-align: center !important;
+    color: #707070 !important;
 
 }
 
@@ -287,8 +316,10 @@ body{
 
 /*Actie*/
 
+
+
 .meldingVoltooid{
-/*visibility: hidden;*/
+visibility: hidden;
 color: #707070;
 font-family: 'Roboto';
 text-align: center;
@@ -376,7 +407,7 @@ text-decoration: underline #707070 !important;
 /*border-bottom-right-radius: 21px;*/
 /*}*/
 
-font-family: 'Roboto', sans-serif;
+
 
 
 /* table functions*/
@@ -476,13 +507,3 @@ table.fulltable.fulltable-editable tr.fulltable-editing td.fulltable-edition-con
 }
 
 
-
-.textarea {
-
-    max-height: 100px;
-    width: 100%;
-    overflow-y: auto;
-    display: table-cell;
-
-
-}
