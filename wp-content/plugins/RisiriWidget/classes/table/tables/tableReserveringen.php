@@ -102,4 +102,3 @@
 
 </div>
 
-<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>
