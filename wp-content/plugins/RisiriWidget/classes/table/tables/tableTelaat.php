@@ -65,10 +65,10 @@
         <table class="fulltable fulltable-editable" id="telaat-table">
             <thead>
             <tr>
-                <th fulltable-field-name="Uitleningnummer">Uitleningnummer</th>
-                <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
-                <th fulltable-field-name="Klant">Klant</th>
-                <th fulltable-field-name="Klantnummer">Klantnummer</th>
+                <th class="text" fulltable-field-name="Uitleningnummer">Uitleningnummer</th>
+                <th class="text" fulltable-field-name="Artikelnummer">Artikelnummer</th>
+                <th class="text" fulltable-field-name="Klant">Klant</th>
+                <th class="text" fulltable-field-name="Klantnummer">Klantnummer</th>
 
             </tr>
             </thead>
@@ -79,9 +79,9 @@
 
                     ?>
                     <tr>
-                        <td><?php echo $item->uitleenNummer; ?></td>
-                        <td><?php echo $item->Artikelnummer; ?></td>
-                        <td><?php
+                        <td class="text"><?php echo $item->uitleenNummer; ?></td>
+                        <td class="text"><?php echo $item->Artikelnummer; ?></td>
+                        <td class="text"<?php
                             foreach ($getKlant as $value) {
                                 if($item->Klantnummer == $value->klantnummer){
                                 echo $value->voorNaam;
@@ -89,7 +89,7 @@
                             }
                             ?>
                         </td>
-                        <td><?php echo $item->Klantnummer; ?></td>
+                        <td class="text"><?php echo $item->Klantnummer; ?></td>
                     </tr>
                 <?php }
             }

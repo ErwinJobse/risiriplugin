@@ -111,12 +111,12 @@ body{
 }
 
 .telaat-nav{
-    background-color: #E23939 !important;
+    background-color:  #ff3333!important;
 
 }
 
 .telaat-nav a{
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 
@@ -210,6 +210,9 @@ body{
 
 }
 
+.text{
+    color: #fff !important;
+}
 #tabs td{
     border: 1px solid #B6B6B6;
     font-family: 'Roboto';
@@ -354,19 +357,19 @@ body{
 
 /*Te laat background color*/
 #telaat-table tr{
-    background: #F6CBCB;
+    background: #ff2833;
 }
 
 #telaat-table tr:nth-child(odd) {
-    background-color: #f8d8d8;
+    background-color: #f4131e;
 }
 
 #telaat-table tr:nth-child(even) {
-    background-color: #F6CBCB;
+    background-color: #ff2833;
 }
 
 #telaat-table thead tr{
-    background-color: #F6CBCB !important;
+    background-color: #ff2833 !important;
 }
 
 
@@ -376,11 +379,11 @@ body{
 
 #melding{
     display: none;
-color: #707070;
+color: #fff;
 font-family: 'Roboto';
 text-align: center;
 border: 2px solid #B6B6B6;
-background-color: #f8d8d8;
+background-color: #ff2833;
 border-collapse: collapse;
 border-radius: 1em;
 overflow: hidden;

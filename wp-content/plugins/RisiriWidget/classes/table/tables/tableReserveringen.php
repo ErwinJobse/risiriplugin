@@ -47,7 +47,7 @@
                         },
                         "beginTijd":{
                             "mandatory":true,
-                            "placeholder": "Begijntjd",
+                            "placeholder": "Begintijd",
                             "errors":{
                                 "mandatory":"Vul alle verplichte velden in",
                             }
