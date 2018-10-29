@@ -36,12 +36,16 @@ class table{
             $( function() {
                 var tabs = $( "#tabs" ).tabs();
                 tabs.find( ".ui-tabs-nav" ).sortable({
+
                     axis: "x",
                     stop: function() {
                         tabs.tabs( "refresh" );
                     }
-                });
 
+                });
+                $('#tabs').tabs({ //default tab
+                    active: 4
+                });
             } );
         </script>
 
@@ -55,6 +59,7 @@ class table{
                     <li><a href="#tab-uitleningen">Uitleningen</a></li>
                     <li><a href="#tab-reserveringen">Reserveringen</a></li>
                     <li class="telaat-nav"><a href="#tab-telaat">Te laat</a></li>
+
                 </ul>
             <?php
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableArtikelen.php');
@@ -62,6 +67,7 @@ class table{
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php');
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php');
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); ?>
+
 
 
 
@@ -76,5 +82,8 @@ class table{
 $risiriTable = new table();
 
 ?>
+
+
+
 
 
