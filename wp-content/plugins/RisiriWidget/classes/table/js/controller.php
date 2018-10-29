@@ -810,17 +810,6 @@ if (typeof Array.isArray != "function") {
                 row["__filtering"] = false;
                 row["__invalidOptionRemoved"] = false;
 
-                console.log(row);
-                $.ajax({
-                    type: 'post',
-                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?add',
-                    data: JSON.stringify(row),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        console.log("send data to server");
-                    }
-                });
 
 
 
@@ -851,7 +840,7 @@ if (typeof Array.isArray != "function") {
                 $.ajax({
                     type: 'post',
                     url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?edit',
-                    data: JSON.stringify(row),
+                    data: row,
                     contentType: "application/json; charset=utf-8",
                     traditional: true,
                     success: function (data) {

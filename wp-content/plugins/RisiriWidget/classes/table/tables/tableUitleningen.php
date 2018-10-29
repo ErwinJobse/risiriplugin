@@ -21,6 +21,10 @@
                         "Klantnummer":{
                             "mandatory":false,
                             "placeholder": "Klantnummer",
+                            "type": "integer",
+                            "errors":{
+                                "type":"Vul een getal in",
+                            }
                         },
                         "uitleenDatum":{
                             "mandatory":false,
@@ -50,7 +54,11 @@
                         },
                         "Artikelnummer":{
                             "mandatory":true,
+                            "type": "integer",
                             "placeholder": "Artikelnummers",
+                            "errors":{
+                                "type":"Vul een getal in",
+                            }
                         },
                     }
                 });
