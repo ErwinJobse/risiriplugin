@@ -16,13 +16,23 @@
                     "fields": {
                         "Artikelnummer":{
                             "mandatory":false,
+                            "disabled": true,
+                            "placeholder": "N.V.T.",
                         },
                         "Artikelnaam":{
                             "mandatory":true,
+                            "placeholder": "Artikelnaam",
+                        },
+                        "AanmaakDatum":{
+                            "mandatory":false,
+                            "disabled":true,
+                            "placeholder": "N.V.T.",
                         },
                         "omschrijving":{
                             "mandatory":false,
+                            "placeholder": "Omschrijving",
                         },
+
 
                     }
                 });
@@ -56,7 +66,7 @@
             <tr>
                 <th fulltable-field-name="Artikelnummer">Artikelnummer</th>
                 <th fulltable-field-name="Artikelnaam">Artikelnaam</th>
-                <th fulltable-field-name="Aanmaakdatum">Aanmaakdatum</th>
+                <th fulltable-field-name="AanmaakDatum">Aanmaakdatum</th>
                 <th fulltable-field-name="omschrijving" >Omschrijving</th>
 
             </tr>
@@ -77,4 +87,4 @@
 
 </div>
 
-<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>
+

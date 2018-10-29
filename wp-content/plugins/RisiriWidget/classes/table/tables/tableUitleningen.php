@@ -13,20 +13,31 @@
                     "alwaysCreating":true,
                     "selectable":false,
                     "fields": {
+                        "Uitleningnummer":{
+                            "mandatory":false,
+                            "disabled":true,
+                            "placeholder": "N.V.T.",
+                        },
                         "Klantnummer":{
                             "mandatory":false,
+                            "placeholder": "Klantnummer",
                         },
                         "uitleenDatum":{
                             "mandatory":true,
+                            "disabled":true,
+                            "placeholder": "Datum van vandaag",
                         },
                         "inleverDatum":{
                             "mandatory":false,
+                            "placeholder": "Inlever-datum",
                         },
                         "ingeleverd":{
                             "mandatory":true,
+                            "placeholder": "Ja of Nee",
                         },
                         "Artikelnummer":{
                             "mandatory":true,
+                            "placeholder": "Artikelnummers",
                         },
                     }
                 });
@@ -90,4 +101,4 @@
 
 </div>
 
-<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>
+

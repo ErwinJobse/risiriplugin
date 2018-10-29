@@ -17,6 +17,7 @@
                         "klantnummer":{
                             "mandatory":false,
                             "disabled": true,
+                            "placeholder": "N.V.T.",
                         },
                         "voorNaam":{
                             "mandatory":true,
@@ -29,9 +30,11 @@
                         },
                         "TussenVoegsel":{
                             "mandatory":false,
+                            "placeholder": "Tussenvoegsel",
                         },
                         "Achternaam":{
                             "mandatory":true,
+                            "placeholder": "Achternaam",
                         },
                         "email":{
                             "mandatory":true,
@@ -43,7 +46,7 @@
                                     return true;
                                 }
                                 $("#melding").show();
-                                document.getElementById("meldingT").innerHTML = "You have entered an invalid email address!";
+                                document.getElementById("meldingT").innerHTML = "Je hebt een ongeldig email adres ingevuld!";
                                 return false;
 
                             },
@@ -54,6 +57,7 @@
                         },
                         "telNummer":{
                             "mandatory":true,
+                            "placeholder": "Telefoon",
                         },
 
                     }
@@ -115,4 +119,4 @@
 
 </div>
 
-<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>
+

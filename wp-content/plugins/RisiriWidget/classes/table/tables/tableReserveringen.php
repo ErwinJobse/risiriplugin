@@ -18,24 +18,32 @@
                     "fields": {
                         "voorNaam":{
                             "mandatory":true,
+                            "placeholder": "Voornaam",
                         },
                         "tussenVoegsel":{
                             "mandatory":true,
+                            "placeholder": "Tussenvoegsel",
                         },
                         "achterNaam":{
                             "mandatory":true,
+                            "placeholder": "Achternaam",
                         },
                         "uitleenDatum":{
                             "mandatory":false,
+                            "disabled":false,
+                            "placeholder": "Datum van vandaag",
                         },
                         "beginTijd":{
                             "mandatory":false,
+                            "placeholder": "Begijntjd",
                         },
                         "eindTijd":{
                             "mandatory":false,
+                            "placeholder": "Eindtijd",
                         },
                         "doel":{
                             "mandatory":false,
+                            "placeholder": "Beschrijving van het doel",
                         },
                     }
                 });
@@ -94,4 +102,3 @@
 
 </div>
 
-<?php include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/js/artikel.tabledit.php'); ?>
