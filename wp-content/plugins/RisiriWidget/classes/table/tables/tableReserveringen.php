@@ -35,7 +35,7 @@
                         },
                         "beginTijd":{
                             "mandatory":false,
-                            "placeholder": "Begijntjd",
+                            "placeholder": "Begintjd",
                         },
                         "eindTijd":{
                             "mandatory":false,
