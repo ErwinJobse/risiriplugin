@@ -23,7 +23,7 @@
                             "placeholder": "Klantnummer",
                         },
                         "uitleenDatum":{
-                            "mandatory":true,
+                            "mandatory":false,
                             "disabled":true,
                             "placeholder": "Datum van vandaag",
                         },
@@ -34,6 +34,19 @@
                         "ingeleverd":{
                             "mandatory":true,
                             "placeholder": "Ja of Nee",
+                            "options":[
+                                {
+                                    "title":"Ja",
+                                    "value":"1"
+                                },
+                                {
+                                    "title":"Nee",
+                                    "value":"0"
+                                }
+                            ],
+                            "errors":{
+                                "mandatory":"Vul alle verplichten velden in",
+                            }
                         },
                         "Artikelnummer":{
                             "mandatory":true,
@@ -51,6 +64,8 @@
                     for (var error in errors) {
                         error = errors[error];
                         console.log(error);
+                        $("#melding").show();
+                        document.getElementById("meldingT").innerHTML = error;
                     }
                 });
                 $("#uitleningen-table").FullTable("draw");

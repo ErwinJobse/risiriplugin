@@ -17,17 +17,20 @@ include(RisiriWidget_PLUGIN_DIR . '/classes/global/db.php');
 
 
 if (isset($_GET["add"])){ //add row
+    echo "add";
 
 
 
 }
 
 else if (isset($_GET["delete"])){ //delete row
+    echo "delete";
 
 
 }
 
 else if (isset($_GET["edit"])){ //edit row
+    echo "edit";
 
 
 } else{

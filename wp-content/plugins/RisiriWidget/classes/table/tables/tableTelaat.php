@@ -22,6 +22,9 @@
                         },
                         "Artikelnummer": {
                             "mandatory": true,
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "Klant": {
                             "mandatory": false,
