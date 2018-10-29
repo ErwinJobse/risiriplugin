@@ -761,7 +761,7 @@ if (typeof Array.isArray != "function") {
 
                                 break;
                         }
-                    }
+                    } else { $("#melding").hide(); } //dont show melding if information is correct
                     if (value != null && typeof fieldData.validator == "function") {
                         if (!(fieldData.validator(value, row, table.getRows(), table) === true)) {
                             fieldError = true;
@@ -810,7 +810,19 @@ if (typeof Array.isArray != "function") {
                 row["__filtering"] = false;
                 row["__invalidOptionRemoved"] = false;
 
-                console.log(row); //todo ajax edit row
+                console.log(row);
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?add',
+                    data: JSON.stringify(row),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log("send data to server");
+                    }
+                });
+
+
 
 
                 for (var fieldName in table.getKeys()) {
@@ -836,6 +848,16 @@ if (typeof Array.isArray != "function") {
                 if (!options.editable) return this;
                 if (typeof row != "object") return this;
                 $(row["__dom"]).data("fulltable-editing", true);
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?edit',
+                    data: JSON.stringify(row),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log("send edit data to server");
+                    }
+                });
 
 
 
@@ -864,6 +886,17 @@ if (typeof Array.isArray != "function") {
                 }
                 console.log(row); //todo add ajax  remove row
 
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?remove',
+                    data: JSON.stringify(row),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log("send remove data to server");
+                    }
+                });
+
                 if (typeof table.getEvents().removeRow == "function") table.getEvents().removeRow(row);
                 if (options.alwaysCreating === true) addRow();
                 return this;
@@ -882,6 +915,10 @@ if (typeof Array.isArray != "function") {
                 }
 
                 console.log(row); //todo add ajax addrow
+
+
+
+
 
 
                 for (var fieldName in row) {

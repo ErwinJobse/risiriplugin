@@ -22,6 +22,9 @@
                         "Artikelnaam":{
                             "mandatory":true,
                             "placeholder": "Artikelnaam",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "AanmaakDatum":{
                             "mandatory":false,
@@ -46,6 +49,8 @@
                     for (var error in errors) {
                         error = errors[error];
                         console.log(error);
+                        $("#melding").show();
+                        document.getElementById("meldingT").innerHTML = error;
                     }
                 });
                 $("#artikelen-table").FullTable("draw");
