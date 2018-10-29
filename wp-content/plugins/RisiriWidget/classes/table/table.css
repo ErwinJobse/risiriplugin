@@ -357,19 +357,19 @@ body{
 
 /*Te laat background color*/
 #telaat-table tr{
-    background: #ff2833;
+    background: #f23e3e;
 }
 
 #telaat-table tr:nth-child(odd) {
-    background-color: #f4131e;
+    background-color: #e24444;
 }
 
 #telaat-table tr:nth-child(even) {
-    background-color: #ff2833;
+    background-color: #f23e3e;
 }
 
 #telaat-table thead tr{
-    background-color: #ff2833 !important;
+    background-color: #f23e3e !important;
 }
 
 
