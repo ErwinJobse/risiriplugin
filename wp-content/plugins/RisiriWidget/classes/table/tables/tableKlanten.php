@@ -23,41 +23,44 @@
                             "mandatory":true,
                             "placeholder": "Voornaam",
                             "errors":{
-                                "type":"Height must be a number",
-                                "mandatory":"Height is mandatory",
+                                "mandatory":"Vul alle verplichte velden in",
                             }
-
                         },
                         "TussenVoegsel":{
                             "mandatory":false,
                             "placeholder": "Tussenvoegsel",
+
                         },
                         "Achternaam":{
                             "mandatory":true,
                             "placeholder": "Achternaam",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "email":{
                             "mandatory":true,
                             "placeholder": "Email",
-                            "validator":function(voorNaam) {
-                                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(voorNaam))
+                            "validator":function(email) {
+                                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
                                 {
                                     $("#melding").hide();
                                     return true;
                                 }
-                                $("#melding").show();
-                                document.getElementById("meldingT").innerHTML = "Je hebt een ongeldig email adres ingevuld!";
                                 return false;
 
                             },
                             "errors":{
-                                "type":"Height must be a number",
-                                "mandatory":"Height is mandatory",
+                                "mandatory":"Vul alle verplichte velden in",
+                                "validator": "Je hebt een ongeldig emailadres ingevuld!"
                             }
                         },
                         "telNummer":{
                             "mandatory":true,
                             "placeholder": "Telefoon",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
 
                     }
@@ -72,6 +75,8 @@
                     for (var error in errors) {
                         error = errors[error];
                         console.log(error);
+                        $("#melding").show();
+                        document.getElementById("meldingT").innerHTML = error;
                     }
                 });
                 $("#klanten-table").FullTable("draw");

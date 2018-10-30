@@ -15,19 +15,24 @@ include($path.'wp-load.php');
 
 include(RisiriWidget_PLUGIN_DIR . '/classes/global/db.php');
 
+$questionsArray = json_encode($_POST['']);
+var_dump($questionsArray);
 
 if (isset($_GET["add"])){ //add row
+    echo "add";
 
 
 
 }
 
-else if (isset($_GET["delete"])){ //delete row
+else if (isset($_GET["remove"])){ //delete row
+    echo "remove";
 
 
 }
 
 else if (isset($_GET["edit"])){ //edit row
+    echo "edit";
 
 
 } else{

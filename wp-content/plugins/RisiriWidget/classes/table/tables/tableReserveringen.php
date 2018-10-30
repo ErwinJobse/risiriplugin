@@ -19,27 +19,46 @@
                         "voorNaam":{
                             "mandatory":true,
                             "placeholder": "Voornaam",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "tussenVoegsel":{
                             "mandatory":true,
                             "placeholder": "Tussenvoegsel",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "achterNaam":{
                             "mandatory":true,
                             "placeholder": "Achternaam",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "uitleenDatum":{
-                            "mandatory":false,
+                            "mandatory":true,
                             "disabled":false,
-                            "placeholder": "Datum van vandaag",
+                            "placeholder": "Datum",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "beginTijd":{
-                            "mandatory":false,
-                            "placeholder": "Begijntjd",
+                            "mandatory":true,
+                            "placeholder": "Begintijd",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "eindTijd":{
-                            "mandatory":false,
+                            "mandatory":true,
                             "placeholder": "Eindtijd",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
+
                         },
                         "doel":{
                             "mandatory":false,
@@ -47,16 +66,19 @@
                         },
                     }
                 });
+
                 $("#reserveringen-table-add-row").click(function() {
                     $("#reserveringen-table").FullTable("addRow");
                 });
                 $("#reserveringen-table-get-value").click(function() {
                     console.log($("#reserveringen-table").FullTable("getData"));
                 });
-                $("#artikelen-table").FullTable("on", "error", function(errors) {
+                $("#reserveringen-table").FullTable("on", "error", function(errors) {
                     for (var error in errors) {
                         error = errors[error];
                         console.log(error);
+                        $("#melding").show();
+                        document.getElementById("meldingT").innerHTML = error;
                     }
                 });
                 $("#reserveringen-table").FullTable("draw");
