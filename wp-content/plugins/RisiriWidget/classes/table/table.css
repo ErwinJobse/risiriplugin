@@ -281,7 +281,7 @@ body{
 }
 
 .fulltable-creating input[type="text"]::placeholder{
-    color: #fff;
+    color: #707070;
 }
 
 
@@ -512,6 +512,7 @@ table.fulltable.fulltable-editable th.fulltable-edition-control, table.fulltable
 table.fulltable.fulltable-editable input.invalid, table.fulltable.fulltable-editable select.invalid {
     border: solid 2px #FF3333 !important;
     background-color:#F6CBCB !important;
+    
 }
 table.fulltable thead th a.fulltable-sort {
     font-family: 'jquery.fulltable';
