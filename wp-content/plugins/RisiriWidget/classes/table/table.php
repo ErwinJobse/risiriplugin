@@ -3,9 +3,9 @@
 class table{
 
 
-    public function __construct(){
+    public function __construct($table){
 
-        add_shortcode('risiriTable', array($this, 'shortcode'));
+        add_shortcode($table, array($this, 'shortcode'));
     }
 
     public function shortcode(){
@@ -18,8 +18,6 @@ class table{
         //css file for table
         wp_register_style('table', plugins_url('table.css',__FILE__ ));
         wp_enqueue_style('table');
-
-
 
         ?>
 
@@ -66,11 +64,7 @@ class table{
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableKlanten.php');
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableUitleningen.php');
             include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableReserveringen.php');
-            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); ?>
-
-
-
-
+            include(RisiriWidget_PLUGIN_DIR . '/classes/table/tables/tableTelaat.php'); // default tab on load (4) ?>
 
             </div>
 
@@ -79,7 +73,7 @@ class table{
     }
 }
 
-$risiriTable = new table();
+$risiriTable = new table("risiriTable");
 
 ?>
 

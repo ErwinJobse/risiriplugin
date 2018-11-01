@@ -4,7 +4,7 @@ Plugin Name: Risiri warehouse management
 Plugin URI: https://github.com/MextroNL/risiriplugin
 Description: warehouse management
 Author: Max den Ouden, Erwin Jobse, Jop de Meurichy, Owen Vermeulen
-Version: 0.50
+Version: 0.73
 */
 
 define ( 'RisiriWidget', __FILE__ );

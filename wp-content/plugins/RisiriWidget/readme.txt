@@ -3,7 +3,6 @@ Contributors: Max den Ouden, Erwin Jobse, Jop de Meurichy, Owen Vermeulen
 Tags: //todo add me
 Requires at least: 4.8
 Tested up to: 4.9
-Stable tag: trunk
 License: The MIT License
 License URI: http://opensource.org/licenses/MIT
 
