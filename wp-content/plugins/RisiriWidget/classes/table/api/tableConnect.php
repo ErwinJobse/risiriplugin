@@ -15,11 +15,21 @@ include($path.'wp-load.php');
 
 include(RisiriWidget_PLUGIN_DIR . '/classes/global/db.php');
 
-$questionsArray = json_encode($_POST['']);
-var_dump($questionsArray);
+
+
+
+$lol = $_GET["voorNaam"];
+
+$parts = parse_url($url);
+parse_str($parts['edit'], $query);
+
+var_dump($lol);
+
 
 if (isset($_GET["add"])){ //add row
     echo "add";
+
+    $action = $_POST["action"];
 
 
 

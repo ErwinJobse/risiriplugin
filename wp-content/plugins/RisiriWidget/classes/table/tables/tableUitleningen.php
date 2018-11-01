@@ -17,22 +17,27 @@
                             "mandatory":false,
                             "disabled":true,
                             "placeholder": "N.V.T.",
+
                         },
                         "Klantnummer":{
-                            "mandatory":false,
+                            "mandatory":true,
                             "placeholder": "Klantnummer",
                             "type": "integer",
                             "errors":{
                                 "type":"Vul een getal in",
+                                "mandatory":"Vul alle verplichte velden in",
                             }
                         },
                         "uitleenDatum":{
                             "mandatory":false,
                             "disabled":true,
                             "placeholder": "Datum van vandaag",
+                            "errors":{
+                                "mandatory":"Vul alle verplichte velden in",
+                            }
                         },
                         "inleverDatum":{
-                            "mandatory":false,
+                            "mandatory":true,
                             "placeholder": "Inlever-datum",
                         },
                         "ingeleverd":{
@@ -49,7 +54,7 @@
                                 }
                             ],
                             "errors":{
-                                "mandatory":"Vul alle verplichten velden in",
+                                "mandatory":"Vul alle verplichte velden in",
                             }
                         },
                         "Artikelnummer":{
@@ -58,6 +63,7 @@
                             "placeholder": "Artikelnummers",
                             "errors":{
                                 "type":"Vul een getal in",
+                                "mandatory":"Vul alle verplichte velden in",
                             }
                         },
                     }
@@ -108,13 +114,8 @@
                 <td><span><?php echo $row->Klantnummer; ?></span></td>
                 <td><span><?php echo $row->uitleenDatum; ?></span></td>
                 <td><span><?php echo $row->inleverDatum; ?></span></td>
-                <td><span><?php if($row->ingeleverd){
-                    echo "Ja";
-                        } else{ echo "Nee"; }
-                ?></span></td>
+                <td><span><?php echo $row->ingeleverd; ?></span></td>
                 <td><span><?php echo $row->Artikelnummer; ?></span></td>
-            </tr>
-            </tr>
             </tr>
             <?php } ?>
             </tbody>

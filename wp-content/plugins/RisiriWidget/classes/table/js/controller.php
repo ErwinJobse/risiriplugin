@@ -837,16 +837,21 @@ if (typeof Array.isArray != "function") {
                 if (!options.editable) return this;
                 if (typeof row != "object") return this;
                 $(row["__dom"]).data("fulltable-editing", true);
+
+                var  myJsonString= JSON.stringify(row);
                 $.ajax({
-                    type: 'post',
-                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?edit',
-                    data: row,
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        console.log("send edit data to server");
+                    url: "<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/",
+                    type: "GET",
+                    dataType: "json",
+                    data: myJsonString,
+                    success: function(result) {
+                        // continue program
+                    },
+                    error: function(log) {
+                        // handle error
                     }
                 });
+
 
 
 
@@ -904,6 +909,17 @@ if (typeof Array.isArray != "function") {
                 }
 
                 console.log(row); //todo add ajax addrow
+
+                $.ajax({
+                    type: 'post',
+                    url: '<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/?add',
+                    data: JSON.stringify(row),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (data) {
+                        console.log("send remove data to server");
+                    }
+                });
 
 
 
