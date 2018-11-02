@@ -1,2 +1,0 @@
-# RiSiRi
-warehouse management plugin
