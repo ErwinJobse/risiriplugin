@@ -19,12 +19,12 @@ RiSiRi Plugin is developed for RiSiRi.
 This project is licensed under the MIT License - see the [license.txt](license.txt) file for details
 
 ## Contributing
-
-1. Fork it (<https://github.com/ErwinJobse/risiriplugin/fork>)
-2. Create your feature branch (`git checkout -b feature/example`)
-3. Commit your changes (`git commit -am 'Add some example'`)
-4. Push to the branch (`git push origin feature/example`)
-5. Create a new Pull Request
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+2. Fork it (<https://github.com/ErwinJobse/risiriplugin/fork>)
+3. Create your feature branch (`git checkout -b feature/example`)
+4. Commit your changes (`git commit -am 'Add some example'`)
+5. Push to the branch (`git push origin feature/example`)
+6. Create a new Pull Request
 
 ## Contributors: 
 * Max den Ouden [Github](https://github.com/MextroNL)
