@@ -3,9 +3,13 @@
 
 ![](risiri.PNG)
 
+## About
+RiSiRi Plugin is developed for RiSiRi. 
+
+
 ## Deployment
 1. Copy the project to your local htdocs folder
-2. Setup a database for wordpress 
+2. Setup a database for wordpress called "risiri"
 
 ## Built With
 * Wordpress
