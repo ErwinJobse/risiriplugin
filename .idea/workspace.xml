@@ -107,7 +107,7 @@
           <entry key="htaccess" value="54" />
           <entry key="html" value="99" />
           <entry key="js" value="1684" />
-          <entry key="md" value="41" />
+          <entry key="md" value="42" />
           <entry key="php" value="13009" />
           <entry key="txt" value="17" />
           <entry key="yml" value="11" />
@@ -118,7 +118,7 @@
           <entry key="CSS" value="655" />
           <entry key="HTML" value="99" />
           <entry key="JavaScript" value="1684" />
-          <entry key="Markdown" value="41" />
+          <entry key="Markdown" value="42" />
           <entry key="PHP" value="12995" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="14" />
@@ -148,8 +148,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="17">
-                <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+              <first_editor relative-caret-position="170">
+                <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               </first_editor>
               <second_editor />
             </state>
@@ -278,7 +278,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="408" />
     <option name="y" value="30" />
     <option name="width" value="974" />
@@ -460,12 +460,12 @@
       <workItem from="1540885935114" duration="15155000" />
       <workItem from="1541060804051" duration="659000" />
       <workItem from="1541063351618" duration="2643000" />
-      <workItem from="1541408427707" duration="1337000" />
+      <workItem from="1541408427707" duration="1496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329037000" />
+    <option name="totallyTimeSpent" value="329196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -640,8 +640,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="17">
-            <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <first_editor relative-caret-position="170">
+            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           </first_editor>
           <second_editor />
         </state>
