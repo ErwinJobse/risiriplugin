@@ -19,7 +19,7 @@ RiSiRi Plugin is developed for RiSiRi.
 This project is licensed under the MIT License - see the [license.txt](license.txt) file for details
 
 ## Contributing
-1. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+1. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
 2. Fork it (<https://github.com/ErwinJobse/risiriplugin/fork>)
 3. Create your feature branch (`git checkout -b feature/example`)
 4. Commit your changes (`git commit -am 'Add some example'`)
