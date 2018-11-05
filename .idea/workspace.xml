@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf555506-2fdc-46c3-ae27-84d74844a53e" name="Default Changelist" comment="">
+    <list default="true" id="a2452711-db67-499d-b5d2-caea5dc5d8ab" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -107,7 +108,7 @@
           <entry key="htaccess" value="54" />
           <entry key="html" value="99" />
           <entry key="js" value="1684" />
-          <entry key="md" value="42" />
+          <entry key="md" value="51" />
           <entry key="php" value="13009" />
           <entry key="txt" value="17" />
           <entry key="yml" value="11" />
@@ -118,7 +119,7 @@
           <entry key="CSS" value="655" />
           <entry key="HTML" value="99" />
           <entry key="JavaScript" value="1684" />
-          <entry key="Markdown" value="42" />
+          <entry key="Markdown" value="51" />
           <entry key="PHP" value="12995" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="14" />
@@ -134,22 +135,13 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="170">
-                <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <first_editor relative-caret-position="136">
+                <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               </first_editor>
               <second_editor />
             </state>
@@ -465,13 +457,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329196000" />
+    <option name="totallyTimeSpent" value="329288000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49666667" visible="true" weight="0.102878466" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49666667" visible="true" weight="0.22547974" />
       <window_info id="Structure" order="1" sideWeight="0.50333333" side_tool="true" weight="0.21108742" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -538,57 +530,25 @@
     </entry>
     <entry file="das://ddf39d46-4c50-4a5b-9fdd-7298da288b97/schema/risiri/table/risiri_artikel_reserveringen" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/js/load.js" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/footer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/wp-admin.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/footer.php" />
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/wp-admin.css" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/api/getData.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/api/artikel.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Start Page.url" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/api/tableConnect.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/js/artikel.tabledit.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/js/telaat.tabledit.php" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/page.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/js/telaat.tabledit.php" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/load.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/header.php" />
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/load.php" />
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/index.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/tableTelaat.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/tableReserveringen.php" />
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-activate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1953" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-activate.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Google.url">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -597,13 +557,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/tableArtikelen.php" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/functions.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/tableUitleningen.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/table.css" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/tables/tableKlanten.php" />
@@ -623,13 +577,7 @@
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/api/tableConnect.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/global/roleCheck.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/RisiriWidget/classes/table/table.php" />
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/risiri/style.css" />
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -640,8 +588,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="170">
-            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <first_editor relative-caret-position="136">
+            <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           </first_editor>
           <second_editor />
         </state>
