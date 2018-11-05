@@ -1,7 +1,7 @@
 # RiSiRi Plugin ![status](https://travis-ci.com/ErwinJobse/risiriplugin.svg?branch=beta)
 > warehouse management plugin
 
-![](risiri.png)
+![](risiri.PNG)
 
 ## Deployment
 1. Copy the project to your local htdocs folder
