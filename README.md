@@ -1,6 +1,4 @@
-# RiSiRi
-
-![status](https://travis-ci.com/ErwinJobse/risiriplugin.svg?branch=beta)
+# RiSiRi ![status](https://travis-ci.com/ErwinJobse/risiriplugin.svg?branch=beta)
 warehouse management plugin
 
 
