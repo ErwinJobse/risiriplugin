@@ -3,7 +3,7 @@ warehouse management plugin
 
 
 
-##Contributors: 
+## Contributors: 
 * Max den Ouden [Github](https://github.com/MextroNL)
 * Erwin Jobse [Github](https://github.com/ErwinJobse)
 * Jop de Meurichy [Github](https://github.com/jopdm)
