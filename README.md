@@ -1,7 +1,7 @@
 # RiSiRi Plugin ![status](https://travis-ci.com/ErwinJobse/risiriplugin.svg?branch=beta)
 > warehouse management plugin
 
-![](risiri.png)
+![](risiri.PNG)
 
 ## Deployment
 1. Copy the project to your local htdocs folder
@@ -12,11 +12,11 @@
 
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [license.txt](license.txt) file for details
 
 ## Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork it (<https://github.com/ErwinJobse/risiriplugin/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
