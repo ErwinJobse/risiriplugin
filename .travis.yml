@@ -8,4 +8,4 @@ php:
   - '7.1'
   - '7.2'
 
-script: phpunit hello.php
+script: phpunit wp-content/plugins/RisiriWidget/classes/table/table.php
