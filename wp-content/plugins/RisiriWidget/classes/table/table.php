@@ -76,7 +76,7 @@ class table{
 $risiriTable = new table("risiriTable");
 
 ?>
-
+l
 
 
 

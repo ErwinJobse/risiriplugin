@@ -311,6 +311,7 @@ if (typeof Array.isArray != "function") {
                 if (fieldData == null) fieldData = {};
                 var input;
                 // TODO: Here must be validation of input type: select, checkbox, if (fieldData.options == "boolean")
+
                 if (fieldData.options != null) {
                     input = $("<select>", {
                         'disabled':fieldData.disabled
@@ -838,19 +839,7 @@ if (typeof Array.isArray != "function") {
                 if (typeof row != "object") return this;
                 $(row["__dom"]).data("fulltable-editing", true);
 
-                var  myJsonString= JSON.stringify(row);
-                $.ajax({
-                    url: "<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/",
-                    type: "GET",
-                    dataType: "json",
-                    data: myJsonString,
-                    success: function(result) {
-                        // continue program
-                    },
-                    error: function(log) {
-                        // handle error
-                    }
-                });
+
 
 
 
@@ -909,6 +898,19 @@ if (typeof Array.isArray != "function") {
                 }
 
                 console.log(row); //todo add ajax addrow
+                var  myJsonString= JSON.stringify(row);
+                $.ajax({
+                    url: "<?php echo plugins_url(); ?>/risiriWidget/classes/table/api/tableConnect.php/",
+                    type: "POST",
+                    dataType: "json",
+                    data: myJsonString,
+                    success: function(result) {
+                        // continue program
+                    },
+                    error: function(log) {
+                        // handle error
+                    }
+                });
 
                 $.ajax({
                     type: 'post',

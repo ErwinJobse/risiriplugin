@@ -4,7 +4,9 @@
 ![](risiri.PNG)
 
 ## About
-RiSiRi Plugin is developed for RiSiRi. 
+> RiSiRi Plugin is developed for RiSiRi. 
+
+![](risiri.gif)
 
 
 ## Deployment

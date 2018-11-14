@@ -16,14 +16,10 @@ include($path.'wp-load.php');
 include(RisiriWidget_PLUGIN_DIR . '/classes/global/db.php');
 
 
+$request_body = file_get_contents('php://input');
+$data = json_decode($request_body, true);
 
-
-$lol = $_GET["voorNaam"];
-
-$parts = parse_url($url);
-parse_str($parts['edit'], $query);
-
-var_dump($lol);
+var_dump($data);
 
 
 if (isset($_GET["add"])){ //add row
